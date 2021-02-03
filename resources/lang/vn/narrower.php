@@ -1,6 +1,6 @@
 <?php 
     return [
-        "title"=>"Tử điển suy nghĩa rộng",
+        "title"=>"Tử điển suy nghĩa hẹp",
         "id"=>"STT",
         "root"=>"Từ gốc",
         "refer"=>"Suy nghĩa",

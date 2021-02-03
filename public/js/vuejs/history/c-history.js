@@ -93,14 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var app = new Vue({
-  el: "#histories",
-  data: {},
-  mounted: function mounted() {},
-  created: function created() {},
-  methods: {},
-  computed: {}
-});
+
 
 /***/ }),
 

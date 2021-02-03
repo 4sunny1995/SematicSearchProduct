@@ -29,6 +29,10 @@ Route::get('/dashboard',function(){
 Route::get('/broaders',function(){
     return view('admin.broader');
 });
+Route::get('narrowers',function(){
+    return view('admin.narrower');
+});
 Route::group(['prefix' => 'api'], function () {
     Route::resource('/broaders','Admin\BroaderController');
+    Route::resource('narrowers', 'Admin\NarrowerController');
 });

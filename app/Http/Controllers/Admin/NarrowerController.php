@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\NarrowerRepository;
 use Illuminate\Http\Request;
 
 class NarrowerController extends Controller
@@ -14,7 +15,11 @@ class NarrowerController extends Controller
      */
     public function index()
     {
-        //
+        $repo = new NarrowerRepository();
+        $result = $repo->getAllNarrower();
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -24,7 +29,7 @@ class NarrowerController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -35,7 +40,12 @@ class NarrowerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $repo = new NarrowerRepository();
+        $data = $request->all();
+        $result = $repo -> insert($data);
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -69,7 +79,12 @@ class NarrowerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $repo = new NarrowerRepository();
+        $body = $request->all();
+        $result = $repo -> update($body,$id);
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -80,6 +95,10 @@ class NarrowerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $repo = new NarrowerRepository();
+        $result = $repo ->delete($id);
+        if($result){
+            return $result;
+        }
     }
 }
