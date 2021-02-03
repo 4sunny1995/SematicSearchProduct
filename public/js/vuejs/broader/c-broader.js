@@ -2905,7 +2905,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var app = new Vue({
   el: "#broader",
   data: {
-    listBroader: null,
+    listBroader: [],
     state: 0,
     getIndex: null,
     model: {
@@ -2913,7 +2913,11 @@ var app = new Vue({
       "refer": ""
     },
     title: "Create Modal",
-    error: null
+    error: null,
+    submit: "Create New",
+    root: null,
+    refer: null,
+    id: null
   },
   mounted: function mounted() {
     this.onloadFunction();
@@ -2935,14 +2939,16 @@ var app = new Vue({
               case 0:
                 _this = _this2;
                 _context.next = 3;
-                return _s_broader__WEBPACK_IMPORTED_MODULE_1__["default"].getBroaders('broaders');
+                return _s_broader__WEBPACK_IMPORTED_MODULE_1__["default"].getBroaders();
 
               case 3:
                 response = _context.sent;
-                console.log(response);
-                _this.listBroader = response;
 
-              case 6:
+                if (response.success == true) {
+                  _this.listBroader = response.data;
+                }
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2950,41 +2956,142 @@ var app = new Vue({
         }, _callee);
       }))();
     },
+    createOrUpdate: function createOrUpdate() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this, response, item, _response;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this = _this3;
+
+                if (!(_this.state === 2)) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                //create new
+                _this.model = {
+                  "root": _this.root,
+                  "refer": _this.refer
+                };
+                _context2.next = 5;
+                return _s_broader__WEBPACK_IMPORTED_MODULE_1__["default"].create(_this.model);
+
+              case 5:
+                response = _context2.sent;
+
+                if (response.success == true) {
+                  console.log(_this.listBroader);
+
+                  _this.listBroader.push(response.data);
+
+                  _this.state = 0;
+                  console.log(_this.listBroader);
+                }
+
+                _context2.next = 16;
+                break;
+
+              case 9:
+                //update
+                item = _this.listBroader[_this.getIndex];
+
+                _this.initModel();
+
+                _context2.next = 13;
+                return _s_broader__WEBPACK_IMPORTED_MODULE_1__["default"].update(_this.model, item.id);
+
+              case 13:
+                _response = _context2.sent;
+                console.log(_response);
+
+                if (_response.success == true) {
+                  _this.listBroader[_this.getIndex] = _response.data;
+                  _this.state = 0;
+                  console.log(_response.data);
+                  console.log(_this.listBroader);
+                }
+
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    deleteItem: function deleteItem() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this, id, response;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this = _this4;
+                id = _this.listBroader[_this.getIndex].id;
+                _context3.next = 4;
+                return _s_broader__WEBPACK_IMPORTED_MODULE_1__["default"].deleteItem(id);
+
+              case 4:
+                response = _context3.sent;
+                console.log(response);
+
+                if (response.success == true) {
+                  _this.listBroader.splice(_this.getIndex, 1);
+
+                  console.log(_this.listBroader);
+                  _this.state = 0;
+                }
+
+              case 7:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
     openModal: function openModal(state, index) {
       var _this = this;
 
       _this.state = state;
       _this.getIndex = index;
+      var item = _this.listBroader[index];
+      _this.root = item.root;
+      _this.refer = item.refer;
     },
     createBroader: function createBroader() {
-      console.log("xxxx");
-
       var _this = this; //create state
 
 
       _this.state = 2;
-      _this.model = {
-        "root": "",
-        "refer": ""
-      };
-      _this.title = "Create New Broader in Directionary";
+
+      _this.initModel();
     },
     initModel: function initModel() {
       var _this = this;
 
-      var state = _this.state;
-
-      switch (state) {
-        case 1:
-          //edit state
-          _this.model = _this.listBroader[_this.getIndex];
-          break;
-
-        case -1:
-          break;
-
-        default:
-          break;
+      if (_this.state === 1) {
+        _this.model = {
+          "root": _this.root,
+          "refer": _this.refer
+        };
+        _this.title = "Update Broader in Directionary";
+        _this.submit = "Update";
+      } else {
+        _this.model = {
+          "root": "",
+          "refer": ""
+        };
+        _this.title = "Create New Broader in Directionary";
+        _this.submit = "Create";
       }
     }
   },
@@ -3015,23 +3122,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "broaders";
 
 var getBroaders = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(url) {
-    var uri, response;
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + url;
-            _context.next = 3;
+            _context.next = 2;
             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(uri);
 
-          case 3:
+          case 2:
             response = _context.sent;
             return _context.abrupt("return", response.data);
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }
@@ -3039,13 +3146,97 @@ var getBroaders = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getBroaders(_x) {
+  return function getBroaders() {
     return _ref.apply(this, arguments);
   };
 }();
 
+var create = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(body) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(uri, body);
+
+          case 2:
+            response = _context2.sent;
+            return _context2.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function create(_x) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var update = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(body, index) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(uri + "/" + index, body);
+
+          case 2:
+            response = _context3.sent;
+            return _context3.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function update(_x2, _x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+var deleteItem = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](uri + "/" + id);
+
+          case 2:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function deleteItem(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getBroaders: getBroaders
+  getBroaders: getBroaders,
+  create: create,
+  update: update,
+  deleteItem: deleteItem
 });
 
 /***/ }),

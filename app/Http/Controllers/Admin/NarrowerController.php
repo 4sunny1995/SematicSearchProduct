@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\BroaderRepository;
 use Illuminate\Http\Request;
 
-class BroaderController extends Controller
+class NarrowerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,7 @@ class BroaderController extends Controller
      */
     public function index()
     {
-        $repo = new BroaderRepository();
-        $broaders = $repo->getAllBroader();
-        if($broaders){
-            return $broaders;
-        }
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class BroaderController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
     /**
@@ -40,12 +35,7 @@ class BroaderController extends Controller
      */
     public function store(Request $request)
     {
-        $repo = new BroaderRepository();
-        $data = $request->all();
-        $result = $repo -> insert($data);
-        if($result){
-            return $result;
-        }
+        //
     }
 
     /**
@@ -79,12 +69,7 @@ class BroaderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $repo = new BroaderRepository();
-        $body = $request->all();
-        $result = $repo -> update($body,$id);
-        if($result){
-            return $result;
-        }
+        //
     }
 
     /**
@@ -95,10 +80,6 @@ class BroaderController extends Controller
      */
     public function destroy($id)
     {
-        $repo = new BroaderRepository();
-        $result = $repo ->delete($id);
-        if($result){
-            return $result;
-        }
+        //
     }
 }

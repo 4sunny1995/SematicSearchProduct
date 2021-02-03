@@ -6,8 +6,6 @@
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
-              {{--  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">  --}}
-
               <div class="input-group-append">
                 <button type="button" class="btn btn-primary" @click="createBroader()">
                   <i class="fa fa-plus-square" aria-hidden="true"></i>
@@ -30,13 +28,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>183</td>
-                <td>John Doe</td>
-                <td>11-7-2014</td>
+              <tr v-for = "(item,index) in listBroader">
+                <td>@{{index + 1}}</td>
+                <td>@{{item.root}}</td>
+                <td>@{{item.refer}}</td>
                 <td>
-                  <button class="btn btn-success"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                  <button class="btn btn-success" @click="openModal(1,index)"><i class="fas fa-edit"></i></button>
+                  <button class="btn btn-danger" @click="openModal(-1,index)"><i class="fas fa-trash" aria-hidden="true"></i></button>
                 </td>
               </tr>
             </tbody>

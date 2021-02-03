@@ -27,4 +27,74 @@ class BroaderRepository
                 return null;
             }
         }
+        public function insert(array $body)
+        {
+            try
+            {
+                $broader = Broader::create($body);
+                if($broader){
+                    return [
+                        "message"=>"success",
+                        "success"=>true,
+                        "data"=>$broader
+                    ];
+                    return null;
+                }
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+                return null;
+            }
+        }
+        public function update(array $body,$id)
+        {
+            try
+            {
+                Log::info($body);
+                $broader = Broader::findOrfail($id);
+                if($broader){
+                    Log::info('-------------------Before-----------------');
+                    Log::info($broader);
+                    $check = $broader->update($body);
+                    if($check){
+                        Log::info('-------------------After-----------------');
+                        Log::info($broader);
+                        return [
+                            "message"=>"success",
+                            "success"=>true,
+                            "data"=>$broader
+                        ];
+                    }
+                    return null;
+                }
+                return null;
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+                return null;
+            }
+        }
+        public function delete($id)
+        {
+            try
+            {
+                $broader = Broader::findOrfail($id);
+                $check = $broader->delete();
+                if($check){
+                    return [
+                        "message"=>"success",
+                        "success"=>true,
+                        "data"=>$broader
+                    ];
+                }
+                return null;
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+                return null;
+            }
+        }
     }
