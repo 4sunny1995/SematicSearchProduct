@@ -14,7 +14,7 @@ let update = async (body,index)=>{
     const response = await Axios.put(uri+"/"+index,body)
     return response.data
 }
-let deleteItem = async (id)=>{
+let destroy = async (id)=>{
     const response = await Axios.delete(uri+"/"+id)
     return response.data
 }
@@ -22,5 +22,5 @@ export default {
     getBroaders : getBroaders,
     create : create,
     update : update,
-    deleteItem : deleteItem
+    destroy : destroy
 }

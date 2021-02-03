@@ -69,7 +69,7 @@ let app = new Vue({
         async deleteItem(){
             let _this = this
             let id = _this.listBroader[_this.getIndex].id
-            const response = await broaderServices.deleteItem(id)
+            const response = await broaderServices.destroy(id)
             console.log(response)
             if(response.success==true){
                 _this.listBroader.splice(_this.getIndex,1)

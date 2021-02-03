@@ -32,7 +32,11 @@ Route::get('/broaders',function(){
 Route::get('narrowers',function(){
     return view('admin.narrower');
 });
+Route::get('histories',function(){
+    return view('admin.history');
+});
 Route::group(['prefix' => 'api'], function () {
-    Route::resource('/broaders','Admin\BroaderController');
+    Route::resource('broaders','Admin\BroaderController');
     Route::resource('narrowers', 'Admin\NarrowerController');
+    Route::resource('histories', 'Admin\HistoryController');
 });

@@ -230,7 +230,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{URL('/admin/histories')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{trans('dashboard.history')}}</p>
                 </a>

@@ -69,7 +69,7 @@ let app = new Vue({
         async deleteItem(){
             let _this = this
             let id = _this.listNarrower[_this.getIndex].id
-            const response = await narrowerServices.deleteItem(id)
+            const response = await narrowerServices.destroy(id)
             console.log(response)
             if(response.success==true){
                 _this.listNarrower.splice(_this.getIndex,1)

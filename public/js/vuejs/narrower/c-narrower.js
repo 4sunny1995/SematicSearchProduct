@@ -3037,7 +3037,7 @@ var app = new Vue({
                 _this = _this4;
                 id = _this.listNarrower[_this.getIndex].id;
                 _context3.next = 4;
-                return _s_narrower__WEBPACK_IMPORTED_MODULE_1__["default"].deleteItem(id);
+                return _s_narrower__WEBPACK_IMPORTED_MODULE_1__["default"].destroy(id);
 
               case 4:
                 response = _context3.sent;
@@ -3205,7 +3205,7 @@ var update = /*#__PURE__*/function () {
   };
 }();
 
-var deleteItem = /*#__PURE__*/function () {
+var destroy = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -3227,7 +3227,7 @@ var deleteItem = /*#__PURE__*/function () {
     }, _callee4);
   }));
 
-  return function deleteItem(_x4) {
+  return function destroy(_x4) {
     return _ref4.apply(this, arguments);
   };
 }();
@@ -3236,7 +3236,7 @@ var deleteItem = /*#__PURE__*/function () {
   getNarrowers: getNarrowers,
   create: create,
   update: update,
-  deleteItem: deleteItem
+  destroy: destroy
 });
 
 /***/ }),
