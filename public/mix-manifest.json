@@ -6,5 +6,7 @@
     "/js/vuejs/history/c-history.js": "/js/vuejs/history/c-history.js",
     "/js/vuejs/history/s-history.js": "/js/vuejs/history/s-history.js",
     "/js/vuejs/narrower/c-narrower.js": "/js/vuejs/narrower/c-narrower.js",
-    "/js/vuejs/narrower/s-narrower.js": "/js/vuejs/narrower/s-narrower.js"
+    "/js/vuejs/narrower/s-narrower.js": "/js/vuejs/narrower/s-narrower.js",
+    "/js/vuejs/spider/c-spider.js": "/js/vuejs/spider/c-spider.js",
+    "/js/vuejs/spider/s-spider.js": "/js/vuejs/spider/s-spider.js"
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
-class Page extends Model
+class Product extends Model
 {
-    use Notifiable;
+    use Notifiable,SoftDeletes;
     protected $fillable = [
-        "id","url","title","content","isCrawled",'status'
+        "name",'price','url','image','hasTag'
     ];
 }

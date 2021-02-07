@@ -35,6 +35,8 @@ Route::get('narrowers',function(){
 Route::get('histories',function(){
     return view('admin.history');
 });
+Route::resource("spiders","Admin\SpiderController");
+
 Route::group(['prefix' => 'api'], function () {
     Route::resource('broaders','Admin\BroaderController');
     Route::resource('narrowers', 'Admin\NarrowerController');

@@ -19,6 +19,8 @@ mix.js('resources/js/vuejs/narrower/c-narrower.js', 'public/js/vuejs/narrower');
 mix.js('resources/js/vuejs/narrower/s-narrower.js', 'public/js/vuejs/narrower');
 mix.js('resources/js/vuejs/history/c-history.js', 'public/js/vuejs/history');
 mix.js('resources/js/vuejs/history/s-history.js', 'public/js/vuejs/history');
+mix.js('resources/js/vuejs/spider/c-spider.js', 'public/js/vuejs/spider');
+mix.js('resources/js/vuejs/spider/s-spider.js', 'public/js/vuejs/spider');
 
 
 
