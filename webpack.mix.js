@@ -21,6 +21,8 @@ mix.js('resources/js/vuejs/history/c-history.js', 'public/js/vuejs/history');
 mix.js('resources/js/vuejs/history/s-history.js', 'public/js/vuejs/history');
 mix.js('resources/js/vuejs/spider/c-spider.js', 'public/js/vuejs/spider');
 mix.js('resources/js/vuejs/spider/s-spider.js', 'public/js/vuejs/spider');
+mix.js('resources/js/vuejs/dashboard/c-dashboard.js', 'public/js/vuejs/dashboard');
+mix.js('resources/js/vuejs/dashboard/s-dashboard.js', 'public/js/vuejs/dashboard');
 
 
 

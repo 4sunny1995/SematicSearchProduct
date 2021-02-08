@@ -5,5 +5,6 @@
         "email"=>"Email address",
         "password"=>"Password",
         "confirm_password"=>"Password Confirm",
-        'submit'=>"Login"
+        'submit'=>"Login",
+        'page_title'=>'Welcome to Register page'
     ];

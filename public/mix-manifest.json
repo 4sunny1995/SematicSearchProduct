@@ -3,6 +3,8 @@
     "/css/app.css": "/css/app.css",
     "/js/vuejs/broader/c-broader.js": "/js/vuejs/broader/c-broader.js",
     "/js/vuejs/broader/s-broader.js": "/js/vuejs/broader/s-broader.js",
+    "/js/vuejs/dashboard/c-dashboard.js": "/js/vuejs/dashboard/c-dashboard.js",
+    "/js/vuejs/dashboard/s-dashboard.js": "/js/vuejs/dashboard/s-dashboard.js",
     "/js/vuejs/history/c-history.js": "/js/vuejs/history/c-history.js",
     "/js/vuejs/history/s-history.js": "/js/vuejs/history/s-history.js",
     "/js/vuejs/narrower/c-narrower.js": "/js/vuejs/narrower/c-narrower.js",

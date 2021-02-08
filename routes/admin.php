@@ -41,4 +41,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('broaders','Admin\BroaderController');
     Route::resource('narrowers', 'Admin\NarrowerController');
     Route::resource('histories', 'Admin\HistoryController');
+    Route::get('getBroader','Admin\DashboardController@getBroader');
+    Route::get('getNarrower','Admin\DashboardController@getNarrower');
+    Route::get('getHistory','Admin\DashboardController@getHistory');
 });

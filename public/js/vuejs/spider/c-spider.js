@@ -86,14 +86,46 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./resources/js/config.js":
+/*!********************************!*\
+  !*** ./resources/js/config.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "apiURL": "http://127.0.0.1:8000/api/",
+  "mediaURL": "http://127.0.0.1:8000/imgs/",
+  "basicURL": "http://127.0.0.1:8000/",
+  "adminURL": "http://127.0.0.1:8000/admin/api/"
+});
+
+/***/ }),
+
 /***/ "./resources/js/vuejs/spider/c-spider.js":
 /*!***********************************************!*\
   !*** ./resources/js/vuejs/spider/c-spider.js ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
 
+var app = new Vue({
+  el: "#spider",
+  data: {
+    listProductCrawler: [],
+    url: null,
+    nameSelector: null,
+    priceSelector: null,
+    imageSelector: null,
+    hasTag: null
+  }
+});
 
 /***/ }),
 

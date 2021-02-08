@@ -10,5 +10,7 @@
         "history"=>"Danh sách keyword",
         "words"=>"Từ ngữ",
         "amount_of_data"=>"3",
-        "product"=>"Danh sách sản phẩm"
+        "product"=>"Danh sách sản phẩm",
+        'page_title'=>"Chào mừng đến với Trường đại học Thủ Dầu Một",
+        'logo_name'=>"Kỹ thuật - Công nghệ"
     ];
