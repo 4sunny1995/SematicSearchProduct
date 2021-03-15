@@ -235,8 +235,9 @@
                   <p>{{trans('dashboard.history')}}</p>
                 </a>
               </li>
+    
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{URL('/admin/histories')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>{{trans('dashboard.words')}}</p>
                 </a>
@@ -244,6 +245,30 @@
               
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                {{trans("dashboard.service")}}
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">{{trans('dashboard.amount_of_dictionary')}}</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{URL('/admin/email')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{trans('dashboard.email')}}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{URL('/admin/sms')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{trans('dashboard.sms')}}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.1/" class="nav-link">
               <p>{{trans('dashboard.product')}}</p>

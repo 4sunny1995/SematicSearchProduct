@@ -35,6 +35,15 @@ Route::get('narrowers',function(){
 Route::get('histories',function(){
     return view('admin.history');
 });
+Route::get('word', function(){
+    return view('admin.word');
+});
+Route::get('email',function(){
+    return view('admin.email');
+});
+Route::get('sms',function(){
+    return view('admin.sms');
+});
 Route::resource("spiders","Admin\SpiderController");
 
 Route::group(['prefix' => 'api'], function () {
@@ -44,4 +53,5 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getBroader','Admin\DashboardController@getBroader');
     Route::get('getNarrower','Admin\DashboardController@getNarrower');
     Route::get('getHistory','Admin\DashboardController@getHistory');
+    Route::post('sendEmail',"Admin\EmailController@sendEmail");
 });

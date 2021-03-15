@@ -23,6 +23,8 @@ mix.js('resources/js/vuejs/spider/c-spider.js', 'public/js/vuejs/spider');
 mix.js('resources/js/vuejs/spider/s-spider.js', 'public/js/vuejs/spider');
 mix.js('resources/js/vuejs/dashboard/c-dashboard.js', 'public/js/vuejs/dashboard');
 mix.js('resources/js/vuejs/dashboard/s-dashboard.js', 'public/js/vuejs/dashboard');
+mix.js('resources/js/vuejs/email/c-email.js', 'public/js/vuejs/email');
+mix.js('resources/js/vuejs/email/s-email.js', 'public/js/vuejs/email');
 
 
 

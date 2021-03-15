@@ -74,8 +74,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'vanquoc@askkpop.com'),
+        'name' => env('MAIL_FROM_NAME', 'Quoc Nguyen'),
     ],
 
     /*
@@ -96,5 +96,5 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
 ];

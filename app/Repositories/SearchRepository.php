@@ -2,11 +2,17 @@
     namespace App\Repositories;
 
 use App\Model\Broader;
+use App\Model\History;
 use App\Model\Narrower;
+use App\Tag;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class SearchRepository
     {
         private $result = [];
+        private $bro = [];
+        private $nar = [];
         // public function search($key)
         // {
         //     $result = $this -> generation($key);
@@ -15,8 +21,9 @@ class SearchRepository
         // }
         public function generation($key)
         {
-            //replace ký tự đặc biệt + dấu câu
-            $refer = preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s','', $key);
+            //replace ký tự + dấu câu
+            $rep = [',','.','!','?','//','@','$','%','^','#','*'];
+            $refer = str_replace($rep,'', $key);
             //tách chuỗi
             $items = explode(' ',$refer);
             //generation string
@@ -24,14 +31,29 @@ class SearchRepository
             {
                 $word = $items[$i];
                 $temp = $this->findReferences($word);
-                if($temp)array_merge($this->result,$temp);
+                if($temp){
+                    for($in=0;$in<count($temp);$in++){
+                        array_push($this->result,$temp[$i]);
+                        // var_dump($temp[$i],"---1---");
+                    }
+                }
                 for($j=$i+1;$j<count($items);$j++)
                 {
+                    // var_dump($word);
                     $word = $word." ".$items[$j];
+                    // var_dump($word);
                     $temp = $this->findReferences($word);
-                    if($temp)array_merge($this->result,$temp);
+                    if($temp){
+                        for($in=0;$in<count($temp);$in++){
+                            array_push($this->result,$temp[$in]);
+                            // var_dump($temp[$in],$word,"---2---");
+                        }
+                    }
+                    // if($temp)array_merge($this->result,$temp);
+                    // if($temp)dd($word);
                 }
             }
+            
             $result = $this->result;
             return $result;
             
@@ -40,9 +62,12 @@ class SearchRepository
         {
             $result = [];
             $broaders = Broader::where('root',$word)->get()->toArray();
-            for($index = 0 ;$index < count($broaders);$index++)
+            if($broaders)
             {
-                array_push($result,$broaders[$index]);
+                for($index = 0 ;$index < count($broaders);$index++)
+                {
+                    array_push($result,$broaders[$index]);
+                }
             }
             return $result;
         }
@@ -63,12 +88,110 @@ class SearchRepository
             $narrowers = $this->getNarrowers($word);
             if($broaders)
             {
-                array_merge($result,$broaders);
+                for($i=0;$i<count($broaders);$i++){
+                    array_push($result,$broaders[$i]['refer']);
+                    // var_dump($broaders[$i]['refer'],"-----3------");
+                }
+                // $this->bro=$this->mergeWord($broaders,$result);
+                // array_merge($result,$broaders);
+                // dd($this->result);
             }
             if($narrowers)
             {
-                array_merge($result,$narrowers);
+                for($i=0;$i<count($narrowers);$i++){
+                    array_push($result,$narrowers[$i]['refer']);
+                    // var_dump($broaders[$i]['refer'],"-----4------");
+                }
+                // $this->nar=$this->mergeWord($narrowers,$result);
+                // array_merge($result,$narrowers);
             }
+            // var_dump($this->result,$this->bro,$this->nar);
             return $result;
+        }
+        public function mergeWord(array $from,array $to)
+        {
+            // dd($from);
+            for($i=0;$i<count($from);$i++){
+                array_push($to,$from[$i]['refer']);
+            }
+            return $to;
+        }
+        public function updateOrCreateKey(array $key_word)
+        {
+            
+            try
+            {
+                for($i=0;$i<count($key_word);$i++){
+                    $history = History::where('key_word',$key_word[$i])->first();
+                    if($history){
+                        $history->times = $history->times +1;
+                        
+                    }
+                    else {
+                        $history=new History();
+                        $history->key_word = $key_word[$i];
+                        $history ->times = 1;
+                    }
+                    $history->save();
+                }
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+                return null;
+            }
+        }
+        public function sortTag(array $body)
+        {
+            try
+            {
+                $result = [];
+                $tags = Tag::orderBy('times', 'DESC')->get()->toArray();
+                
+                $i = 0;
+                $j=0;
+                //Sắp xếp tuần tự
+                for($i=0;$i<count($tags);$i++){
+                    for($j=0;$j<count($body);$j++){
+                        $tagname = strtolower($tags[$i]['tag']);
+                        $tagkey = strtolower($body[$j]);
+                        if($tagname==$tagkey){
+                            array_push($result,$tags[$i]);
+                            break;
+                        }
+                    }
+                }
+                // dd($result);
+                // if(count($body)==count($result))
+                return $result;
+
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+                return $body;
+            }
+        }
+        public function updateOrCreateTag(array $body)
+        {
+            try
+            {
+                for($i=0;$i<count($body);$i++)
+                {
+                    $tag = Tag::where('tag',$body[$i])->first();
+                    if($tag){
+                        $tag->times = $tag->times + 1;
+                        $tag->save();
+                    }
+                    else {
+                        Tag::create(['tag' => $body[$i]]);
+                    }
+                }
+                
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+            }
         }
     }

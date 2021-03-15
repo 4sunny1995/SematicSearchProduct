@@ -2,6 +2,9 @@
     namespace App\Repositories;
 
 use App\Model\Product;
+use App\Page;
+use App\ProductTag;
+use App\Tag;
 use Exception;
     use Illuminate\Support\Facades\Log;
     use Tests\Browser\duskSpiderURL;
@@ -25,10 +28,16 @@ class SpiderRepository
                 $element = $credential['listProduct'];
                 // $result = [];
                 $url = $credential['url'];
-
+                // $pages = Page::where('url',$url)->first();
+                // if(!$pages)Page::create();
+                Page::updateOrCreate(
+                    ['url' => $url,'isCrawled'=>true],
+                    ['title'=>$credential['hasTag']]
+                );
                 $client = new Client();
                 $crawler = $client->request('GET',$url);
-                $crawler->filter($element)->each(function(Crawler $node,$result) use ($credential){
+                $crawler->filter($element)->each(function(Crawler $node) use ($credential){
+                   
                     $domain = $credential['domain'];
                     $name = $node ->filter($credential['nameProduct'])->text();
                     $price = $node ->filter($credential['priceProduct'])->text();
@@ -44,6 +53,12 @@ class SpiderRepository
                             'url'=>$domain
                         ]
                     );
+                    $tag= Tag::updateOrCreate(
+                        ['tag' => $hasTag],
+                        []
+                    );
+                    $product_tag = ProductTag::where('product_id',$product->id)->where('tag',$tag['tag'])->first();
+                    if(!$product_tag)ProductTag::create(['product_id' => $product->id,'tag'=>$tag['tag']]);
                     array_push($this->result,$product);
                 });
                 return $this->result;

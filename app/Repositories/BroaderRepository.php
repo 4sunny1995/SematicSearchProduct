@@ -2,6 +2,7 @@
     namespace App\Repositories;
 
 use App\Model\Broader;
+use App\Model\Narrower;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -32,6 +33,11 @@ class BroaderRepository
             try
             {
                 $broader = Broader::create($body);
+                $narrow = [
+                    "root"=>$body['refer'],
+                    "refer"=>$body['root']
+                ];
+                Narrower::create($narrow);
                 if($broader){
                     return [
                         "message"=>"success",

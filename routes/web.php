@@ -26,3 +26,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search', 'SearchController@index');
+Route::get('search-learning','LearningController@tagLearning');
+Route::get('search/product/{id}','SearchController@getProductByTag');

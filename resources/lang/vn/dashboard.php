@@ -12,5 +12,8 @@
         "amount_of_data"=>"3",
         "product"=>"Danh sách sản phẩm",
         'page_title'=>"Chào mừng đến với Trường đại học Thủ Dầu Một",
-        'logo_name'=>"Kỹ thuật - Công nghệ"
+        'logo_name'=>"Kỹ thuật - Công nghệ",
+        'service'=>"Dịch vụ",
+        'email'=>"Gửi Email",
+        'sms'=>"Gửi SMS"
     ];

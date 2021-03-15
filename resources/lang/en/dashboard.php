@@ -12,5 +12,8 @@
         "amount_of_data"=>"3",
         "product"=>"Product Manager",
         'page_title'=>"Welcome to Thu Dau Mot University",
-        'logo_name'=>"TDMU's Technology"
+        'logo_name'=>"TDMU's Technology",
+        'service'=>"Services",
+        'email'=>"Send Email",
+        "sms"=>"Send SMS"
     ];

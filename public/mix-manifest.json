@@ -5,6 +5,8 @@
     "/js/vuejs/broader/s-broader.js": "/js/vuejs/broader/s-broader.js",
     "/js/vuejs/dashboard/c-dashboard.js": "/js/vuejs/dashboard/c-dashboard.js",
     "/js/vuejs/dashboard/s-dashboard.js": "/js/vuejs/dashboard/s-dashboard.js",
+    "/js/vuejs/email/c-email.js": "/js/vuejs/email/c-email.js",
+    "/js/vuejs/email/s-email.js": "/js/vuejs/email/s-email.js",
     "/js/vuejs/history/c-history.js": "/js/vuejs/history/c-history.js",
     "/js/vuejs/history/s-history.js": "/js/vuejs/history/s-history.js",
     "/js/vuejs/narrower/c-narrower.js": "/js/vuejs/narrower/c-narrower.js",

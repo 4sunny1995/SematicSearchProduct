@@ -11,7 +11,7 @@ class HistoryRepository
         {
             try
             {
-                $histories = History::orderBy('created_at', 'DESC')->get();
+                $histories = History::orderBy('times', 'DESC')->get();
                 if($histories){
                     return [
                         "message"=>"success",

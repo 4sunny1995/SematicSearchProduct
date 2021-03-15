@@ -72,3 +72,13 @@ body,html{
     font-size: 14pt;
     text-align: center;
 }
+.tag{
+    text-decoration: none;
+    color: black;
+    background-color: #f3f3f3;
+    border: solid 1px #f3f3f3;
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    font-size: 14pt;
+    display: inline-block;
+}

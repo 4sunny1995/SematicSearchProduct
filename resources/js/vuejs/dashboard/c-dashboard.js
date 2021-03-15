@@ -5,7 +5,8 @@ let app = new Vue({
         broader:[],
         narrower:[],
         history:[],
-        limit : 10
+        limit : 10,
+        isLoading : true
     },
     mounted(){
         this.onLoadFunction()
@@ -19,12 +20,15 @@ let app = new Vue({
                 this.getBroader(),
                 this.getNarrower(),
                 this.getHistory(),
+                this.isLoading = false
             ]
         },
         async getBroader(){
+
             let _this = this
             const response = await dashboardServices.getBroader(_this.limit)
             _this.broader = response.data
+            
         },
         async getNarrower(){
             let _this = this

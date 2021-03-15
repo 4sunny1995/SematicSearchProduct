@@ -1,6 +1,8 @@
 @extends('admin.master')
 @section('content')
-    <div id="dashboard">
+    
+    <div id="dashboard" >
+        
         <div class="broader">
             <div class="row" >
                 <div class="col-12">
