@@ -15,7 +15,7 @@ class CreateWordsTable extends Migration
     {
         Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->string('word',255)->nullable()->index();
+            $table->string('word')->nullable()->index();
             $table->integer('times')->default(1);
             $table->timestamps();
             $table->softDeletes();
