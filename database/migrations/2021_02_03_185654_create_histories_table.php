@@ -15,7 +15,7 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->longText("key_word",2000)->index();
+            $table->string("key_word",2000)->index();
             $table->integer("times")->default(1);
             $table->timestamps();
             $table->softDeletes();
