@@ -13,7 +13,7 @@
   <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="row">
+            <div class="row m-auto">
                 @if (!empty($result))
                     @foreach ($result as $item)
                     <div class="col-md-3">
@@ -40,7 +40,7 @@
                     </div>
                     @endforeach
                 @else
-                    Không có gì cả
+                    <img src="{{asset('images/notavailable.jpg')}}" alt="">
                 @endif
             </div>
         </div>

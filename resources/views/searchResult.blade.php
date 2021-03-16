@@ -17,6 +17,7 @@
             <a href="{{'/search/product/'.$item['id']}}" class="tag"><strong>{{$item['tag']}}</strong></a>
             @endforeach
         </div>
+        @if ($items)
         <div class="row">
           @foreach ($items as $item)
           <div class="col-md-3">
@@ -44,6 +45,12 @@
           @endforeach
         </div>
       </div>
+
+        @else
+            <div class="w-100">
+              <img src="{{asset('images/notavailable.jpg')}}" alt="">
+            </div>
+        @endif
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
