@@ -1,0 +1,13 @@
+#content{
+    padding: 15px;
+}
+.buttonsummit{
+    background-color: #FF5500;
+    color: white;
+    text-transform: uppercase;
+    width: 100%;
+    border-color: #FF5500;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 5px;
+}

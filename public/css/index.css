@@ -1,0 +1,8 @@
+.cool-menu>nav>ul>li>a>span{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+.cool-menu>nav{
+    background-color: deepskyblue;
+}

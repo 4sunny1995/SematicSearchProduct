@@ -1,0 +1,20 @@
+.list-product{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+}
+.list-product-item{
+    width: 50%;
+    /* border: 1px solid black; */
+    padding: 5px;
+    /* display: flex; */
+   background-color: white;
+}
+.list-product-item>div{
+    justify-content: center;
+    align-items: center;
+}
+.price{
+    font-size: 18px;
+    color: rgb(237, 81, 120);
+}

@@ -1,0 +1,55 @@
+#content{
+    display: flex;
+    padding: 5px;
+}
+.famous{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.contents, .items, .follows{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.contents, .items, .follows p{
+    text-transform: uppercase;
+    font-weight: 400;
+    
+}
+.actions{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.name-infu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.intro-vendor{
+    font-size: 15px;
+    text-overflow: hidden;
+    padding: 15px;
+    color: #a4a4a4;
+    font-weight: 700;
+}
+#tabs{
+    text-decoration: none;
+    list-style: none;
+    justify-content: flex-start;
+    align-items: center;
+}
+.tabs-item{
+    margin: 5px;
+}
+@media only screen and (max-width:760px){
+    .tabs-item{
+        margin: 5px;
+    }
+}

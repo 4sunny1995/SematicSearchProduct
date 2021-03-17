@@ -25,6 +25,11 @@ mix.js('resources/js/vuejs/dashboard/c-dashboard.js', 'public/js/vuejs/dashboard
 mix.js('resources/js/vuejs/dashboard/s-dashboard.js', 'public/js/vuejs/dashboard');
 mix.js('resources/js/vuejs/email/c-email.js', 'public/js/vuejs/email');
 mix.js('resources/js/vuejs/email/s-email.js', 'public/js/vuejs/email');
+//Shop Site
+mix.js('resources/js/vuejs/mainpage/c-mainpage.js', 'public/js/vuejs/mainpage');
+mix.js('resources/js/vuejs/mainpage/s-mainpage.js', 'public/js/vuejs/mainpage');
+mix.js('resources/js/vuejs/leftmenu/c-leftmenu.js', 'public/js/vuejs/leftmenu');
+mix.js('resources/js/vuejs/leftmenu/s-leftmenu.js', 'public/js/vuejs/leftmenu');
 
 
 

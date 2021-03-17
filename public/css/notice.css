@@ -1,0 +1,25 @@
+.answer{
+    width: 100%;
+    height: 0;
+    overflow-x: hidden;
+    transition-duration: 0.5s;
+    background-color: #f3f3f3;
+    padding: 5px 10px;
+}
+.answer>p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.faqtitle{
+    align-items: center;
+    height: 35px;
+    /* (dùng để ép chữ hiển thị chỉ trên 1 hàng, không xuống hàng) */
+    white-space: nowrap;
+    /* (để làm mất phần chữ bị tràn ra) */
+    overflow: hidden ;
+    /* (thêm dấu 3 chấm vào phần chữ bị mất) */
+    text-overflow: ellipsis ;
+}
+.question{
+    padding-top: 5px;
+}

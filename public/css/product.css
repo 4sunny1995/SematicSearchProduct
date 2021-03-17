@@ -1,0 +1,34 @@
+.img-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.img-product{
+    width: 50%;
+    max-height: 384px;
+}
+.price>strong,strike{
+    margin: 5px;
+    margin-left: 10px;
+}
+.price>strong{
+    font-size: 28pt;
+    color: #fb6834 ;
+}
+.price>strike{
+    font-size: 18pt;
+}
+#buydetail{
+    
+}
+@media only screen and (max-width:385px){
+    .img-product{
+        width: 100%;
+        max-height: 375px;
+    }
+    .img-container{
+        padding: 5px;
+    }
+}

@@ -1,0 +1,49 @@
+#section{
+    display: flex;
+    width: 100%;
+}
+.img-post{
+    width: 100%;
+    padding-top: 15px;
+    max-height: 495px;
+}
+#description{
+    max-height: 150px;
+}
+.sescription{
+    margin: 15px;
+    height: 125px;
+    background-color: white;
+}
+.sescription{
+
+}
+.pb-15{
+    padding-bottom: 15px;
+}
+.arr{
+    display: flex;
+    justify-content: flex-end;
+    object-fit: contain;
+    align-items: center;
+    height: auto;
+}
+.comment-content{
+   background-color: white;
+   padding: 5px;
+   border-radius: 10px;
+   height: 120px;
+}
+.sub-comment{
+    padding: 15px;
+}
+#sub-tabs{
+    display: flex;
+    justify-content: flex-end;
+}
+@media only screen and (max-width:375px)
+{
+    .img-post{
+        max-width: 375px;
+    }
+}

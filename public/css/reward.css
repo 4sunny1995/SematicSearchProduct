@@ -1,0 +1,36 @@
+#content{
+    background-color: white;
+}
+.reward{
+    background-color: #f3f3f3;
+
+}
+.point{
+    font-weight: bold;
+    color: #ff5500;
+    padding-right: 5px;
+}
+.total-point{
+    padding-right: 5pt;
+    color: #ff5500;
+    text-transform: uppercase;
+}
+.list-group{
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    
+}
+.list-item{
+    border: 1px solid #f3f3f3;
+    padding: 10px;
+}
+.date{
+    color: #d7d7d7;
+    font-weight: 700;
+    font-size: 14px;
+
+}
+.addpoint{
+    color: #ff5500;
+}

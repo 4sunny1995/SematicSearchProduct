@@ -8,6 +8,14 @@
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
+    <div class="container-fluid fixed-top">
+      <div class="row" style="display: flex;justify-content:space-between;align-items: center">
+        <div class="logo"></div>
+        <div class="shopping">
+          <Strong><a href="/shopping">Shopping</a></Strong>
+        </div>
+      </div>
+    </div>
     <div class="s004">
       <form method="GET" action="/search">
         <fieldset>

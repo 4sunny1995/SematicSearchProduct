@@ -1,0 +1,122 @@
+
+.header-cart{
+    /* width: 100%; */
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-cart{
+    max-height: 150px;
+    margin: 15px;
+}
+.trash:hover{
+    color: skyblue;
+}
+.c-trash{
+    font-size: 18pt;
+    margin: 5px;
+    /* color: #fb6834; */
+}
+.cart-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-img>img{
+    max-width: 150px;
+    max-height: 150px;
+    width: 100%;
+    object-fit: contain;
+}
+.cart-mask{
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 50%;
+    z-index: 1045;
+}
+.color-orange{
+    background-color: #fb6834 !important;
+    border-color: #fb6834 !important;
+    color: white;
+}
+.c-toast{
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: flex;
+}
+.ModalDelete{
+    background-color: white;
+    margin: auto;
+    border-radius: 5px;
+    height: auto;
+    width: 50%;
+    padding: 15px;
+}
+#product-cart{
+    list-style: none;
+    text-decoration: none;
+}
+@media only screen and (max-width:480px){
+    .header-cart{
+        display: block;
+    }
+    .cart-img>img{
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+.btncomplete{
+    background-color: tomato;
+    border-radius: 5px;
+    justify-content:flex-end;
+    align-items: flex-end;
+    max-width: 768px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+.btncomplete>button{
+    color: white;
+
+}
+.promo-total{
+    font-size: 30px;
+    color:#ed5178;
+    text-align: center;
+}
+.trash{
+    font-size: 15px;
+    color:#fb6834;
+    background-color: #FFF;
+    border-color: #fb6834;
+    border-radius: 3px;
+    padding: 5px;
+}
+.promo{
+    font-size: 20px;
+    color:#ed5178;
+}
+.w-5{
+    width: 5%;
+    float: left;
+}
+.w-10{
+    width: 10%;
+    float: left;
+}
+.w-15{
+    width: 15%;
+    float: left;
+}
+.w-20{
+    width: 20%;
+    float: left;
+}
