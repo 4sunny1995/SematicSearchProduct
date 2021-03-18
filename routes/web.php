@@ -17,13 +17,15 @@ Route::get('/', function () {
     return view('search');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// Auth::routes();
+Route::get('/login',function(){
+    return view('shop.login');
+})->name('login');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search', 'SearchController@index');
 Route::get('search-learning','LearningController@tagLearning');

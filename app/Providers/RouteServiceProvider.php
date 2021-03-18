@@ -97,7 +97,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapShopRoutes()
     {
         Route::prefix('shop')
-             ->middleware('web')
+             ->middleware(['web','auth'])
              ->namespace($this->namespace)
              ->group(base_path('routes/shop.php'));
     }

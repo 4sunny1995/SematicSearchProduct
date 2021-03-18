@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2884,156 +2884,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/leftmenu/c-leftmenu.js":
-/*!***************************************************!*\
-  !*** ./resources/js/vuejs/leftmenu/c-leftmenu.js ***!
-  \***************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _s_leftmenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./s-leftmenu */ "./resources/js/vuejs/leftmenu/s-leftmenu.js");
-/* harmony import */ var _user_s_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/s-user */ "./resources/js/vuejs/user/s-user.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-var app = new Vue({
-  el: "#leftmenu",
-  data: {
-    categoryParents: [],
-    categories: [],
-    isLoading: true,
-    currentUser: null
-  },
-  mounted: function mounted() {
-    this.onLoadFunction();
-  },
-  computed: {},
-  created: function created() {},
-  methods: {
-    onLoadFunction: function onLoadFunction() {
-      this.getCategoryParent();
-      this.getCurrentUser();
-    },
-    getCategoryParent: function getCategoryParent() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _s_leftmenu__WEBPACK_IMPORTED_MODULE_1__["default"].getCategoryParent();
-
-              case 2:
-                response = _context.sent;
-                _this.categoryParents = response.data;
-                _this.isLoading = false;
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    getCurrentUser: function getCurrentUser() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _user_s_user__WEBPACK_IMPORTED_MODULE_2__["default"].getCurrentUser();
-
-              case 2:
-                response = _context2.sent;
-                _this2.currentUser = response.data;
-
-              case 4:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/vuejs/leftmenu/s-leftmenu.js":
-/*!***************************************************!*\
-  !*** ./resources/js/vuejs/leftmenu/s-leftmenu.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "categoryParents";
-
-var getCategoryParent = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-    var response;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
-
-          case 2:
-            response = _context.sent;
-            return _context.abrupt("return", response.data);
-
-          case 4:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getCategoryParent() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  getCategoryParent: getCategoryParent
-});
-
-/***/ }),
-
 /***/ "./resources/js/vuejs/user/s-user.js":
 /*!*******************************************!*\
   !*** ./resources/js/vuejs/user/s-user.js ***!
@@ -3091,14 +2941,14 @@ var getCurrentUser = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 15:
-/*!*********************************************************!*\
-  !*** multi ./resources/js/vuejs/leftmenu/c-leftmenu.js ***!
-  \*********************************************************/
+/***/ 18:
+/*!*************************************************!*\
+  !*** multi ./resources/js/vuejs/user/s-user.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\leftmenu\c-leftmenu.js */"./resources/js/vuejs/leftmenu/c-leftmenu.js");
+module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\user\s-user.js */"./resources/js/vuejs/user/s-user.js");
 
 
 /***/ })

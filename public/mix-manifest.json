@@ -16,5 +16,7 @@
     "/js/vuejs/narrower/c-narrower.js": "/js/vuejs/narrower/c-narrower.js",
     "/js/vuejs/narrower/s-narrower.js": "/js/vuejs/narrower/s-narrower.js",
     "/js/vuejs/spider/c-spider.js": "/js/vuejs/spider/c-spider.js",
-    "/js/vuejs/spider/s-spider.js": "/js/vuejs/spider/s-spider.js"
+    "/js/vuejs/spider/s-spider.js": "/js/vuejs/spider/s-spider.js",
+    "/js/vuejs/user/c-user.js": "/js/vuejs/user/c-user.js",
+    "/js/vuejs/user/s-user.js": "/js/vuejs/user/s-user.js"
 }

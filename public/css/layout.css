@@ -578,6 +578,7 @@ html {
   width: 0px;
   overflow-x: hidden;
   background-color: white;
+  margin-left: 25px;
 }
 
 .cover {
@@ -604,7 +605,7 @@ html {
   background-color: black;
   opacity: 50%;
   z-index: 1035;
-  transition-duration: 1s;
+  transition-duration: 0.3s;
   overflow-x: hidden;
 }
 

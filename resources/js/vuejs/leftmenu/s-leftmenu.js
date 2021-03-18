@@ -8,6 +8,7 @@ let getCategoryParent = async () =>{
     const response = await Axios.get(url)
     return response.data
 }
+
 export default {
     getCategoryParent : getCategoryParent
 }

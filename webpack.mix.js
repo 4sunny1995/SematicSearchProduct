@@ -31,5 +31,9 @@ mix.js('resources/js/vuejs/mainpage/s-mainpage.js', 'public/js/vuejs/mainpage');
 mix.js('resources/js/vuejs/leftmenu/c-leftmenu.js', 'public/js/vuejs/leftmenu');
 mix.js('resources/js/vuejs/leftmenu/s-leftmenu.js', 'public/js/vuejs/leftmenu');
 
+//User
+mix.js('resources/js/vuejs/user/c-user.js', 'public/js/vuejs/user');
+mix.js('resources/js/vuejs/user/s-user.js', 'public/js/vuejs/user');
+
 
 

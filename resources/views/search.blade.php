@@ -8,15 +8,20 @@
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container-fluid fixed-top">
-      <div class="row" style="display: flex;justify-content:space-between;align-items: center">
-        <div class="logo"></div>
-        <div class="shopping">
-          <Strong><a href="/shopping">Shopping</a></Strong>
+      <nav class="row" style="display: flex;justify-content: space-between;align-items: center">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="logo" style="border-radius: 50%;width: 100px">
+            <img src="{{asset('images/logo.jpg')}}" alt="logo" width="100%" >
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="s004">
+        <div class="col-md-4">
+          <div class="shopping">
+            <Strong><a href="/shop">Shopping</a></Strong>
+          </div>
+        </div>
+      </nav>
+    <div class="s004" style="position: relative;">
       <form method="GET" action="/search">
         <fieldset>
           <legend>WHAT ARE YOU LOOKING FOR?</legend>
@@ -33,6 +38,7 @@
         </fieldset>
       </form>
     </div>
+    
     <script src="{{asset('js/extention/choices.js')}}"></script>
     <script>
       var textPresetVal = new Choices('#choices-text-preset-values',
