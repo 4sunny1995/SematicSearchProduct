@@ -30,3 +30,8 @@ Route::get('/login',function(){
 Route::get('/search', 'SearchController@index');
 Route::get('search-learning','LearningController@tagLearning');
 Route::get('search/product/{id}','SearchController@getProductByTag');
+
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+Route::post('/uploadFile','UploadController@upload');

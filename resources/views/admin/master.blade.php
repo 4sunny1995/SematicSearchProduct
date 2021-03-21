@@ -274,6 +274,11 @@
               <p>{{trans('dashboard.product')}}</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{URL('/admin/posts')}}" class="nav-link">
+              <p>{{trans('dashboard.post')}}</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

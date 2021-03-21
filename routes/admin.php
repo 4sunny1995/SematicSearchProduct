@@ -44,12 +44,16 @@ Route::get('email',function(){
 Route::get('sms',function(){
     return view('admin.sms');
 });
+Route::get('posts', function(){
+    return view('admin.posts');
+});
 Route::resource("spiders","Admin\SpiderController");
 
 Route::group(['prefix' => 'api'], function () {
     Route::resource('broaders','Admin\BroaderController');
     Route::resource('narrowers', 'Admin\NarrowerController');
     Route::resource('histories', 'Admin\HistoryController');
+    Route::resource('posts', 'Admin\PostController');
     Route::get('getBroader','Admin\DashboardController@getBroader');
     Route::get('getNarrower','Admin\DashboardController@getNarrower');
     Route::get('getHistory','Admin\DashboardController@getHistory');

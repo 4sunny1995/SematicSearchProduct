@@ -15,5 +15,6 @@
         'logo_name'=>"TDMU's Technology",
         'service'=>"Services",
         'email'=>"Send Email",
-        "sms"=>"Send SMS"
+        "sms"=>"Send SMS",
+        'post'=>"Posts"
     ];

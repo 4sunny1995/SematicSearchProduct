@@ -28,14 +28,14 @@
                             <i class="fa-facebook-official fb-icon" aria-hidden="true"></i>
                             
                         </div>
-                        <div class="w-75"><a href="{{ URL::to('auth/facebook') }}" class="fb-title">{{trans('login.login_fb')}}</a></div>
+                        <div class="w-75"><a href="{{ URL::to('redirect/facebook') }}" class="fb-title">{{trans('login.login_fb')}}</a></div>
                     </div>
                     <div class="form-group sun-flex">
                         <div class="w-25 center">
                             <i class="fa fa-google gg-icon" aria-hidden="true"></i>
                             
                         </div>
-                        <div class="w-75"><a href="{{ URL::to('auth/google') }}" class="fb-title">{{trans('login.login_gg')}}</a></div>
+                        <div class="w-75"><a href="{{ URL::to('redirect/google') }}" class="fb-title">{{trans('login.login_gg')}}</a></div>
                     </div>
                     <form action="/account/login" method="post">
                         @csrf

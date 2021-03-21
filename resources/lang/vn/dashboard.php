@@ -15,5 +15,7 @@
         'logo_name'=>"Kỹ thuật - Công nghệ",
         'service'=>"Dịch vụ",
         'email'=>"Gửi Email",
-        'sms'=>"Gửi SMS"
+        'sms'=>"Gửi SMS",
+        'post'=>"Bài viết",
+        ''
     ];
