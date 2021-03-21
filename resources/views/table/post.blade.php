@@ -21,20 +21,25 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>{{trans('post.id')}}</th>
-                <th>{{trans('post.titlePost')}}</th>
-                <th>{{trans('post.content')}}</th>
-                <th>{{trans('post.image')}}</th>
-                <th>{{trans('post.created_at')}}</th>
-                <th>{{trans('post.action')}}</th>
+                <th class="text-center">{{trans('post.id')}}</th>
+                <th class="text-center">{{trans('post.titlePost')}}</th>
+                <th class="text-center">{{trans('post.content')}}</th>
+                <th class="text-center">{{trans('post.image')}}</th>
+                <th class="text-center">{{trans('post.created_at')}}</th>
+                <th class="text-center">{{trans('post.action')}}</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for = "(item,index) in items">
-                <td>@{{index + 1}}</td>
-                <td>@{{item.title}}</td>
-                <td>@{{item.content}}</td>
-                <td>@{{item.image}}</td>
+                <td class="text-center">@{{index + 1}}</td>
+                <td class="w-25">@{{item.title}}</td>
+                <td class="w-25">
+                  <textarea class="form-control"  name="content" id="content" cols="30" rows="5" disabled>@{{item.content}}</textarea>
+                </td>
+                <td class="w-25">
+                  <img v-bind:src="basicURL+item.image" alt="" width="100%" class="post-img" v-if="item.image">
+                  <img src="" alt="" width="100%" v-else>
+                </td>
                 <td>@{{item.created_at}}</td>
                 <td>
                   <button class="btn btn-success" @click="openModal(1,index)"><i class="fas fa-edit"></i></button>

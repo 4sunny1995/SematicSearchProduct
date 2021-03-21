@@ -2920,12 +2920,13 @@ var app = new Vue({
     image: null,
     file: "",
     url: "",
-    basicURL: "",
+    basicURL: _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL,
     model: {
       "title": "",
       "content": "",
       "image": ""
-    }
+    },
+    recommentList: []
   },
   mounted: function mounted() {
     this.onloadFunction();
@@ -2975,16 +2976,19 @@ var app = new Vue({
             switch (_context2.prev = _context2.next) {
               case 0:
                 _this = _this3;
+                console.log(_this.model);
+
+                _this.initModel();
 
                 if (!(_this.state === 2)) {
-                  _context2.next = 8;
+                  _context2.next = 10;
                   break;
                 }
 
-                _context2.next = 4;
+                _context2.next = 6;
                 return _s_post__WEBPACK_IMPORTED_MODULE_2__["default"].create(_this.model);
 
-              case 4:
+              case 6:
                 response = _context2.sent;
 
                 if (response.success == true) {
@@ -2996,19 +3000,16 @@ var app = new Vue({
                   console.log(_this.items);
                 }
 
-                _context2.next = 15;
+                _context2.next = 16;
                 break;
 
-              case 8:
+              case 10:
                 //update
                 item = _this.items[_this.getIndex];
-
-                _this.initModel();
-
-                _context2.next = 12;
+                _context2.next = 13;
                 return _s_post__WEBPACK_IMPORTED_MODULE_2__["default"].update(_this.model, item.id);
 
-              case 12:
+              case 13:
                 _response = _context2.sent;
                 console.log(_response);
 
@@ -3019,7 +3020,7 @@ var app = new Vue({
                   console.log(_this.items);
                 }
 
-              case 15:
+              case 16:
               case "end":
                 return _context2.stop();
             }
@@ -3069,35 +3070,28 @@ var app = new Vue({
       var item = _this.items[index];
       _this.title = item.title;
       _this.content = item.content, _this.image = item.image;
+      _this.titlePost = "Update Post";
+      _this.submit = "Update";
     },
     createNew: function createNew() {
       var _this = this; //create state
 
 
       _this.state = 2;
-
-      _this.initModel();
+      _this.title = "";
+      _this.content = "";
+      _this.image = "";
+      _this.titlePost = "Create Post";
+      _this.submit = "Create";
     },
     initModel: function initModel() {
       var _this = this;
 
-      if (_this.state === 1) {
-        _this.model = {
-          "title": _this.title,
-          "content": _this.content,
-          "image": _this.image
-        };
-        _this.titlePost = "Update Post in Directionary";
-        _this.submit = "Update";
-      } else {
-        _this.model = {
-          "title": "",
-          "content": "",
-          "image": ""
-        };
-        _this.titlePost = "Create New Post in Directionary";
-        _this.submit = "Create";
-      }
+      _this.model = {
+        "title": _this.title,
+        "content": _this.content,
+        "image": _this.image
+      };
     },
     upload: function upload() {
       var _this5 = this;
@@ -3128,7 +3122,12 @@ var app = new Vue({
           }
         }, _callee4);
       }))();
-    }
+    } // async recomment(){
+    //     var _this = this
+    //     const response = await postServices.recomment(_this.url)
+    //     _this.recommentList = response.data
+    // }
+
   },
   computed: {}
 });

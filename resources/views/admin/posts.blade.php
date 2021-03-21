@@ -31,10 +31,10 @@
                           <label for="exampleInputEmail1">{{trans('post.image')}}</label>
                           <input type="file" class="form-control-file border" ref="file" placeholder="{{trans('post.image')}}" name="image" @change="upload()">
                         </div>
-                        <div class="form-group">
+                        {{--  <div class="form-group">
                           <label for="exampleInputPassword1">{{trans('post.url')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('post.url')}}" name="url" v-model="url">
-                        </div>
+                          <input type="text" class="form-control"  placeholder="{{trans('post.url')}}" name="url" v-model="url" @change = "recomment()">
+                        </div>  --}}
                         <div class="form-group text-center">
                           <img v-bind:src="basicURL+image" alt="" width="100%" class="post-img" v-show="image">
                         </div>

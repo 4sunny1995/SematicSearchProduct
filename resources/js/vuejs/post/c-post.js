@@ -15,12 +15,13 @@ let app = new Vue({
         image:null,
         file:"",
         url:"",
-        basicURL:"",
+        basicURL:config.basicURL,
         model:{
             "title":"",
             "content":"",
             "image":""
-        }
+        },
+        recommentList:[]
     },
     mounted(){
         this.onloadFunction()
@@ -43,6 +44,8 @@ let app = new Vue({
         },
         async createOrUpdate(){
             let _this = this
+            console.log(_this.model)
+            _this.initModel()
             if(_this.state===2){
                 //create 
                 const response = await postServices.create(_this.model)
@@ -56,7 +59,7 @@ let app = new Vue({
             else {
                 //update
                 let item = _this.items[_this.getIndex]
-                _this.initModel()
+                
                 const response = await postServices.update(_this.model,item.id)
                 console.log(response)
                 if(response.success==true){
@@ -87,33 +90,26 @@ let app = new Vue({
             _this.title = item.title
             _this.content = item.content,
             _this.image = item.image
+            _this.titlePost = "Update Post"
+            _this.submit = "Update"
         },
         createNew(){
             let _this = this
             //create state
             _this.state = 2
-            _this.initModel()
+            _this.title = ""
+            _this.content = ""
+            _this.image = ""
+            _this.titlePost = "Create Post"
+            _this.submit = "Create"
             
         },
         initModel(){
             let _this = this
-            if(_this.state===1){
-                _this.model = {
-                    "title":_this.title,
-                    "content":_this.content,
-                    "image":_this.image
-                }
-                _this.titlePost = "Update Post in Directionary"
-                _this.submit = "Update"
-            }
-            else {
-                _this.model = {
-                    "title":"",
-                    "content":"",
-                    "image":""
-                }
-                _this.titlePost = "Create New Post in Directionary"
-                _this.submit = "Create"
+            _this.model = {
+                "title":_this.title,
+                "content":_this.content,
+                "image":_this.image
             }
         },
         async upload(){
@@ -124,7 +120,12 @@ let app = new Vue({
             const response = await postServices.upload(formData)
             _this.image = response.data
             _this.basicURL = config.basicURL;
-        }
+        },
+        // async recomment(){
+        //     var _this = this
+        //     const response = await postServices.recomment(_this.url)
+        //     _this.recommentList = response.data
+        // }
         
     },
     computed:{

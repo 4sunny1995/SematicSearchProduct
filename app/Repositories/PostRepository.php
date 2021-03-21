@@ -38,7 +38,15 @@ class PostRepository
     {
         try
         {
-
+            $data = Post::create($body);
+            if($data){
+                return [
+                    "message"=>"sucess",
+                    "success"=>true,
+                    "data"=>$data
+                ];
+            }
+            return null;
         }
         catch(Exception $e)
         {
