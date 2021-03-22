@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login',function(){
     return view('shop.login');
 })->name('login');
-
+// Route::post('login',"Auth\LoginController"); 
 
 Route::get('/search', 'SearchController@index');
 Route::get('search-learning','LearningController@tagLearning');

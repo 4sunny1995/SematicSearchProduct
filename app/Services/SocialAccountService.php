@@ -2,15 +2,17 @@
 
 namespace App\Services;
 
+use App\Avatar;
 use App\SocialAccount;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class SocialAccountService extends Model
 {
     public static function createOrGetUser($providerUser, $social)
     {
-        // dd($providerUser);
+        // dd($providerUser->avatar);
         $account = SocialAccount::whereProvider($social)
             ->whereProviderUserId($providerUser->getId())
             ->first();
@@ -24,7 +26,7 @@ class SocialAccountService extends Model
                 'provider' => $social
             ]);
             $user = User::whereEmail($email)->first();
-
+            
             if (!$user) {
 
                 $user = User::create([
@@ -32,10 +34,22 @@ class SocialAccountService extends Model
                     'name' => $providerUser->getName(),
                     'password' => $providerUser->getName(),
                 ]);
+               
             }
-
+            //  $avatar = [
+            //         "avatar"=>$providerUser->avatar,
+            //         "user_id"=>$user->id
+            //     ];
+                
+                $avatar = Avatar::updateOrCreate(
+                    ['user_id' => $user->id],
+                    ['avatar' => $providerUser->avatar]
+                );
+                // dd($avatar);
+            // dd($providerUser);
             $account->user()->associate($user);
             $account->save();
+            
             // dd($user);
             return $user;
         }

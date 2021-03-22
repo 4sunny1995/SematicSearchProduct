@@ -48,19 +48,19 @@
     </div>
 </div>
 <div id="mainpage" v-cloak>
-    <div class="w-100" id="posts" v-for = "(item,index) in items">
+    <div class="w-100" id="posts">
         <div class="sub">
             <ul class="w-100 list-post">
-                <li class="w-100 pb-15 border-bottom" v-for="(post,i) in items">
+                <li class="w-100 pb-15 border-bottom" v-for="(post,index) in items">
                     <div class="list-post-item">
                         <div class="w-25 avatar-content text-center">
-                            <div class="" v-if="item.vendor.fbavatar">
-                                <img v-bind:src="item.vendor.fbavatar" alt="avatar" class="avatar">
+                            <div class="" v-if="post.avatar">
+                                <img v-bind:src="post.avatar.avatar" alt="avatar" class="avatar">
                             </div>
                             <div v-else>
-                                <div class="" v-if="item.vendor.avatar">
-                                    <img v-bind:src="item.vendor.avatar" alt="avatar" class="avatar" v-if="item.vendor.avatar.substring(0,4)=='http'">
-                                    <img v-bind:src="imgURL + item.vendor.avatar" alt="avatar" class="avatar" v-else>
+                                <div class="" v-if="post.avatar">
+                                    <img v-bind:src="post.avatar.avatar" alt="avatar" class="avatar" v-if="post.vendor.avatar.substring(0,4)=='http'">
+                                    <img v-bind:src="imgURL + post.avatar.avatar" alt="avatar" class="avatar" v-else>
                                 </div>
                                 <div v-else>
                                     <img src="{{asset('img/loading.gif')}}" alt="" width="100%">
@@ -69,9 +69,9 @@
                         </div>
                         <div class="w-50">
                             <div class="">
-                               @{{item.vendor.name}}
+                               @{{post.vendor.name}}
                             </div>
-                            <div class=""><h4>@{{post.title}}</h4></div>
+                            <div class=""><strong>@{{post.title}}</strong></div>
                             <div>@{{post.created_at}}</div>
                         </div>
                         <div class="w-25 arr">
@@ -85,27 +85,40 @@
                     <div class="img">
                         <img v-bind:src="basicURL+post.image" width="100%" alt="post image" style="border-radius: 10px">
                     </div>
+                    <div v-if="post.liked==false" class="text-center like-post" @click="like(index,1)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                    <div v-else class="text-center like-post" style="background-color: #f59e00"  @click="like(index,0)"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>    
+
                     {{-- <div class="w-100 text-center">
                         <p v-if="!post.liked"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></p>
                         <p v-else><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
                     </div> --}}
-                    <div class="newest-comment border-top">
-                        <div v-if="post.liked==false" class="text-center like-post" @click="like(index,1)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
-                        <div v-else class="text-center like-post" style="background-color: #f59e00"  @click="like(index,0)"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>    
-                        <div class="cmt-content">
+                    <div class="newest-comment border-top" id="commentContent" @click="scrollToBottom()">
+                        <div class="cmt-content" >
                             <div v-for="(comment,ind) in post.comments">
-                                <div v-if="ind%2==0" style="background-color: #f3f3f3">
-                                    <p style="font-weight: bold">
-                                        <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.fbavatar" alt="fbavatar" v-if="comment.user.fbavatar">
-                                        <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="imgURL+comment.user.avatar" alt="localAvatar" v-else>
-                                        @{{comment.user.name}}</p>
+                                <div v-if="ind%2==0" style="background-color: #f3f3f3;border:1px solid white;">
+                                    <p style="font-weight: bold;display: flex;justify-content: space-between;align-items: center">
+                                        <span>
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="avatar" v-if="comment.user.avatar">
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="localAvatar" v-else>
+                                            @{{comment.user.name}}    
+                                        </span>
+                                        <span style="position: relative">
+                                            <span>X</span>
+                                        </span>
+                                    </p>
                                     <p>@{{comment.content}}</p>
                                 </div>
-                                <div v-else style="background-color: #FFF">
-                                    <p style="font-weight: bold">
-                                        <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.fbavatar" alt="fbavatar" v-if="comment.user.fbavatar">
-                                        <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="imgURL+comment.user.avatar" alt="localAvatar" v-else>
-                                        @{{comment.user.name}}</p>
+                                <div v-else style="background-color: #FFF;border:1px solid #f3f3f3">
+                                    <p style="font-weight: bold;display: flex;justify-content: space-between;align-items: center">
+                                        <span>
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="avatar" v-if="comment.user.avatar">
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="localAvatar" v-else>
+                                            @{{comment.user.name}}    
+                                        </span>
+                                        <span style="position: relative">
+                                            <span>X</span>
+                                        </span>
+                                    </p>
                                     <p>@{{comment.content}}</p>
                                 </div>
                             </div>
@@ -118,7 +131,7 @@
                             <input type="text" name="" id="" class="form-control p-0 m-0" v-model="comment">
                         </div>
                         <div class="col-md-2 ">
-                            <button type="submit" class="form-control btncomment" @click="sendComment(index,i)">comment</button>
+                            <button type="submit" class="form-control btncomment" @click="sendComment(index)">comment</button>
                         </div>
                     </div>
                 </li>

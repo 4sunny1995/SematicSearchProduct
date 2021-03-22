@@ -12,4 +12,12 @@ class Comment extends Model
     protected $fillable = [
         'id','post_id','user_id','content'
     ];
+    public function avatar()
+    {
+        return $this->hasOne('App\Avatar','id','user_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User','user_id','id');
+    }
 }

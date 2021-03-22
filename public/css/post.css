@@ -45,6 +45,14 @@
     border: solid 1px #f59e00;
     border-radius: 5px;
 }
+.cmt-content{
+    padding: 5px;
+    
+}
+.cmt-content div{
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 @media only screen and (max-width:375px)
 {
     .img-post{

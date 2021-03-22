@@ -37,7 +37,7 @@
                         </div>
                         <div class="w-75"><a href="{{ URL::to('redirect/google') }}" class="fb-title">{{trans('login.login_gg')}}</a></div>
                     </div>
-                    <form action="/account/login" method="post">
+                    <form action="/login" method="post">
                         @csrf
                         <div class="form-group">
                             <label class="text-secondary">{{trans('login.email')}}</label>

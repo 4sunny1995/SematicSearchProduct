@@ -16,7 +16,7 @@ class LikeRepository
             $body['user_id'] = Auth::id();
             $check = Like::create($body);
             if($check){
-                $post = Post::with('likes','comments','vendor')->where('id',$body['post_id'])->first();
+                $post = Post::with('likes','comments','vendor','avatar')->where('id',$body['post_id'])->first();
                 $post['liked']=true;
                 return [
                     "message"=>"success",
@@ -38,7 +38,7 @@ class LikeRepository
             $like = Like::where('post_id',$id)->where('user_id',Auth::id())->first();
             $check = $like->delete();
             if($check){
-                $post = Post::with('likes','comments','vendor')->where('id',$id)->first();
+                $post = Post::with('likes','comments','vendor','avatar')->where('id',$id)->first();
                 $post['liked']=false;
                 return [
                     "message"=>"success",

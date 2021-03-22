@@ -1,6 +1,7 @@
 import config from "../../config"
 import postServices from "./s-mainpage"
 import likeServices from "./s-like"
+import commentServices from "./s-comment"
 
 let app = new Vue({
     el:"#mainpage",
@@ -44,6 +45,7 @@ let app = new Vue({
             const response = await postServices.getAll()
             if(response.success==true){
                 _this.items = response.data
+                _this.scrollToBottom()
             }
         },
         async createOrUpdate(){
@@ -144,6 +146,24 @@ let app = new Vue({
                 if(response.success){
                 }
             }
+        },
+        async sendComment(index){
+            var _this = this
+            var post = _this.items[index]
+            var body = {
+                "content":_this.comment,
+                "post_id":post.id
+            }
+            const response = await commentServices.create(body)
+            if(response.success == true ){
+                _this.comment = ""
+                _this.items[index].comments.push(response.data)
+                _this.scrollToBottom()
+            }
+        },
+        scrollToBottom(){
+            var container = this.$el.querySelector("#commentContent");
+            container.scrollTop = container.scrollHeight;
         }
         // async recomment(){
         //     var _this = this

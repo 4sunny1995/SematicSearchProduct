@@ -25,4 +25,8 @@ class Post extends Model
     {
         return $this->belongsTo('App\User','user_id','id');
     }
+    public function avatar()
+    {
+        return $this->hasOne('App\Avatar','id','user_id');
+    }
 }
