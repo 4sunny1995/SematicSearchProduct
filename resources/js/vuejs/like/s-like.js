@@ -1,7 +1,7 @@
 import Axios from "axios"
 import config from "../../config"
 
-let uri = config.shopURL + "posts"
+let uri = config.shopURL + "likes"
 let getAll = async ()=>{
     const response = await Axios.get(uri)
     return response.data

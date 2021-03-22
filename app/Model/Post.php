@@ -11,14 +11,18 @@ class Post extends Model
 {
     use Notifiable,SoftDeletes;
     protected $fillable = [
-        "id",'title','content','image'
+        "id",'title','content','image','user_id'
     ];
     public function comments()
     {
-        return $this->belongsTo('App\Model\Comment');
+        return $this->hasMany('App\Model\Comment','post_id','id');
     }
     public function likes()
     {
-        return $this->belongsTo('App\Model\Like');
+        return $this->hasMany('App\Model\Like','post_id','id');
+    }
+    public function vendor()
+    {
+        return $this->belongsTo('App\User','user_id','id');
     }
 }

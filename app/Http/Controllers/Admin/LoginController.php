@@ -29,4 +29,10 @@ class LoginController extends UserRepository
         }
         
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/admin');
+    }
+
 }

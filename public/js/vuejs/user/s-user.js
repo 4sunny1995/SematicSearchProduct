@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2875,11 +2875,11 @@ try {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  "apiURL": "http://127.0.0.1:8000/api/",
-  "mediaURL": "http://127.0.0.1:8000/imgs/",
-  "basicURL": "http://127.0.0.1:8000/",
-  "adminURL": "http://127.0.0.1:8000/admin/api/",
-  "shopURL": "http://127.0.0.1:8000/shop/api/"
+  "apiURL": "http://localhost:8000/api/",
+  "mediaURL": "http://localhost:8000/imgs/",
+  "basicURL": "http://localhost:8000/",
+  "adminURL": "http://localhost:8000/admin/api/",
+  "shopURL": "http://localhost:8000/shop/api/"
 });
 
 /***/ }),
@@ -2941,7 +2941,7 @@ var getCurrentUser = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 18:
+/***/ 19:
 /*!*************************************************!*\
   !*** multi ./resources/js/vuejs/user/s-user.js ***!
   \*************************************************/

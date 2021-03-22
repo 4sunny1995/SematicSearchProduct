@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\resources;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\PostRepository;
+use App\Services\LikeRepository;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class LikeController extends Controller
 {
     public function __construct()
     {   
-        $this->repo = new PostRepository();
+        $this->repo = new LikeRepository();
         
     }
     /**

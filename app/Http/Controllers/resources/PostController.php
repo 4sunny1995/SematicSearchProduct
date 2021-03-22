@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\resources;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\PostRepository;
+use App\Services\PostRepository;
 use Illuminate\Http\Request;
 
 class PostController extends Controller

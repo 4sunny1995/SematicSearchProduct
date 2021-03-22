@@ -41,6 +41,10 @@
     display: flex;
     justify-content: flex-end;
 }
+.like-post{
+    border: solid 1px #f59e00;
+    border-radius: 5px;
+}
 @media only screen and (max-width:375px)
 {
     .img-post{

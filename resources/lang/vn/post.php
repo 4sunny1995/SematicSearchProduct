@@ -8,6 +8,8 @@
         "image"=>"Hình ảnh",
         "created_at"=>"Ngày tạo",
         "action"=>"Action",
-        "url"=>"Tên sản phẩm"
+        "url"=>"Tên sản phẩm",
+        "delete"=>"Bạn muốn xóa bài viết này phải không?,",
+        "confirm"=>"OK"
     ]
 ?>

@@ -1,8 +1,9 @@
 <?php
-namespace App\Repositories;
+namespace App\Services;
 
 use App\Model\Post;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class PostRepository
@@ -11,7 +12,30 @@ class PostRepository
     {
         try
         {
-            $data = Post::orderBy('created_at', 'DESC')->get();
+            
+            $data = Post::with('likes','comments','vendor')->orderBy('created_at', 'DESC')->get()
+            // for($index = 0;$index<count($data);$index++)
+            // {
+            //     $data[$index]['liked'] = false;
+            //     for($i = 0 ;$i<count($data[$index]['likes']);$i++)
+            //     {
+            //         if($data[$index]['likes'][$i]['id']==Auth::id())
+            //         {
+            //             $data[$index]['liked'] = true;
+            //         }
+            //     }
+            // }
+            
+            ->each(function($item){    
+                $item['liked'] = false;
+                for($index=0;$index<count($item['likes']);$index++)
+                {
+                    if($item['likes'][$index]['user_id']==Auth::id())
+                    $item['liked']=true;
+                    // dd($item->toArray(),$item['likes'][$index]->toArray(),Auth::id());
+                }
+            });
+            // dd($data->toArray());
             if($data){
                 return [
                     "message"=>"success",

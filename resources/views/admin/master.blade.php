@@ -178,7 +178,8 @@
           <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->email}}</a>
+          <div><a href="#" class="d-block">{{Auth::user()->email}}</a></div>
+          <div><a href="{{route('admin.logout')}}">{{trans('dashboard.logout')}}</a></div>
         </div>
       </div>
       <!-- Sidebar Menu -->

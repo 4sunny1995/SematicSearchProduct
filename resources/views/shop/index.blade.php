@@ -51,7 +51,7 @@
     <div class="w-100" id="posts" v-for = "(item,index) in items">
         <div class="sub">
             <ul class="w-100 list-post">
-                <li class="w-100 pb-15 border-bottom" v-for="(post,i) in item.post">
+                <li class="w-100 pb-15 border-bottom" v-for="(post,i) in items">
                     <div class="list-post-item">
                         <div class="w-25 avatar-content text-center">
                             <div class="" v-if="item.vendor.fbavatar">
@@ -78,15 +78,20 @@
                             <img src="./img/arrow-25-16.png" alt="icon" class="img-ar">
                         </div>
                     </div>
-                    <div class="description-item img" v-html = "post.content">
+                    <div class="description-item img" style="position: relative">
+                        <textarea class="form-control" style="width: 100%;border: none" name="" id="" cols="30" rows="5" disabled>@{{post.content}}</textarea>
+                        <div style="width: 100%;position: absolute;z-index: 100;height: 100%;top: 0"></div>
+                    </div>
+                    <div class="img">
+                        <img v-bind:src="basicURL+post.image" width="100%" alt="post image" style="border-radius: 10px">
                     </div>
                     {{-- <div class="w-100 text-center">
                         <p v-if="!post.liked"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></p>
                         <p v-else><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
                     </div> --}}
                     <div class="newest-comment border-top">
-                        <p v-show="!post.liked" class="text-center" @click="like(index,i,post.id)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></p>
-                        <p v-show="post.liked" class="text-center" style="background-color: #f59e00"  @click="like(index,i,post.id)"><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>    
+                        <div v-if="post.liked==false" class="text-center like-post" @click="like(index,1)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+                        <div v-else class="text-center like-post" style="background-color: #f59e00"  @click="like(index,0)"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>    
                         <div class="cmt-content">
                             <div v-for="(comment,ind) in post.comments">
                                 <div v-if="ind%2==0" style="background-color: #f3f3f3">

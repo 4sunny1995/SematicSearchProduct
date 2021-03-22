@@ -17,5 +17,5 @@
         'email'=>"Gửi Email",
         'sms'=>"Gửi SMS",
         'post'=>"Bài viết",
-        ''
+        'logout'=>"Đăng xuất"
     ];

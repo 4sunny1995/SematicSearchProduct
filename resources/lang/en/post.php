@@ -6,8 +6,11 @@
         "content"=>"Content",
         "titlePost"=>"Title",
         "image"=>"Image",
-        "created_at"=>"Created_at",
+        "created_at"=>"Created at",
         "action"=>"Action",
-        "url"=>"Product"
+        "url"=>"Product",
+        "delete"=>"Are you want to delete this post?",
+        "confirm"=>"OK",
+        "logout"=>"Log out"
     ]
 ?>

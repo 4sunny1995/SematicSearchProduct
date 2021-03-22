@@ -56,7 +56,7 @@
                     <div class="card-body">
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
+                    <div class="card-footer text-center">
                       <button type="button" class="btn btn-danger" @click="deleteItem()">{{trans('post.confirm')}}</button>
                       <button type="button" class="btn btn-primary" @click="openModal(0,null)">Cancel</button>
                     </div>

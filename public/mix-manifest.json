@@ -12,6 +12,7 @@
     "/js/vuejs/leftmenu/c-leftmenu.js": "/js/vuejs/leftmenu/c-leftmenu.js",
     "/js/vuejs/leftmenu/s-leftmenu.js": "/js/vuejs/leftmenu/s-leftmenu.js",
     "/js/vuejs/mainpage/c-mainpage.js": "/js/vuejs/mainpage/c-mainpage.js",
+    "/js/vuejs/mainpage/s-like.js": "/js/vuejs/mainpage/s-like.js",
     "/js/vuejs/mainpage/s-mainpage.js": "/js/vuejs/mainpage/s-mainpage.js",
     "/js/vuejs/narrower/c-narrower.js": "/js/vuejs/narrower/c-narrower.js",
     "/js/vuejs/narrower/s-narrower.js": "/js/vuejs/narrower/s-narrower.js",

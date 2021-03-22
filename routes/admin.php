@@ -59,3 +59,4 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getHistory','Admin\DashboardController@getHistory');
     Route::post('sendEmail',"Admin\EmailController@sendEmail");
 });
+Route::get("logout","Auth\LoginController@logout")->name('admin.logout');

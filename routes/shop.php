@@ -18,5 +18,7 @@ Route::get('/', function(){
 });
 Route::prefix('api')->group(function () {
     Route::resource('categoryParents', 'resources\CategoryParentController');
+    Route::resource('posts', 'resources\PostController');
+    Route::resource('likes', 'resources\LikeController');
     Route::get('getCurrentUser','HomeController@getCurrentUser');
 });
