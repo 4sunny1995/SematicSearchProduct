@@ -16,12 +16,17 @@ class UploadController extends Controller
         try
         {
             $file = $request->file('file');
+            Log::info('-----------upload image-----------------');
             Log::info($file);
+            Log::info('-----------get type image-----------------');
             $type = $file->getMimeType();
-            $size = $file->getSize();
-            $valid = $this->validImage($type,$size);
-            Log::info($size);
             Log::info($type);
+            Log::info('-----------get size image-----------------');
+            $size = $file->getSize();
+            Log::info($size);
+            Log::info('-----------valid image-----------------');
+            $valid = $this->validImage($type,$size);
+            Log::info($valid);
             if($valid){
                 $filename = $this->generateFileName($file->getClientOriginalName());
                 $updated = $file->move('uploads',$filename);
