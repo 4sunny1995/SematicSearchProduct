@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-50">
+                        <div class="w-50" style="padding: 15px">
                             <div class="">
                                @{{post.vendor.name}}
                             </div>
@@ -98,8 +98,8 @@
                                 <div v-if="ind%2==0" style="background-color: #f3f3f3;border:1px solid white;">
                                     <p style="font-weight: bold;display: flex;justify-content: space-between;align-items: center">
                                         <span>
-                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="avatar" v-if="comment.user.avatar">
-                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="localAvatar" v-else>
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="avatar" v-if="comment.user.avatar!==null">
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="basicURL+'img/avatar/default.jpg'" alt="localAvatar" v-else>
                                             @{{comment.user.name}}    
                                         </span>
                                         <span style="position: relative">
@@ -112,7 +112,7 @@
                                     <p style="font-weight: bold;display: flex;justify-content: space-between;align-items: center">
                                         <span>
                                             <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="avatar" v-if="comment.user.avatar">
-                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="comment.user.avatar.avatar" alt="localAvatar" v-else>
+                                            <img style="border-radius:50%;width: 25px;height: 25px;object-fit: cover; " v-bind:src="basicURL+'img/avatar/default.jpg'" alt="localAvatar" v-else>
                                             @{{comment.user.name}}    
                                         </span>
                                         <span style="position: relative">
@@ -128,7 +128,7 @@
                     
                     <div class="comment row">
                         <div class="col-md-8">
-                            <input type="text" name="" id="" class="form-control p-0 m-0" v-model="comment">
+                            <input type="text" name="" id="" class="form-control m-0" v-model="comment">
                         </div>
                         <div class="col-md-2 ">
                             <button type="submit" class="form-control btncomment" @click="sendComment(index)">comment</button>

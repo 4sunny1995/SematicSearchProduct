@@ -2874,12 +2874,15 @@ try {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var host = window.location.host;
+var protocol = window.location.protocol;
+console.log(host);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  "apiURL": "http://localhost:8000/api/",
-  "mediaURL": "http://localhost:8000/imgs/",
-  "basicURL": "http://localhost:8000/",
-  "adminURL": "http://localhost:8000/admin/api/",
-  "shopURL": "http://localhost:8000/shop/api/"
+  "apiURL": protocol + "//" + host + "/api/",
+  "mediaURL": protocol + "//" + host + "/imgs/",
+  "basicURL": protocol + "//" + host + "/",
+  "adminURL": protocol + "//" + host + "/admin/api/",
+  "shopURL": protocol + "//" + host + "/shop/api/"
 });
 
 /***/ }),
@@ -2971,6 +2974,15 @@ var app = new Vue({
           }
         }, _callee2);
       }))();
+    },
+    gotoReward: function gotoReward() {
+      window.location.href = '/shopping/reward';
+    },
+    gotoCredit: function gotoCredit() {
+      window.location.href = '/shopping/credit';
+    },
+    gotoCoupon: function gotoCoupon() {
+      window.location.href = '/shopping/coupon';
     }
   }
 });

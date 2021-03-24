@@ -15,8 +15,9 @@ class CommentRepository
         {
             $body['user_id'] = Auth::id();
             $id = Comment::create($body)->id;
-            $comment = Comment::with('user')->findOrFail($id)->toArray();
+            $comment = Comment::findOrFail($id)->toArray();
             $user = User::with('avatar')->where('id',$comment['user_id'])->first()->toArray();
+           
             $comment['user'] = $user;
             if($comment){
                 return [

@@ -30,6 +30,15 @@ var app = new Vue({
     async getCurrentUser(){
       const response = await userServices.getCurrentUser()
       this.currentUser = response.data
+    },
+    gotoReward(){
+      window.location.href = '/shopping/reward'
+    },
+    gotoCredit(){
+      window.location.href = '/shopping/credit'
+    },
+    gotoCoupon(){
+      window.location.href = '/shopping/coupon'
     }
   }
 })

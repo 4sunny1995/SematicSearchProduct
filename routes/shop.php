@@ -16,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return view('shop.index');
 });
+Route::get('/reward',function(){
+    return view('user.reward');
+});
+Route::get('/credit',function(){
+    return view('user.credit');
+});
+Route::get('/coupon',function(){
+    return view('user.coupon');
+});
 Route::prefix('api')->group(function () {
     Route::resource('categoryParents', 'resources\CategoryParentController');
     Route::resource('posts', 'resources\PostController');

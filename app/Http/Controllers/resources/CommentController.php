@@ -45,6 +45,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $result  = $this->repo ->store($request->all());
+        // dd($result);
         if($result){
             return $result;
         }

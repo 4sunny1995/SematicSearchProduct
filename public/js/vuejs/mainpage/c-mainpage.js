@@ -2874,12 +2874,15 @@ try {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var host = window.location.host;
+var protocol = window.location.protocol;
+console.log(host);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  "apiURL": "http://localhost:8000/api/",
-  "mediaURL": "http://localhost:8000/imgs/",
-  "basicURL": "http://localhost:8000/",
-  "adminURL": "http://localhost:8000/admin/api/",
-  "shopURL": "http://localhost:8000/shop/api/"
+  "apiURL": protocol + "//" + host + "/api/",
+  "mediaURL": protocol + "//" + host + "/imgs/",
+  "basicURL": protocol + "//" + host + "/",
+  "adminURL": protocol + "//" + host + "/admin/api/",
+  "shopURL": protocol + "//" + host + "/shop/api/"
 });
 
 /***/ }),
@@ -2961,6 +2964,8 @@ var app = new Vue({
 
                 if (response.success == true) {
                   _this.items = response.data;
+
+                  _this.scrollToBottom();
                 }
 
               case 6:
