@@ -103,7 +103,9 @@
                                             @{{comment.user.name}}    
                                         </span>
                                         <span style="position: relative">
-                                            <span>X</span>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal" @click="setIndexComment(ind,index)" v-if="comment.user.id==currentUser">
+                                                X
+                                              </button>
                                         </span>
                                     </p>
                                     <p>@{{comment.content}}</p>
@@ -116,7 +118,9 @@
                                             @{{comment.user.name}}    
                                         </span>
                                         <span style="position: relative">
-                                            <span>X</span>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal" @click="setIndexComment(ind,index)" v-if="comment.user.id==currentUser">
+                                                X
+                                              </button>
                                         </span>
                                     </p>
                                     <p>@{{comment.content}}</p>
@@ -131,14 +135,32 @@
                             <input type="text" name="" id="" class="form-control m-0" v-model="comment">
                         </div>
                         <div class="col-md-2 ">
-                            <button type="submit" class="form-control btncomment" @click="sendComment(index)">comment</button>
+                            <button type="submit" class="form-control btncomment" @click="sendComment(ind,index)">comment</button>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
-
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you destroy this?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" @click="destroyComment()" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 @endsection
 @section('vuejs')

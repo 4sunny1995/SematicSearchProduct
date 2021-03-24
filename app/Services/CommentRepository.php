@@ -42,11 +42,18 @@ class CommentRepository
     {
         try
         {
-
+            $comment = Comment::findOrfail($id);
+            $comment->delete();
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>$comment
+            ];
         }
         catch(Exception $e)
         {
             Log::info($e->getMessage());
+            return null;
         }
     }
 }

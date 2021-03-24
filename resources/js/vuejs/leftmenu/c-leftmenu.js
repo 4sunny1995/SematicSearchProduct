@@ -30,6 +30,7 @@ var app = new Vue({
     async getCurrentUser(){
       const response = await userServices.getCurrentUser()
       this.currentUser = response.data
+      window.localStorage.setItem('user_id',response.data.id)
     },
     gotoReward(){
       window.location.href = '/shopping/reward'

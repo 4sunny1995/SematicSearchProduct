@@ -2966,8 +2966,9 @@ var app = new Vue({
               case 2:
                 response = _context2.sent;
                 _this2.currentUser = response.data;
+                window.localStorage.setItem('user_id', response.data.id);
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }

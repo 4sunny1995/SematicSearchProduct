@@ -20,12 +20,15 @@ let app = new Vue({
         url:"",
         basicURL:config.basicURL,
         comment:"",
+        postIndex:null,
+        commentIndex:null,
         model:{
             "title":"",
             "content":"",
             "image":""
         },
-        recommentList:[]
+        recommentList:[],
+        currentUser:window.localStorage.getItem('user_id')
     },
     mounted(){
         this.onloadFunction()
@@ -164,6 +167,23 @@ let app = new Vue({
         scrollToBottom(){
             var container = this.$el.querySelector("#commentContent");
             container.scrollTop = container.scrollHeight;
+        },
+        async destroyComment(){
+            var _this = this
+            var comment = _this.items[_this.postIndex].comments[_this.commentIndex]
+            const response = await commentServices.destroy(comment.id)
+            if(response.success==true){
+                console.log(_this.postIndex)
+                console.log(_this.commentIndex)
+                _this.items[_this.postIndex].comments.splice(_this.commentIndex,1)
+                console.log(_this.items[_this.postIndex].comments)
+            }
+        },
+        setIndexComment(index,postIndex){
+            var _this = this
+            var item = _this.items[postIndex].comments[index]
+            _this.commentIndex = index
+            _this.postIndex = postIndex
         }
         // async recomment(){
         //     var _this = this

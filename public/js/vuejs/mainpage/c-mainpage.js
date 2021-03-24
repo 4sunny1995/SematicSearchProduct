@@ -2929,12 +2929,15 @@ var app = new Vue({
     url: "",
     basicURL: _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL,
     comment: "",
+    postIndex: null,
+    commentIndex: null,
     model: {
       "title": "",
       "content": "",
       "image": ""
     },
-    recommentList: []
+    recommentList: [],
+    currentUser: window.localStorage.getItem('user_id')
   },
   mounted: function mounted() {
     this.onloadFunction();
@@ -3227,6 +3230,48 @@ var app = new Vue({
     scrollToBottom: function scrollToBottom() {
       var container = this.$el.querySelector("#commentContent");
       container.scrollTop = container.scrollHeight;
+    },
+    destroyComment: function destroyComment() {
+      var _this8 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var _this, comment, response;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _this = _this8;
+                comment = _this.items[_this.postIndex].comments[_this.commentIndex];
+                _context7.next = 4;
+                return _s_comment__WEBPACK_IMPORTED_MODULE_4__["default"].destroy(comment.id);
+
+              case 4:
+                response = _context7.sent;
+
+                if (response.success == true) {
+                  console.log(_this.postIndex);
+                  console.log(_this.commentIndex);
+
+                  _this.items[_this.postIndex].comments.splice(_this.commentIndex, 1);
+
+                  console.log(_this.items[_this.postIndex].comments);
+                }
+
+              case 6:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    setIndexComment: function setIndexComment(index, postIndex) {
+      var _this = this;
+
+      var item = _this.items[postIndex].comments[index];
+      _this.commentIndex = index;
+      _this.postIndex = postIndex;
     } // async recomment(){
     //     var _this = this
     //     const response = await postServices.recomment(_this.url)
