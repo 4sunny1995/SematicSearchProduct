@@ -87,11 +87,6 @@
                     </div>
                     <div v-if="post.liked==false" class="text-center like-post" @click="like(index,1)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
                     <div v-else class="text-center like-post" style="background-color: #f59e00"  @click="like(index,0)"><i class="fa fa-thumbs-up" aria-hidden="true"></i></div>    
-
-                    {{-- <div class="w-100 text-center">
-                        <p v-if="!post.liked"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></p>
-                        <p v-else><i class="fa fa-thumbs-up" aria-hidden="true"></i></p>
-                    </div> --}}
                     <div class="newest-comment border-top" id="commentContent" @click="scrollToBottom()">
                         <div class="cmt-content" >
                             <div v-for="(comment,ind) in post.comments">
@@ -135,7 +130,7 @@
                             <input type="text" name="" id="" class="form-control m-0" v-model="comment">
                         </div>
                         <div class="col-md-2 ">
-                            <button type="submit" class="form-control btncomment" @click="sendComment(ind,index)">comment</button>
+                            <button type="submit" class="form-control btncomment" @click="sendComment(index)">comment</button>
                         </div>
                     </div>
                 </li>
