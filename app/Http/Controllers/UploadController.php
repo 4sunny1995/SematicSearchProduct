@@ -54,7 +54,7 @@ class UploadController extends Controller
     public function validImage($type,$size)
     {
         if($type == "image/jpeg"||$type == "image/png"){
-            if($size<=5242880) //5MB
+            if($size<2048000) //2MB
             return true;
             return false;
         }
