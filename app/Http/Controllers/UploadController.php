@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\Debugbar\Twig\Extension\Debug;
+use DebugBar\DebugBar;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -14,8 +16,12 @@ class UploadController extends Controller
         try
         {
             $file = $request->file('file');
-            
-            $valid = $this->validImage($file->getMimeType(),$file->getSize());
+            Log::info($file);
+            $type = $file->getMimeType();
+            $size = $file->getSize();
+            $valid = $this->validImage($type,$size);
+            Log::info($size);
+            Log::info($type);
             if($valid){
                 $filename = $this->generateFileName($file->getClientOriginalName());
                 $updated = $file->move('uploads',$filename);
