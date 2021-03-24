@@ -58,8 +58,8 @@ class UploadController extends Controller
     public function generateFileName($file)
     {
         $file = explode('.',$file);
-        $str = Str::random(20);
-        return $file[0]."_".$str.".".$file[1];
+        $str = Str::random(40);
+        return $str.".".$file[1];
 
     }
 }
