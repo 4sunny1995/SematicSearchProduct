@@ -6,5 +6,6 @@
         "password"=>"Mật khẩu",
         "confirm_password"=>"Nhập lại mật khẩu",
         "submit"=>"Đăng ký",
-        'page_title'=>'Chào mừng bạn đến với trang đặng ký'
+        'page_title'=>'Chào mừng bạn đến với trang đặng ký',
+        
     ];

@@ -22,7 +22,6 @@
             <div class="col-10 col-sm-8 col-md-6 col-lg-6 offset-1 offset-sm-2 offset-md-3 offset-lg-0 align-self-center d-lg-flex align-items-lg-center align-self-lg-stretch bg-white p-5 rounded rounded-lg-0 my-5 my-lg-0" id="login-block">
                 <div class="m-auto w-100">
                     <h2 class="text-info font-weight-light mb-5 text-uppercase text-center"><i class="fa fa-diamond"></i>&nbsp;seoulmall.kr</h2>
-                    @include('layouts.message')
                     <div class="form-group sun-flex">
                         <div class="w-25 center">
                             <i class="fa-facebook-official fb-icon" aria-hidden="true"></i>
@@ -39,6 +38,7 @@
                     </div>
                     <form action="/login" method="post">
                         @csrf
+                        @include('layouts.message')
                         <div class="form-group">
                             <label class="text-secondary">{{trans('login.email')}}</label>
                             <input class="form-control" type="text" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email" name="email">
@@ -56,6 +56,7 @@
                         <button class="btn btn-info mt-2" type="submit">{{trans('login.submit')}}</button>
                     </form>
                     <p class="mt-3 mb-0"><a class="text-info small" href="#">{{trans('login.forgot')}}</a></p>
+                    <p class="mt-3 mb-0"><a class="text-info small" href="/register">{{trans('login.register')}}</a></p>
                 </div>
             </div>
             <div class="col-lg-6 d-flex align-items-end" id="bg-block" style="background-image:url(./img/bgLogin.jpg);background-size:cover;background-position:center center;">

@@ -6,6 +6,7 @@ use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
@@ -55,4 +56,5 @@ class HomeController extends Controller
             Log::info($e->getMessage());
         }
     }
+    
 }
