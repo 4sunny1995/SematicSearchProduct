@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2887,10 +2887,10 @@ console.log(host);
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/user/s-user.js":
-/*!*******************************************!*\
-  !*** ./resources/js/vuejs/user/s-user.js ***!
-  \*******************************************/
+/***/ "./resources/js/vuejs/credit/s-credit.js":
+/*!***********************************************!*\
+  !*** ./resources/js/vuejs/credit/s-credit.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2909,17 +2909,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "users";
+var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "credits";
 
-var getCurrentUser = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+var store = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getCurrentUser");
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url, data);
 
           case 2:
             response = _context.sent;
@@ -2933,20 +2933,20 @@ var getCurrentUser = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getCurrentUser() {
+  return function store(_x) {
     return _ref.apply(this, arguments);
   };
 }();
 
-var getUserById = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
+var getAll = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getUserById/" + id);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
 
           case 2:
             response = _context2.sent;
@@ -2960,20 +2960,20 @@ var getUserById = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function getUserById(_x) {
+  return function getAll() {
     return _ref2.apply(this, arguments);
   };
 }();
 
 var update = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(body, id) {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data, id) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, body);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, data);
 
           case 2:
             response = _context3.sent;
@@ -2992,22 +2992,50 @@ var update = /*#__PURE__*/function () {
   };
 }();
 
+var destroy = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](url + "/" + id);
+
+          case 2:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function destroy(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getCurrentUser: getCurrentUser,
-  getUserById: getUserById,
-  update: update
+  store: store,
+  getAll: getAll,
+  update: update,
+  destroy: destroy
 });
 
 /***/ }),
 
-/***/ 25:
-/*!*************************************************!*\
-  !*** multi ./resources/js/vuejs/user/s-user.js ***!
-  \*************************************************/
+/***/ 19:
+/*!*****************************************************!*\
+  !*** multi ./resources/js/vuejs/credit/s-credit.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\user\s-user.js */"./resources/js/vuejs/user/s-user.js");
+module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\credit\s-credit.js */"./resources/js/vuejs/credit/s-credit.js");
 
 
 /***/ })

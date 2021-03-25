@@ -31,6 +31,12 @@ mix.js('resources/js/vuejs/mainpage/s-mainpage.js', 'public/js/vuejs/mainpage');
 mix.js('resources/js/vuejs/mainpage/s-like.js', 'public/js/vuejs/mainpage');
 mix.js('resources/js/vuejs/leftmenu/c-leftmenu.js', 'public/js/vuejs/leftmenu');
 mix.js('resources/js/vuejs/leftmenu/s-leftmenu.js', 'public/js/vuejs/leftmenu');
+mix.js('resources/js/vuejs/credit/c-credit.js', 'public/js/vuejs/credit');
+mix.js('resources/js/vuejs/credit/s-credit.js', 'public/js/vuejs/credit');
+mix.js('resources/js/vuejs/reward/c-reward.js', 'public/js/vuejs/reward');
+mix.js('resources/js/vuejs/reward/s-reward.js', 'public/js/vuejs/reward');
+mix.js('resources/js/vuejs/coupon/c-coupon.js', 'public/js/vuejs/coupon');
+mix.js('resources/js/vuejs/coupon/s-coupon.js', 'public/js/vuejs/coupon');
 
 
 //User

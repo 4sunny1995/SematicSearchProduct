@@ -41,8 +41,7 @@
     <script src="{{mix('/js/vuejs/leftmenu/c-leftmenu.js')}}"></script>
     <script src="{{mix('/js/vuejs/leftmenu/s-leftmenu.js')}}"></script>
 
-    <script src="{{ asset('js/share.js') }}"></script>
-    {{-- <script src="{{mix('/js/notice.js')}}"></script> --}}
+    {{-- <script src="{{ asset('js/share.js') }}"></script> --}}
     @yield('vuejs')
 </body>
 

@@ -39,7 +39,7 @@ var app = new Vue({
       window.location.href = '/shop/credit'
     },
     gotoCoupon(){
-      window.location.href = '/shopp/coupon'
+      window.location.href = '/shop/coupon'
     },
     gotoProfile(){
       window.location.href = "/shop/profile"

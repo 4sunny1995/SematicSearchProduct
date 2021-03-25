@@ -2983,7 +2983,7 @@ var app = new Vue({
       window.location.href = '/shop/credit';
     },
     gotoCoupon: function gotoCoupon() {
-      window.location.href = '/shopp/coupon';
+      window.location.href = '/shop/coupon';
     },
     gotoProfile: function gotoProfile() {
       window.location.href = "/shop/profile";
