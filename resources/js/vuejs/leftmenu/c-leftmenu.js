@@ -33,13 +33,16 @@ var app = new Vue({
       window.localStorage.setItem('user_id',response.data.id)
     },
     gotoReward(){
-      window.location.href = '/shopping/reward'
+      window.location.href = '/shop/reward'
     },
     gotoCredit(){
-      window.location.href = '/shopping/credit'
+      window.location.href = '/shop/credit'
     },
     gotoCoupon(){
-      window.location.href = '/shopping/coupon'
+      window.location.href = '/shopp/coupon'
+    },
+    gotoProfile(){
+      window.location.href = "/shop/profile"
     }
   }
 })

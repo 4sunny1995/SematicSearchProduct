@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -33,5 +36,23 @@ class HomeController extends Controller
             "success"=>true,
             "data"=>Auth::user()
         ];
+    }
+    public function getUserById($id)
+    {
+        try
+        {
+            if(Auth::id()==$id){
+                $user = User::with('avatar','information')->findOrFail($id);        
+                return [
+                    "message"=>"success",
+                    "success"=>true,
+                    "data"=>$user
+                ];
+            }
+        }
+        catch(Exception $e)
+        {
+            Log::info($e->getMessage());
+        }
     }
 }

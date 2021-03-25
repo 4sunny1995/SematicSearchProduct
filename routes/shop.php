@@ -25,10 +25,15 @@ Route::get('/credit',function(){
 Route::get('/coupon',function(){
     return view('user.coupon');
 });
+Route::get('/profile',function(){
+    return view('user.profile');
+});
 Route::prefix('api')->group(function () {
     Route::resource('categoryParents', 'resources\CategoryParentController');
     Route::resource('posts', 'resources\PostController');
     Route::resource('likes', 'resources\LikeController');
     Route::resource('comments', "resources\CommentController");
+    Route::resource('users', 'resources\UserController');
     Route::get('getCurrentUser','HomeController@getCurrentUser');
+    Route::get('getUserById/{id}','HomeController@getUserById');
 });

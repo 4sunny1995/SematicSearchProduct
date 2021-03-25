@@ -33,7 +33,7 @@
        </div>
        <div class="w-100">
            <div class="row text-center">
-               <div class="col-md-6 border p-2" @click="openProfile($event)"  data-id="{{Auth::id()*234}}"><img src="{{asset('img/ic_leftmenu_mypage.png')}}" alt="icon" class="icon">My page</div>
+               <div class="col-md-6 border p-2" @click="gotoProfile()"  data-id="{{Auth::id()*234}}"><img src="{{asset('img/ic_leftmenu_mypage.png')}}" alt="icon" class="icon">My page</div>
                <div class="col-md-6 border p-2" @click="openMyorder($event)"  data-id="{{Auth::id()*234}}"><img src="{{asset('img/ic_leftmenu_myorder.png')}}" alt="icon" class="icon">My order</div>
                <div class="col-md-6 border p-2" @click="openMycart($event)"  data-id="{{Auth::id()*234}}"><img src="{{asset('img/ic_leftmenu_cart.png')}}" alt="icon" class="icon">My cart</div>
                <div class="col-md-6 border p-2" @click="openMywishlist($event)"  data-id="{{Auth::id()*234}}"><img src="{{asset('img/ic_leftmenu_wishlist.png')}}" alt="icon" class="icon">My wishlist</div>

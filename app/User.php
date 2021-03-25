@@ -40,4 +40,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Avatar','user_id','id');
     }
+    public function information()
+    {
+        return $this->hasOne('App\Model\Information','user_id','id');
+    }
 }

@@ -2977,13 +2977,16 @@ var app = new Vue({
       }))();
     },
     gotoReward: function gotoReward() {
-      window.location.href = '/shopping/reward';
+      window.location.href = '/shop/reward';
     },
     gotoCredit: function gotoCredit() {
-      window.location.href = '/shopping/credit';
+      window.location.href = '/shop/credit';
     },
     gotoCoupon: function gotoCoupon() {
-      window.location.href = '/shopping/coupon';
+      window.location.href = '/shopp/coupon';
+    },
+    gotoProfile: function gotoProfile() {
+      window.location.href = "/shop/profile";
     }
   }
 });
@@ -3098,8 +3101,64 @@ var getCurrentUser = /*#__PURE__*/function () {
   };
 }();
 
+var getUserById = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getUserById/" + id);
+
+          case 2:
+            response = _context2.sent;
+            return _context2.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function getUserById(_x) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var update = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(body, id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, body);
+
+          case 2:
+            response = _context3.sent;
+            return _context3.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function update(_x2, _x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getCurrentUser: getCurrentUser
+  getCurrentUser: getCurrentUser,
+  getUserById: getUserById,
+  update: update
 });
 
 /***/ }),

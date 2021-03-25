@@ -2,6 +2,8 @@
     namespace App\Repositories;
 
 // use App\Services\UserServices;
+
+use App\Model\Information;
 use App\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +22,29 @@ class UserRepository
                 $credentinal['password'] = Hash::make($credentinal['password']);
                 $user->create($credentinal);
                 return $user;
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+                return null;
+            }
+        }
+        public function update(array $credentinal,$id)
+        {
+            try
+            {
+                $user = User::findOrfail($id);
+                if($user){
+                    $infor = Information::where('user_id',$id)->first();
+                    $check= $infor->update($credentinal);
+                    if($check){
+                        return [
+                            "message"=>"success",
+                            "success"=>true,
+                            "data"=>User::with('information')->where('id',$id)->first()
+                        ];
+                    }
+                }
             }
             catch(Exception $e)
             {
