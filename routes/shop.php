@@ -37,6 +37,7 @@ Route::prefix('api')->group(function () {
     Route::resource('coupons', 'resources\CouponController');
     Route::resource('coupon-histories', 'resources\CouponHistoryController');
     Route::resource('rewards', 'resources\RewardController');
+    Route::resource('credits', 'resources\CreditController');
     Route::get('getCurrentUser','HomeController@getCurrentUser');
     Route::get('getUserById/{id}','HomeController@getUserById');
 });

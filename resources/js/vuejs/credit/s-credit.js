@@ -19,9 +19,14 @@ let destroy = async (id) => {
     const response = await Axios.delete(url+"/"+id)
     return response.data
 }
+let show = async (id) => {
+    const response = await Axios.get(url+"/"+id)
+    return response.data
+}
 export default {
     store:store,
     getAll:getAll,
     update:update,
-    destroy:destroy
+    destroy:destroy,
+    show:show
 }

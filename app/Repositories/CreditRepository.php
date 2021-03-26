@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Model\Credit;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -10,7 +11,12 @@ class CreditRepository
     {
         try
         {
-
+            $data = Credit::with('user')->get();
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>$data
+            ];
         }
         catch(Exception $e)
         {
@@ -22,7 +28,12 @@ class CreditRepository
     {
         try
         {
-
+            $data = Credit::create($data);
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>Credit::with('user')->findOrFail($data->id)
+            ];
         }
         catch(Exception $e)
         {
@@ -34,7 +45,13 @@ class CreditRepository
     {
         try
         {
-
+            $item = Credit::findOrfail($id);
+            $item->update($data);
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>Credit::with('user')->findOrFail($id)
+            ];
         }
         catch(Exception $e)
         {
@@ -46,7 +63,12 @@ class CreditRepository
     {
         try
         {
-
+            $data = Credit::findOrfail($id)->delete();
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>$data
+            ];
         }
         catch(Exception $e)
         {
@@ -54,11 +76,16 @@ class CreditRepository
             return null;
         }
     }
-    public function getDataById($id)
+    public function show($id)
     {
         try
         {
-
+            $data = Credit::findOrfail($id);
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>$data
+            ];
         }
         catch(Exception $e)
         {

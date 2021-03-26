@@ -15186,24 +15186,220 @@ console.log(host);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
-/* harmony import */ var _s_credit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./s-credit */ "./resources/js/vuejs/credit/s-credit.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
+/* harmony import */ var _s_credit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-credit */ "./resources/js/vuejs/credit/s-credit.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+
+var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: "#credit",
   data: {
     items: [],
-    isLoading: false
+    isLoading: false,
+    state: 0,
+    getIndex: null,
+    itemEdit: null,
+    total: 0,
+    used: 0,
+    point: 0,
+    title: "Create",
+    submit: "Create",
+    user_id: null
   },
   mounted: function mounted() {
     this.onLoadFunction();
   },
   methods: {
-    onLoadFunction: function onLoadFunction() {}
+    onLoadFunction: function onLoadFunction() {
+      this.getAll();
+    },
+    openModal: function openModal(action, index) {
+      this.state = action;
+      this.itemEdit = this.items[index];
+      this.getIndex = index;
+    },
+    createNew: function createNew() {
+      this.state = 2;
+      this.itemEdit = null;
+      this.title = "Create new";
+      this.submit = "Create";
+    },
+    initModel: function initModel() {
+      this.user_id = this.itemEdit.user_id;
+      this.used = this.itemEdit.used, this.total = this.itemEdit.total;
+    },
+    submitModel: function submitModel() {
+      return {
+        "user_id": this.user_id,
+        "point": this.point,
+        "used": this.used,
+        "total": this.total
+      };
+    },
+    getAll: function getAll() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].getAll();
+
+              case 2:
+                response = _context.sent;
+                _this.items = response.data;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    edit: function edit(index) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var item, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.getIndex = index;
+                item = _this2.items[index];
+                _context2.next = 4;
+                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].show(item.id);
+
+              case 4:
+                response = _context2.sent;
+
+                if (response.success == true) {
+                  _this2.title = "Update";
+                  _this2.submit = "Update";
+                  _this2.itemEdit = response.data;
+                  _this2.state = 1;
+
+                  _this2.initModel();
+                }
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    destroy: function destroy() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var item, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                item = _this3.items[_this3.getIndex];
+                _context3.next = 3;
+                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].destroy(item.id);
+
+              case 3:
+                response = _context3.sent;
+
+                if (!(response.success == true)) {
+                  _context3.next = 7;
+                  break;
+                }
+
+                _this3.items.splice(_this3.getIndex, 1);
+
+                return _context3.abrupt("return", _this3.state = 0);
+
+              case 7:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    createOrUpdate: function createOrUpdate() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var body, response, item, _response;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                body = _this4.submitModel(_this4.itemEdit); //Create
+
+                if (!(_this4.state == 2)) {
+                  _context4.next = 9;
+                  break;
+                }
+
+                console.log(body);
+                _context4.next = 5;
+                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].store(body);
+
+              case 5:
+                response = _context4.sent;
+
+                if (!(response.success == true)) {
+                  _context4.next = 9;
+                  break;
+                }
+
+                _this4.items.push(response.data);
+
+                return _context4.abrupt("return", _this4.state = 0);
+
+              case 9:
+                if (!(_this4.state == 1)) {
+                  _context4.next = 18;
+                  break;
+                }
+
+                console.log(body);
+                item = _this4.items[_this4.getIndex];
+                _context4.next = 14;
+                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].update(body, item.id);
+
+              case 14:
+                _response = _context4.sent;
+
+                if (!(_response.success == true)) {
+                  _context4.next = 18;
+                  break;
+                }
+
+                _this4.items[_this4.getIndex] = _response.data;
+                return _context4.abrupt("return", _this4.state = 0);
+
+              case 18:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    }
   }
 });
 
@@ -15341,11 +15537,39 @@ var destroy = /*#__PURE__*/function () {
   };
 }();
 
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/" + id);
+
+          case 2:
+            response = _context5.sent;
+            return _context5.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function show(_x5) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: store,
   getAll: getAll,
   update: update,
-  destroy: destroy
+  destroy: destroy,
+  show: show
 });
 
 /***/ }),
