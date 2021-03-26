@@ -10,11 +10,11 @@ class CouponDetail extends Model
 {
     use Notifiable,SoftDeletes;
     protected $fillable = [
-        "id","user_id","total",'used'
+        "id","user_id","coupon_id","code"
     ];
-    public function detail()
+    public function coupon()
     {
-        return $this->hasMany('App\Model\CouponDetail','coupon_id','id');
+        return $this->belongsTo('App\Model\Coupon','coupon_id','id');
     }
     public function user()
     {

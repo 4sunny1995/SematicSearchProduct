@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -15177,10 +15177,10 @@ console.log(host);
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/user/c-user.js":
-/*!*******************************************!*\
-  !*** ./resources/js/vuejs/user/c-user.js ***!
-  \*******************************************/
+/***/ "./resources/js/vuejs/coupon-history/c-coupon-history.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/vuejs/coupon-history/c-coupon-history.js ***!
+  \***************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15191,7 +15191,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
-/* harmony import */ var _s_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-user */ "./resources/js/vuejs/user/s-user.js");
+/* harmony import */ var _s_coupon_history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-coupon-history */ "./resources/js/vuejs/coupon-history/s-coupon-history.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -15202,45 +15202,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
-  el: "#profile",
+  el: "#coupon-history",
   data: {
-    user: null,
-    id: null,
-    email: '',
-    name: '',
-    state: 0,
-    description: "",
-    address: "",
-    avatar: null,
-    dateOfBirth: '',
-    gender: 0,
-    phone: '',
-    isAction: 0,
+    items: [],
     isLoading: false,
-    imgURL: _config__WEBPACK_IMPORTED_MODULE_2__["default"].basicURL,
-    "break": 0
+    code: null,
+    user_id: null,
+    state: 0,
+    total: 0,
+    title: "Create",
+    submit: "Create",
+    itemEdit: null,
+    count: 0,
+    type: 1,
+    getIndex: null
   },
   mounted: function mounted() {
-    this.onLoadFuntion();
+    this.onLoadFunction();
   },
   methods: {
-    onLoadFuntion: function onLoadFuntion() {
-      var _this2 = this;
+    onLoadFunction: function onLoadFunction() {
+      this.getAll();
+    },
+    getAll: function getAll() {
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this2["break"] == 0) {
-                  _this2.id = window.localStorage.getItem('user_id');
+                _context.next = 2;
+                return _s_coupon_history__WEBPACK_IMPORTED_MODULE_3__["default"].getAll();
 
-                  _this2.getProfile();
+              case 2:
+                response = _context.sent;
+                _this.items = response.data;
 
-                  _this2["break"] = 1;
-                }
-
-              case 1:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -15248,36 +15248,45 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         }, _callee);
       }))();
     },
-    editProfile: function editProfile() {
-      this.isAction = 1;
+    openModal: function openModal(action, index) {
+      this.state = action;
+      this.itemEdit = this.items[index];
+      this.getIndex = index;
+    },
+    createNew: function createNew() {
+      this.state = 2;
+      this.itemEdit = null;
+      this.title = "Create new";
+      this.submit = "Create";
       this.initModel();
     },
-    getProfile: function getProfile() {
-      var _this3 = this;
+    edit: function edit(index) {
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this, response;
-
+        var item, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this = _this3;
-                console.log(_this.id);
-                _this.isLoading = true;
-                _context2.next = 5;
-                return _s_user__WEBPACK_IMPORTED_MODULE_3__["default"].getUserById(_this.id);
+                _this2.getIndex = index;
+                item = _this2.items[index];
+                _context2.next = 4;
+                return _s_coupon_history__WEBPACK_IMPORTED_MODULE_3__["default"].show(item.id);
 
-              case 5:
+              case 4:
                 response = _context2.sent;
-                _this.user = response.data;
 
-                _this.initModel();
+                if (response.success == true) {
+                  _this2.title = "Update";
+                  _this2.submit = "Update";
+                  _this2.itemEdit = response.data;
+                  _this2.state = 1;
 
-                _this.isLoading = false;
-                if (response.data.avatar) _this.avatar = response.data.avatar.avatar;
+                  _this2.initModel();
+                }
 
-              case 10:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -15285,39 +15294,66 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         }, _callee2);
       }))();
     },
-    updateInformation: function updateInformation() {
-      var _this4 = this;
+    initModel: function initModel() {
+      this.code = this.itemEdit.code, this.user_id = this.itemEdit.user_id;
+    },
+    createOrUpdate: function createOrUpdate() {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this, body, response;
+        var body, response, item, _response;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this = _this4;
-                _this.isLoading = true;
-                body = {
-                  "address": _this.address,
-                  "phone": _this.phone,
-                  "gender": _this.gender,
-                  "dateOfBirth": _this.dateOfBirth,
-                  "description": _this.description
-                };
-                _context3.next = 5;
-                return _s_user__WEBPACK_IMPORTED_MODULE_3__["default"].update(body, _this.id);
+                body = _this3.submitModel();
+                console.log(body); //Create
 
-              case 5:
+                if (!(_this3.state == 2)) {
+                  _context3.next = 10;
+                  break;
+                }
+
+                console.log(body);
+                _context3.next = 6;
+                return _s_coupon_history__WEBPACK_IMPORTED_MODULE_3__["default"].store(body);
+
+              case 6:
                 response = _context3.sent;
-                _this.user = response.data;
 
-                _this.initModel();
+                if (!(response.success == true)) {
+                  _context3.next = 10;
+                  break;
+                }
 
-                console.log(_this.user);
-                _this.isAction = 0;
-                _this.isLoading = false;
+                _this3.items.push(response.data);
 
-              case 11:
+                return _context3.abrupt("return", _this3.state = 0);
+
+              case 10:
+                if (!(_this3.state == 1)) {
+                  _context3.next = 19;
+                  break;
+                }
+
+                console.log(body);
+                item = _this3.items[_this3.getIndex];
+                _context3.next = 15;
+                return _s_coupon_history__WEBPACK_IMPORTED_MODULE_3__["default"].update(body, item.id);
+
+              case 15:
+                _response = _context3.sent;
+
+                if (!(_response.success == true)) {
+                  _context3.next = 19;
+                  break;
+                }
+
+                _this3.items[_this3.getIndex] = _response.data;
+                return _context3.abrupt("return", _this3.state = 0);
+
+              case 19:
               case "end":
                 return _context3.stop();
             }
@@ -15325,27 +15361,54 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         }, _callee3);
       }))();
     },
-    initModel: function initModel() {
-      var _this = this;
-
-      _this.phone = _this.user.information.phone;
-      _this.address = _this.user.information.address;
-      _this.gender = _this.user.information.gender;
-      _this.dateOfBirth = _this.user.information.dateOfBirth;
-      _this.description = _this.user.information.description;
+    submitModel: function submitModel() {
+      return {
+        "code": this.code,
+        "user_id": this.user_id
+      };
     },
-    backHistory: function backHistory() {
-      window.history.back();
+    destroy: function destroy() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var item, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                item = _this4.items[_this4.getIndex];
+                _context4.next = 3;
+                return _s_coupon_history__WEBPACK_IMPORTED_MODULE_3__["default"].destroy(item.id);
+
+              case 3:
+                response = _context4.sent;
+
+                if (!(response.success == true)) {
+                  _context4.next = 7;
+                  break;
+                }
+
+                _this4.items.splice(_this4.getIndex, 1);
+
+                return _context4.abrupt("return", _this4.state = 0);
+
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
     }
   }
 });
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/user/s-user.js":
-/*!*******************************************!*\
-  !*** ./resources/js/vuejs/user/s-user.js ***!
-  \*******************************************/
+/***/ "./resources/js/vuejs/coupon-history/s-coupon-history.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/vuejs/coupon-history/s-coupon-history.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15364,17 +15427,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "users";
+var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "coupon-histories";
 
-var getCurrentUser = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+var store = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getCurrentUser");
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url, data);
 
           case 2:
             response = _context.sent;
@@ -15388,20 +15451,20 @@ var getCurrentUser = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getCurrentUser() {
+  return function store(_x) {
     return _ref.apply(this, arguments);
   };
 }();
 
-var getUserById = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
+var getAll = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getUserById/" + id);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
 
           case 2:
             response = _context2.sent;
@@ -15415,20 +15478,20 @@ var getUserById = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function getUserById(_x) {
+  return function getAll() {
     return _ref2.apply(this, arguments);
   };
 }();
 
 var update = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(body, id) {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data, id) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, body);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, data);
 
           case 2:
             response = _context3.sent;
@@ -15447,22 +15510,78 @@ var update = /*#__PURE__*/function () {
   };
 }();
 
+var destroy = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](url + "/" + id);
+
+          case 2:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function destroy(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/" + id);
+
+          case 2:
+            response = _context5.sent;
+            return _context5.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function show(_x5) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getCurrentUser: getCurrentUser,
-  getUserById: getUserById,
-  update: update
+  store: store,
+  getAll: getAll,
+  update: update,
+  destroy: destroy,
+  show: show
 });
 
 /***/ }),
 
-/***/ 26:
-/*!*************************************************!*\
-  !*** multi ./resources/js/vuejs/user/c-user.js ***!
-  \*************************************************/
+/***/ 24:
+/*!*********************************************************************!*\
+  !*** multi ./resources/js/vuejs/coupon-history/c-coupon-history.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\user\c-user.js */"./resources/js/vuejs/user/c-user.js");
+module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\coupon-history\c-coupon-history.js */"./resources/js/vuejs/coupon-history/c-coupon-history.js");
 
 
 /***/ })

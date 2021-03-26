@@ -37,6 +37,8 @@ mix.js('resources/js/vuejs/reward/c-reward.js', 'public/js/vuejs/reward');
 mix.js('resources/js/vuejs/reward/s-reward.js', 'public/js/vuejs/reward');
 mix.js('resources/js/vuejs/coupon/c-coupon.js', 'public/js/vuejs/coupon');
 mix.js('resources/js/vuejs/coupon/s-coupon.js', 'public/js/vuejs/coupon');
+mix.js('resources/js/vuejs/coupon-history/c-coupon-history.js', 'public/js/vuejs/coupon-history');
+mix.js('resources/js/vuejs/coupon-history/s-coupon-history.js', 'public/js/vuejs/coupon-history');
 
 
 //User

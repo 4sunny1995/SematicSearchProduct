@@ -3,6 +3,8 @@
     "/css/app.css": "/css/app.css",
     "/js/vuejs/broader/c-broader.js": "/js/vuejs/broader/c-broader.js",
     "/js/vuejs/broader/s-broader.js": "/js/vuejs/broader/s-broader.js",
+    "/js/vuejs/coupon-history/c-coupon-history.js": "/js/vuejs/coupon-history/c-coupon-history.js",
+    "/js/vuejs/coupon-history/s-coupon-history.js": "/js/vuejs/coupon-history/s-coupon-history.js",
     "/js/vuejs/coupon/c-coupon.js": "/js/vuejs/coupon/c-coupon.js",
     "/js/vuejs/coupon/s-coupon.js": "/js/vuejs/coupon/s-coupon.js",
     "/js/vuejs/credit/c-credit.js": "/js/vuejs/credit/c-credit.js",

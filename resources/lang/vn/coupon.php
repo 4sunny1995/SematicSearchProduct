@@ -10,5 +10,5 @@ return [
     'titlePost'=>"Loại Coupon",
     "value"=>"Giá trị",
     "count"=>"Số lượng",
-    "type"=>"Loại"
+    "type"=>"Loại",
 ];

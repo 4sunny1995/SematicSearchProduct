@@ -7,13 +7,13 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-class CouponRepository
+class CouponHistoryRepository
 {
     public function getAll()
     {
         try
         {
-            $items = Coupon::all();
+            $items = CouponDetail::with('user','coupon')->get();
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -30,14 +30,14 @@ class CouponRepository
     {
         try
         {
-            
-            $data['code'] = Str::random(25);
-            $check = Coupon::create($data);
+            $data['coupon_id'] = Coupon::where('code',$data['code'])->first()->id;
+            $check = CouponDetail::create($data);
+            $data = CouponDetail::with('user','coupon')->where('id',$check->id)->first();
             if($check){
                 return [
                     "message"=>"success",
                     "success"=>true,
-                    "data"=>$check
+                    "data"=>$data
                 ];
             }
         }
@@ -51,12 +51,12 @@ class CouponRepository
     {
         try
         {
-            $item = Coupon::findOrfail($id);
+            $item = CouponDetail::findOrfail($id);
             $item->update($data);
             return [
                 "message"=>"success",
                 "success"=>true,
-                "data"=>Coupon::findOrfail($id)
+                "data"=>CouponDetail::with('user','coupon')->findOrfail($id)
             ];
         }
         catch(Exception $e)
@@ -69,7 +69,7 @@ class CouponRepository
     {
         try
         {
-            $data = Coupon::findOrfail($id);
+            $data = CouponDetail::with('user','coupon')->findOrfail($id);
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -86,7 +86,7 @@ class CouponRepository
     {
         try
         {
-            $data = Coupon::findOrfail($id);
+            $data = CouponDetail::findOrfail($id);
             $data->delete();
             return [
                 "message"=>"success",

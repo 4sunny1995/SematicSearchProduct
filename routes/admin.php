@@ -50,6 +50,9 @@ Route::get('posts', function(){
 Route::get('coupon',function(){
     return view('admin.coupon');
 });
+Route::get('coupon-history',function(){
+    return view('admin.coupon-history');
+});
 Route::resource("spiders","Admin\SpiderController");
 
 Route::group(['prefix' => 'api'], function () {

@@ -24,8 +24,7 @@
                 <th class="text-center">{{trans('coupon.id')}}</th>
                 <th class="text-center">{{trans('coupon.code')}}</th>
                 <th class="text-center">{{trans('coupon.type')}}</th>
-                <th class="text-center">{{trans('coupon.total')}}</th>
-                <th class="text-center">{{trans('coupon.user')}}</th>
+                <th class="text-center">Name</th>
                 <th class="text-center">{{trans('coupon.created_at')}}</th>
                 <th class="text-center">{{trans('coupon.action')}}</th>
               </tr>
@@ -35,13 +34,10 @@
                 <td class="w-25 text-center"><span class="text-center">@{{index + 1}}</span></td>
                 <td class="w-25 text-center" class="text-center"><span>@{{item.code}}</span></td>
                 <td class="w-25 text-center" class="text-center">
-                  <span v-if="item.type==1">Tặng điểm thưởng</span>
-                  <span v-if="item.type==2">Tặng Credit</span>
+                  <span v-if="item.coupon.type==1">Tặng điểm thưởng</span>
+                  <span v-if="item.coupon.type==2">Tặng Credit</span>
                 </td>
-                <td class="w-25 text-center" class="text-center"><span>@{{item.count}}</span></td>
-                <td class="w-25 text-center" class="text-center">
-                 <span > @{{item.total}}</span>
-                </td>
+                <td class="w-25 text-center" class="text-center"><span>@{{item.user.name}}</span></td>
                 
                 <td class="text-center"><span >@{{item.created_at}}</span></td>
                 <td class="text-center">

@@ -15,7 +15,11 @@ class CreateCouponDetailsTable extends Migration
     {
         Schema::create('coupon_details', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->nullable()->index();
+            $table->integer('user_id')->nullable();
+            $table->integer('coupon_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

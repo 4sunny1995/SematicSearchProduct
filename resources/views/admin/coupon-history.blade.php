@@ -7,8 +7,8 @@
   }
 </style>
 @section('content')
-    <div id="coupon" v-cloak>
-        @include('table.coupon')
+    <div id="coupon-history" v-cloak>
+        @include('table.coupon-history')
         <div class="a-mask" v-show="state!=0"></div>
         <div class="a-background" v-show="state!=0">
             <div class="a-modal" v-show="state>0">
@@ -18,24 +18,13 @@
                     </div>
                     <!-- /.card-header --> 
                       <div class="card-body">
-                        <div class="form-group" v-if="itemEdit">
+                        <div class="form-group">
                           <label for="exampleInputEmail1">{{trans('coupon.code')}}</label>
-                          <input type="text" class="form-control"  placeholder="" name="title" v-model="itemEdit.code" >
+                          <input type="text" class="form-control"  placeholder="" name="code" v-model="code">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">{{trans('coupon.titlePost')}}</label>
-                          <select name="" v-model="type" id="type" class="form-control">
-                            <option value="1" class="form-control" selected>Tặng điểm thưởng</option>
-                            <option value="2" class="form-control">Tặng Credit</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">{{trans('coupon.value')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('coupon.titlePost')}}" name="title" v-model="total">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">{{trans('coupon.count')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('coupon.count')}}" name="count" v-model="count">
+                          <label for="exampleInputEmail1">User ID</label>
+                          <input type="text" class="form-control"  placeholder="{{trans('coupon.count')}}" name="user_id" v-model="user_id">
                         </div>
                       </div>
                       <!-- /.card-body -->
@@ -66,6 +55,6 @@
     </div>
 @endsection
 @section('vuejs')
-    <script src="{{mix('js/vuejs/coupon/c-coupon.js')}}"></script>
-    <script src="{{mix('js/vuejs/coupon/s-coupon.js')}}"></script>
+    <script src="{{mix('js/vuejs/coupon-history/c-coupon-history.js')}}"></script>
+    <script src="{{mix('js/vuejs/coupon-history/s-coupon-history.js')}}"></script>
 @endsection
