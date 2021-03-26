@@ -17,5 +17,7 @@
         'email'=>"Send Email",
         "sms"=>"Send SMS",
         'post'=>"Posts",
-        'coupon'=>"Coupon"
+        'coupon'=>"Coupon",
+        "reward"=>"Reward",
+        "credit"=>"Credits"
     ];

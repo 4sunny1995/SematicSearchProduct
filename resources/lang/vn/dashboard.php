@@ -18,5 +18,7 @@
         'sms'=>"Gửi SMS",
         'post'=>"Bài viết",
         'logout'=>"Đăng xuất",
-        'coupon'=>"Mã thưởng"
+        'coupon'=>"Mã thưởng",
+        "reward"=>"Điểm thưởng",
+        "credit"=>"Credits"
     ];
