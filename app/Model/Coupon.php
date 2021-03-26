@@ -10,7 +10,7 @@ class Coupon extends Model
 {
     use Notifiable,SoftDeletes;
     protected $fillable = [
-        "id","user_id","total",'used'
+        "id","count","total",'code','type'
     ];
     public function history()
     {

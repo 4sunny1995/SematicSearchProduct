@@ -280,6 +280,29 @@
               <p>{{trans('dashboard.post')}}</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <p>
+                {{trans("dashboard.coupon")}}
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{URL('/admin/coupon')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Coupon</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{URL('/admin/coupon-history')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Coupon History</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

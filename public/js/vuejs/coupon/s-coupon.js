@@ -3019,11 +3019,39 @@ var destroy = /*#__PURE__*/function () {
   };
 }();
 
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/" + id);
+
+          case 2:
+            response = _context5.sent;
+            return _context5.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function show(_x5) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: store,
   getAll: getAll,
   update: update,
-  destroy: destroy
+  destroy: destroy,
+  show: show
 });
 
 /***/ }),

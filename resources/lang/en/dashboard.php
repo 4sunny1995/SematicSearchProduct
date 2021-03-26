@@ -16,5 +16,6 @@
         'service'=>"Services",
         'email'=>"Send Email",
         "sms"=>"Send SMS",
-        'post'=>"Posts"
+        'post'=>"Posts",
+        'coupon'=>"Coupon"
     ];

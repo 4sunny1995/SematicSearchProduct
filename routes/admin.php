@@ -47,6 +47,9 @@ Route::get('sms',function(){
 Route::get('posts', function(){
     return view('admin.posts');
 });
+Route::get('coupon',function(){
+    return view('admin.coupon');
+});
 Route::resource("spiders","Admin\SpiderController");
 
 Route::group(['prefix' => 'api'], function () {

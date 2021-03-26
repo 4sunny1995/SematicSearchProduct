@@ -58,7 +58,7 @@ class CouponController extends Controller
      */
     public function show($id)
     {
-        $result  = $this->repo ->getDataById($id);
+        $result  = $this->repo ->show($id);
         if($result){
             return $result;
         }
