@@ -34,7 +34,7 @@
               <tr v-for = "(item,index) in items">
                 <td class="text-center"><span class="text-center">@{{index + 1}}</span></td>
                 <td class="text-center" class="text-center"><span>@{{item.user_id}}</span></td>
-                <td class="text-center" class="text-center"><span>@{{item.user.name}}</span></td>
+                <td class="w-25 text-center" class="text-center"><span>@{{item.user.name}}</span></td>
                 <td class="text-center" class="text-center">
                   <span v-if="item.type==0">Trừ</span>
                   <span v-if="item.type==1">Tặng</span>

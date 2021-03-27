@@ -1,18 +1,18 @@
 import Vue from "vue"
 import config from "../../config"
-import creditServices from "./s-credit"
+import rewardServices from "./s-credit-history"
 
 let app = new Vue({
-    el:"#credit",
+    el:"#credit-history",
     data:{
         items:[],
         isLoading:false,
         state:0,
         getIndex:null,
         itemEdit:null,
-        total:0,
-        used:0,
-        point:0,
+        value:0,
+        type:0,
+        description:null,
         title:"Create",
         submit:"Create",
         user_id:null
@@ -38,24 +38,26 @@ let app = new Vue({
         },
         initModel(){
             this.user_id = this.itemEdit.user_id
-            this.used = this.itemEdit.used,
-            this.total = this.itemEdit.total
+            this.value = this.itemEdit.value,
+            this.type = this.itemEdit.type,
+            this.description = this.itemEdit.description
         },
         submitModel(){
             return {
                 "user_id":this.user_id,
-                "used":this.used,
-                "total":this.total,
+                "type":this.type,
+                "value":this.value,
+                "description":this.description
             }
         },
         async getAll(){
-            const response = await creditServices.getAll()
+            const response = await rewardServices.getAll()
             this.items = response.data
         },
         async edit(index){
             this.getIndex = index
             var item = this.items[index]
-            const response = await creditServices.show(item.id)
+            const response = await rewardServices.show(item.id)
             if(response.success==true){
                 this.title = "Update"
                 this.submit = "Update"
@@ -66,18 +68,18 @@ let app = new Vue({
         },
         async destroy(){
             var item = this.items[this.getIndex]
-            const response = await creditServices.destroy(item.id)
+            const response = await rewardServices.destroy(item.id)
             if(response.success==true){
                 this.items.splice(this.getIndex,1)
                 return this.state = 0
             }
         },
         async createOrUpdate(){
-            var body = this.submitModel(this.itemEdit)
+            var body = this.submitModel()
             //Create
             if(this.state==2){
                 console.log(body)
-                const response = await creditServices.store(body)
+                const response = await rewardServices.store(body)
                 if(response.success==true){
                     this.items.push(response.data)
                     return this.state = 0
@@ -88,7 +90,7 @@ let app = new Vue({
             if(this.state==1){
                 console.log(body)
                 var item = this.items[this.getIndex]
-                const response = await creditServices.update(body,item.id)
+                const response = await rewardServices.update(body,item.id)
                 if(response.success==true){
                     this.items[this.getIndex] = response.data
                     return this.state = 0

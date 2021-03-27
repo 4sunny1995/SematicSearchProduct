@@ -26,6 +26,7 @@
                 <th class="text-center">{{trans('reward.total')}}</th>
                 <th class="text-center">{{trans('reward.used')}}</th>
                 <th class="text-center">{{trans('coupon.created_at')}}</th>
+                <th class="text-center">Trạng thái</th>
                 <th class="text-center">{{trans('coupon.action')}}</th>
               </tr>
             </thead>
@@ -39,8 +40,12 @@
                 </td>
                 <td class="text-center"><span >@{{item.created_at}}</span></td>
                 <td class="text-center">
+                  <span class="text text-danger" v-if="item.deleted_at">Đã xóa</span>
+                </td>
+                <td class="text-center">
                   <button class="btn btn-success" @click="edit(index)"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger" @click="openModal(-1,index)"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                  <button class="btn btn-danger" @click="openModal(-1,index)" v-if="!item.deleted_at"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                  <button class="btn btn-default" v-else><i class="fas fa-trash" aria-hidden="true"></i></button>
                 </td>
               </tr>
             </tbody>

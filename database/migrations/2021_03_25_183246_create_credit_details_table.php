@@ -15,7 +15,12 @@ class CreateCreditDetailsTable extends Migration
     {
         Schema::create('credit_details', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable();
+            $table->integer('type')->default(0); //0 là trừ 1 là cộng
+            $table->double('value')->default(0);
+            $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

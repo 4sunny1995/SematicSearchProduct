@@ -2,18 +2,20 @@
 namespace App\Repositories;
 
 use App\Model\Coupon;
-use App\Model\CouponDetail;
+use App\Model\Reward;
+use App\Model\RewardDetail;
+use App\User;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-class CouponRepository
+class RewardHistoryRepository
 {
     public function getAll()
     {
         try
         {
-            $items = Coupon::withTrashed()->get();
+            $items = RewardDetail::with('user')->get();
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -30,14 +32,26 @@ class CouponRepository
     {
         try
         {
-            
-            $data['code'] = Str::random(25);
-            $check = Coupon::create($data);
+            $check = Reward::firstOrCreate(
+                ['user_id' => $data['user_id']], ['user_id ' => $data['user_id']]
+            );
+            if($check){
+                Log::info($check);
+                if($data['type']==1){
+                    $check->total = $check->total + $data['value'];
+                }
+                else {
+                    $check->used = $check->used + $data['value'];
+                }
+                $check->save();
+            }
+            $check = RewardDetail::create($data);
+            $data = RewardDetail::with('user')->where('id',$check->id)->first();
             if($check){
                 return [
                     "message"=>"success",
                     "success"=>true,
-                    "data"=>$check
+                    "data"=>$data
                 ];
             }
         }
@@ -51,12 +65,23 @@ class CouponRepository
     {
         try
         {
-            $item = Coupon::findOrfail($id);
-            $item->update($data);
+            $check = Reward::firstOrCreate(
+                ['user_id' => $data['user_id']], ['user_id ' => $data['user_id']]
+            );
+            if($check){
+                Log::info($check);
+                if($data['type']==1){
+                    $check->total = $check->total + $data['value'];
+                }
+                else {
+                    $check->used = $check->used + $data['value'];
+                }
+                $check->save();
+            }
             return [
                 "message"=>"success",
                 "success"=>true,
-                "data"=>Coupon::findOrfail($id)
+                "data"=>RewardDetail::with('user')->findOrfail($id)
             ];
         }
         catch(Exception $e)
@@ -69,7 +94,7 @@ class CouponRepository
     {
         try
         {
-            $data = Coupon::findOrfail($id);
+            $data = RewardDetail::with('user')->findOrfail($id);
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -86,7 +111,7 @@ class CouponRepository
     {
         try
         {
-            $data = Coupon::findOrfail($id);
+            $data = RewardDetail::findOrfail($id);
             $data->delete();
             return [
                 "message"=>"success",

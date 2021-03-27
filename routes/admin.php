@@ -62,6 +62,9 @@ Route::get('reward-history',function(){
 Route::get('credit',function(){
     return view('admin.credit');
 });
+Route::get('credit-history',function(){
+    return view('admin.credit-history');
+});
 Route::resource("spiders","Admin\SpiderController");
 
 Route::group(['prefix' => 'api'], function () {

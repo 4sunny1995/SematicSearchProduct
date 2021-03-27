@@ -11,7 +11,7 @@ class CreditRepository
     {
         try
         {
-            $data = Credit::with('user')->get();
+            $data = Credit::with('user')->withTrashed()->get();
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -28,7 +28,10 @@ class CreditRepository
     {
         try
         {
-            $data = Credit::create($data);
+            $data = Credit::updateOrCreate(
+                ['user_id' => $data['user_id']],
+                [$data]
+            );
             return [
                 "message"=>"success",
                 "success"=>true,

@@ -44,7 +44,6 @@ let app = new Vue({
         submitModel(){
             return {
                 "user_id":this.user_id,
-                "point":this.point,
                 "used":this.used,
                 "total":this.total
             }

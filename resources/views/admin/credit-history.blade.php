@@ -7,8 +7,8 @@
   }
 </style>
 @section('content')
-    <div id="reward-history" v-cloak>
-        @include('table.reward-history')
+    <div id="credit-history" v-cloak>
+        @include('table.credit-history')
         <div class="a-mask" v-show="state!=0"></div>
         <div class="a-background" v-show="state!=0">
             <div class="a-modal" v-show="state>0">
@@ -66,6 +66,6 @@
     </div>
 @endsection
 @section('vuejs')
-    <script src="{{mix('js/vuejs/reward-history/c-reward-history.js')}}"></script>
-    <script src="{{mix('js/vuejs/reward-history/s-reward-history.js')}}"></script>
+    <script src="{{mix('js/vuejs/credit-history/c-credit-history.js')}}"></script>
+    <script src="{{mix('js/vuejs/credit-history/s-credit-history.js')}}"></script>
 @endsection

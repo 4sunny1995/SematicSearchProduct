@@ -11,7 +11,7 @@ class RewardRepository
     {
         try
         {
-            $data = Reward::with('user')->get();
+            $data = Reward::with('user')->withTrashed()->get();
             return [
                 "message"=>"success",
                 "success"=>true,
