@@ -26,9 +26,9 @@
        </div>
        <div class="w-100">
            <div class="row text-center p-2">|
-               <div class="w-25 ml-25" @click="gotoReward($event)" data-id="{{Auth::id()*234}}">Reward </div>|
-               <div class="w-25" @click="gotoCredit($event)" data-id="{{Auth::id()*234}}">Credit</div>|
-               <div class="w-25" @click="gotoCoupon($event)" data-id="{{Auth::id()*234}}">Coupon</div>|
+               <div class="w-25 ml-25"  data-id="{{Auth::id()*234}}"><a href="/shop/reward/{{Auth::id()}}">Reward</a> </div>|
+               <div class="w-25" data-id="{{Auth::id()*234}}"><a href="/shop/credit/{{Auth::id()}}">Credit</a></div>|
+               <div class="w-25" data-id="{{Auth::id()*234}}"><a href="/shop/coupon">Coupon</a></div>|
            </div>
        </div>
        <div class="w-100">

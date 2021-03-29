@@ -22,7 +22,7 @@
             <thead>
               <tr>
                 <th class="text-center">{{trans('post.id')}}</th>
-                <th class="text-center w-25">{{trans('post.titlePost')}}</th>
+                <th class="text-center">{{trans('post.titlePost')}}</th>
                 <th class="text-center">{{trans('post.content')}}</th>
                 <th class="text-center">{{trans('post.image')}}</th>
                 <th class="text-center">{{trans('post.created_at')}}</th>

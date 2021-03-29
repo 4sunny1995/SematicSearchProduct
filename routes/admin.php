@@ -47,6 +47,9 @@ Route::get('sms',function(){
 Route::get('posts', function(){
     return view('admin.posts');
 });
+Route::get('comments',function(){
+    return view('admin.comment');
+});
 Route::get('coupon',function(){
     return view('admin.coupon');
 });

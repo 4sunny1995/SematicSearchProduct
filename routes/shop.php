@@ -16,15 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return view('shop.index');
 });
-Route::get('/reward',function(){
-    return view('user.reward');
-});
-Route::get('/credit',function(){
-    return view('user.credit');
-});
-Route::get('/coupon',function(){
-    return view('user.coupon');
-});
+
 Route::get('/profile',function(){
     return view('user.profile');
 });
@@ -44,3 +36,10 @@ Route::prefix('api')->group(function () {
     Route::get('getCurrentUser','HomeController@getCurrentUser');
     Route::get('getUserById/{id}','HomeController@getUserById');
 });
+
+Route::get('/reward/{id}',"AccountController@reward");
+
+Route::get('/coupon',function(){
+    return view('user.coupon');
+});
+Route::get('/credit/{id}',"AccountController@credit");
