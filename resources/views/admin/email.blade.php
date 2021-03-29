@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('content')
-    <div class="card card-primary card-outline" id="sendEmail">
+    <div class="card card-primary card-outline" id="sendEmail" v-cloak>
         <div class="card-header">
         <h3 class="card-title">Email</h3>
         </div>

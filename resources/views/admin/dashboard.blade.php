@@ -1,9 +1,12 @@
 @extends('admin.master')
 @section('content')
     
-    <div id="dashboard" >
-        
-        <div class="broader">
+    <div id="dashboard" v-cloak>
+        <div v-if="isLoading==true">
+          @include('layouts.loading')
+        </div>
+        <div v-else>
+          <div class="broader">
             <div class="row" >
                 <div class="col-12">
                   <div class="card">
@@ -98,6 +101,7 @@
                   <!-- /.card -->
                 </div>
               </div>
+        </div>
         </div>
     </div>
 @endsection

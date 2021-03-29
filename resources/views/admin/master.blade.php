@@ -30,9 +30,10 @@
   <!-- Styles -->
   {{--  <link href="{{ asset('css/app.css') }}" rel="stylesheet">  --}}
   <link rel="stylesheet" href="{{asset('css/layouts.css')}}">
+  <link rel="stylesheet" href="{{asset('css/loading.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper w-100">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -238,9 +239,9 @@
               </li>
     
               <li class="nav-item">
-                <a href="{{URL('/admin/histories')}}" class="nav-link">
+                <a href="{{URL('/admin/spider-histories')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>{{trans('dashboard.words')}}</p>
+                  <p>Crawler Histories</p>
                 </a>
               </li>
               
@@ -271,9 +272,35 @@
           </li>
 
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-              <p>{{trans('dashboard.product')}}</p>
+            
+            <a href="#" class="nav-link">
+              <p>
+                Products
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">3</span>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+
+                <a href="{{URL('/admin/products')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{trans('dashboard.product')}}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{URL('/admin/categories')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{URL('/admin/categoryParent')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category Parent</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
            

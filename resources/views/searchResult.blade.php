@@ -12,7 +12,17 @@
   </head>
   <body>
     <div class="container-fluid">
-        <div class="col-md-10 m-auto">
+      <form action="/search" method="GET" class="form-group" style="padding-top: 15px">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="search" value="{{$key}}">
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </div>
+        </div> 
+      </form>
+        <div class="col-md-10">
             @foreach ($tag as $item)
             <a href="{{'/search/product/'.$item['id']}}" class="tag"><strong>{{$item['tag']}}</strong></a>
             @endforeach
@@ -24,11 +34,19 @@
             <div class="block">
                 <div class="img-container">
                     <div class="img">
-                        @if(substr($item['image'],0,4)=="http")
-                        <img src="{{$item['image']}}" alt="img-item" width="100%">
-                        @else
-                        <img src="{{$item['url'].$item['image']}}" alt="img-item" width="100%">
-                        @endif
+                       @if (!$item['image'])
+                                <img src="{{asset('img/loading.gif')}}" alt="img-item" width="100%">
+                            @else
+                                <div class="img">
+                                    @if(substr($item['image'],0,4)=="http"||substr($item['image'],0,2)=="//")
+                                        <img src="{{$item['image']}}" alt="img-item" width="100%">
+                                    @else
+                                        <img src="{{$item['url'].$item['image']}}" alt="img-item" width="100%">
+                                    @endif
+                                </div>
+                            @endif
+                            
+                        
                     </div>
                 </div>
                 <div class="product-detail-container">

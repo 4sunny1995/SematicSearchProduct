@@ -31,10 +31,11 @@ class SearchRepository
             {
                 $word = $items[$i];
                 $temp = $this->findReferences($word);
+                
                 if($temp){
+                    // dd($temp,$this->result);
                     for($in=0;$in<count($temp);$in++){
                         array_push($this->result,$temp[$i]);
-                        // var_dump($temp[$i],"---1---");
                     }
                 }
                 for($j=$i+1;$j<count($items);$j++)
@@ -81,32 +82,37 @@ class SearchRepository
             }
             return $result;
         }
+        //Tìm từ tham chiếu
         public function findReferences($word)
         {
-            $result = [];
-            $broaders = $this->getBroaders($word);
-            $narrowers = $this->getNarrowers($word);
-            if($broaders)
+            try
             {
-                for($i=0;$i<count($broaders);$i++){
-                    array_push($result,$broaders[$i]['refer']);
-                    // var_dump($broaders[$i]['refer'],"-----3------");
+                $result = [];
+                $broaders = $this->getBroaders($word);
+                $narrowers = $this->getNarrowers($word);
+                if($broaders)
+                {
+                    for($i=0;$i<count($broaders);$i++){
+                        array_push($result,$broaders[$i]['refer']);
+                    }
+                    
                 }
-                // $this->bro=$this->mergeWord($broaders,$result);
-                // array_merge($result,$broaders);
-                // dd($this->result);
+                if($narrowers)
+                {
+                    for($i=0;$i<count($narrowers);$i++){
+                        array_push($result,$narrowers[$i]['refer']);
+                    }
+                    // dd($result);
+                }
+                
+                // var_dump($this->result,$this->bro,$this->nar);
+                return $result;
             }
-            if($narrowers)
+            catch(Exception $e)
             {
-                for($i=0;$i<count($narrowers);$i++){
-                    array_push($result,$narrowers[$i]['refer']);
-                    // var_dump($broaders[$i]['refer'],"-----4------");
-                }
-                // $this->nar=$this->mergeWord($narrowers,$result);
-                // array_merge($result,$narrowers);
+                dd($e->getMessage());
+                return [];
             }
-            // var_dump($this->result,$this->bro,$this->nar);
-            return $result;
         }
         public function mergeWord(array $from,array $to)
         {

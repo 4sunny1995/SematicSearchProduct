@@ -8,5 +8,5 @@
         'image'=>"Selector của hình ảnh sản phẩm",
         'submit'=>"Thực thi",
         'hastag'=>"thẻ đánh dấu",
-        'list'=>"Selector của list sản phẩm"
+        'list'=>"Selector của của container mỗi sản phẩm"
     ];

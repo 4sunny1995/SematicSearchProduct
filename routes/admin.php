@@ -68,6 +68,12 @@ Route::get('credit',function(){
 Route::get('credit-history',function(){
     return view('admin.credit-history');
 });
+Route::get('products',function(){
+    return view('admin.product');
+});
+Route::get('spider-histories',function(){
+    return view('admin.crawler-histories');
+});
 Route::resource("spiders","Admin\SpiderController");
 
 Route::group(['prefix' => 'api'], function () {
@@ -75,6 +81,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('narrowers', 'Admin\NarrowerController');
     Route::resource('histories', 'Admin\HistoryController');
     Route::resource('posts', 'Admin\PostController');
+    Route::resource('crawler-histories', 'Admin\CrawlerHistoryController');
     Route::get('getBroader','Admin\DashboardController@getBroader');
     Route::get('getNarrower','Admin\DashboardController@getNarrower');
     Route::get('getHistory','Admin\DashboardController@getHistory');

@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
-class Product extends Model
+class Category extends Model
 {
     use Notifiable,SoftDeletes;
+    
     protected $fillable = [
-        "name",'price','url','image','hasTag','content'
+        "id","name","code"
     ];
 }

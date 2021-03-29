@@ -25,7 +25,7 @@ class SearchController extends Controller
         $repo = new ProductRepository();
         $items = $repo ->getProducts($tag);
         // dd($tag);
-        return view('searchResult',compact('tag','items'));
+        return view('searchResult',compact('tag','items','key'));
     }
     public function getProductByTag($id)
     {

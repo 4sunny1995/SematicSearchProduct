@@ -56,12 +56,13 @@ body,html{
     object-fit: contain;
 }
 .product-name{
-    font-size: 18pt;
+    font-size: 15px;
     padding: 5px;
     text-align: center;
 }
 .product-price{
-    font-size: 20pt;
+    font-size: 18px;
+    padding-left: 15px;
 }
 .hastag{
     float: right;
@@ -69,7 +70,7 @@ body,html{
     background-color: rgb(225,225,225);
     padding: 5px;
     border-radius: 10px;
-    font-size: 14pt;
+    font-size: 14px;
     text-align: center;
 }
 .tag{

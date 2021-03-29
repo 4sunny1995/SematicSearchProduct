@@ -25,6 +25,7 @@ mix.js('resources/js/vuejs/dashboard/c-dashboard.js', 'public/js/vuejs/dashboard
 mix.js('resources/js/vuejs/dashboard/s-dashboard.js', 'public/js/vuejs/dashboard');
 mix.js('resources/js/vuejs/email/c-email.js', 'public/js/vuejs/email');
 mix.js('resources/js/vuejs/email/s-email.js', 'public/js/vuejs/email');
+
 //Shop Site
 mix.js('resources/js/vuejs/mainpage/c-mainpage.js', 'public/js/vuejs/mainpage');
 mix.js('resources/js/vuejs/mainpage/s-mainpage.js', 'public/js/vuejs/mainpage');
@@ -51,4 +52,8 @@ mix.js('resources/js/vuejs/user/s-user.js', 'public/js/vuejs/user');
  //Post
  mix.js('resources/js/vuejs/post/c-post.js', 'public/js/vuejs/post');
  mix.js('resources/js/vuejs/post/s-post.js', 'public/js/vuejs/post');
+
+ //Product
+mix.js('resources/js/vuejs/product/c-product.js', 'public/js/vuejs/product');
+mix.js('resources/js/vuejs/product/s-product.js', 'public/js/vuejs/product');
 

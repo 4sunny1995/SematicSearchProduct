@@ -10,7 +10,6 @@ use Exception;
         private $result = [];
         public function getProducts(array $tags)
         {
-            // dd($tags);
             try
             {
                 for($i=0;$i<count($tags);$i++)

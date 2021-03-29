@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    <div class="spider-container" id="spider">
+    <div class="spider-container" id="spider" v-cloak>
         <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">{{trans('spider.title')}}</h3>
@@ -46,6 +46,10 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">{{trans('spider.hastag')}}</label>
                     <input type="text" class="form-control" id="" placeholder="{{trans('spider.hastag')}}" name="hasTag" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Category</label>
+                    <input type="text" class="form-control" id="" placeholder="Category" name="category">
                   </div>
               </div>
               <!-- /.card-body -->
