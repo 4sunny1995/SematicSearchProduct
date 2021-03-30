@@ -15219,7 +15219,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     category: null,
     title: "Create",
     submit: "Create",
-    user_id: null
+    user_id: null,
+    hiddenIndex: -1
   },
   mounted: function mounted() {
     this.onLoadFunction();
@@ -15414,6 +15415,87 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
           }
         }, _callee4);
       }))();
+    },
+    crawlAll: function crawlAll() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _this5.isLoading = true;
+                _context6.next = 3;
+                return _this5.items.forEach( /*#__PURE__*/function () {
+                  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(item) {
+                    var response;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+                      while (1) {
+                        switch (_context5.prev = _context5.next) {
+                          case 0:
+                            _context5.next = 2;
+                            return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].crawl(item);
+
+                          case 2:
+                            response = _context5.sent;
+
+                          case 3:
+                          case "end":
+                            return _context5.stop();
+                        }
+                      }
+                    }, _callee5);
+                  }));
+
+                  return function (_x) {
+                    return _ref.apply(this, arguments);
+                  };
+                }());
+
+              case 3:
+                // const response = await crawlerServices.crawlAll()
+                // if(response.success ==true ){
+                _this5.isLoading = false;
+                _this5.state = 0; // }
+
+              case 5:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    },
+    crawl: function crawl(index) {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var btn, item, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                btn = _this6.$refs.crawlButton[index];
+                _this6.isLoading = true;
+                item = _this6.items[index];
+                _context7.next = 5;
+                return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].crawl(item);
+
+              case 5:
+                response = _context7.sent;
+
+                if (response.success == true) {
+                  _this6.isLoading = false;
+                  _this6.hiddenIndex = index;
+                }
+
+              case 7:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
     }
   }
 });
@@ -15579,12 +15661,68 @@ var show = /*#__PURE__*/function () {
   };
 }();
 
+var crawlAll = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/reSpider");
+
+          case 2:
+            response = _context6.sent;
+            return _context6.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function crawlAll() {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+var crawl = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(item) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url + "/reSpider", item);
+
+          case 2:
+            response = _context7.sent;
+            return _context7.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+
+  return function crawl(_x6) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: store,
   getAll: getAll,
   update: update,
   destroy: destroy,
-  show: show
+  show: show,
+  crawlAll: crawlAll,
+  crawl: crawl
 });
 
 /***/ }),

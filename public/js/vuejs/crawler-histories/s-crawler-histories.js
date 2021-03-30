@@ -3046,12 +3046,68 @@ var show = /*#__PURE__*/function () {
   };
 }();
 
+var crawlAll = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/reSpider");
+
+          case 2:
+            response = _context6.sent;
+            return _context6.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function crawlAll() {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+var crawl = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(item) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url + "/reSpider", item);
+
+          case 2:
+            response = _context7.sent;
+            return _context7.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+
+  return function crawl(_x6) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   store: store,
   getAll: getAll,
   update: update,
   destroy: destroy,
-  show: show
+  show: show,
+  crawlAll: crawlAll,
+  crawl: crawl
 });
 
 /***/ }),

@@ -98,4 +98,46 @@ class SpiderRepository
             // dd($cate);
             return $cate->id;
         }
+        public function reSpiderAll()
+        {
+            try
+            {
+                dd(123);
+                Log::info('----------ReSpider All---------------');
+                $items = CrawlerHistory::all()->each(function($item){
+                    $string = '------------------ReSpider '.$item['id'].'-----------------------------';
+                    Log::info($string);
+                    dd($item);
+                    $this->crawlerByGoutte($item->toArray());
+                });
+                return [
+                    "message"=>"success",
+                    "success"=>true,
+                    "data"=>$items
+                ];
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+            }
+        }
+        public function reSpiderItem(array $body)
+        {
+            $credential = $body;
+            try
+            {
+                $string = '------------------ReSpider '.$credential['id'].'-----------------------------';
+                Log::info($string);
+                $this->crawlerByGoutte($credential);
+                return [
+                    "message"=>"success",
+                    "success"=>true,
+                    "data"=>$body
+                ];
+            }
+            catch(Exception $e)
+            {
+                Log::info($e->getMessage());
+            }
+        }
     }

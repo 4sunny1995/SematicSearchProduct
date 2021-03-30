@@ -20,7 +20,8 @@ let app = new Vue({
         category:null,
         title:"Create",
         submit:"Create",
-        user_id:null
+        user_id:null,
+        hiddenIndex:-1
         
     },
     mounted(){
@@ -111,5 +112,27 @@ let app = new Vue({
                 
             }
         },
+        async crawlAll(){
+            this.isLoading = true
+            await this.items.forEach(async function(item){
+                const response = await crawlerServices.crawl(item)
+            })
+            // const response = await crawlerServices.crawlAll()
+            // if(response.success ==true ){
+            this.isLoading = false
+            this.state = 0
+            // }
+        },
+        async crawl(index){
+            var btn = this.$refs.crawlButton[index]
+            this.isLoading = true
+            
+            var item = this.items[index]
+            const response = await crawlerServices.crawl(item)
+            if(response.success ==true ){
+                this.isLoading = false
+                this.hiddenIndex = index
+            }
+        }
     }
 })

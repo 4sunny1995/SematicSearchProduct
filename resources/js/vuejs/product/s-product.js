@@ -1,7 +1,7 @@
 import Axios from "axios"
 import config from "../../config"
 
-let uri = config.adminURL + "posts"
+let uri = config.adminURL + "products"
 let getAll = async ()=>{
     const response = await Axios.get(uri)
     return response.data
@@ -18,6 +18,10 @@ let destroy = async (id)=>{
     const response = await Axios.delete(uri+"/"+id)
     return response.data
 }
+let show = async (id) => {
+    const response = await Axios.get(uri+"/"+id)
+    return response.data
+}
 let upload = async (formData) => {
     const response = await Axios.post('/uploadFile',formData,{
         headers:{
@@ -32,5 +36,6 @@ export default {
     create : create,
     update : update,
     destroy : destroy,
+    show:show,
     upload:upload
 }

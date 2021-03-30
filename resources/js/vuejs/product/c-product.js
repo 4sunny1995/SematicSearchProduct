@@ -14,13 +14,12 @@ let app = new Vue({
         id:null,
         image:null,
         file:"",
-        url:"",
+        url:null,
+        content:null,
+        name:null,
+        price:null,
+        hasTag:null,
         basicURL:config.basicURL,
-        model:{
-            "title":"",
-            "content":"",
-            "image":""
-        },
         recommentList:[]
     },
     mounted(){
@@ -35,6 +34,28 @@ let app = new Vue({
                 this.getAll()
             ]
         },
+        createNew(){
+            this.state = 2
+            this.itemEdit = null
+            this.title = "Create new"
+            this.submit = "Create"
+        },
+        initModel(){
+            this.name = this.itemEdit.name
+            this.price = this.itemEdit.price,
+            this.content = this.itemEdit.content,
+            this.image = this.itemEdit.image,
+            this.hasTag = this.itemEdit.hasTag
+        },
+        submitModel(){
+            return {
+                "name":this.name,
+                "price":this.price,
+                "content":this.content,
+                "image":this.image,
+                "hasTag":this.hasTag
+            }
+        },
         async getAll(){
             let _this = this
             const response = await postServices.getAll()
@@ -42,74 +63,48 @@ let app = new Vue({
                 _this.items = response.data
             }
         },
-        async createOrUpdate(){
-            let _this = this
-            console.log(_this.model)
-            _this.initModel()
-            if(_this.state===2){
-                //create 
-                const response = await postServices.create(_this.model)
-                if(response.success==true){
-                    console.log(_this.items)
-                    _this.items.push(response.data)
-                    _this.state = 0
-                    console.log(_this.items)
-                }
-            }
-            else {
-                //update
-                let item = _this.items[_this.getIndex]
-                
-                const response = await postServices.update(_this.model,item.id)
-                console.log(response)
-                if(response.success==true){
-                    _this.items[_this.getIndex] = response.data
-                    _this.state = 0
-                    console.log(response.data)
-                    console.log(_this.items)
-                }
-            }
-
-        },
-        async deleteItem(){
-            let _this = this
-            let id = _this.items[_this.getIndex].id
-            const response = await postServices.destroy(id)
-            console.log(response)
+        async edit(index){
+            this.getIndex = index
+            var item = this.items[index]
+            const response = await postServices.show(item.id)
             if(response.success==true){
-                _this.items.splice(_this.getIndex,1)
-                console.log(_this.items)
-                _this.state = 0
+                this.title = "Update"
+                this.submit = "Update"
+                this.itemEdit = response.data
+                this.state = 1
+                this.initModel()
             }
         },
-        openModal(state,index){
-            let _this = this
-            _this.state = state
-            _this.getIndex = index
-            let item = _this.items[index]
-            _this.title = item.title
-            _this.content = item.content,
-            _this.image = item.image
-            _this.titlePost = "Update Post"
-            _this.submit = "Update"
+        async destroy(){
+            var item = this.items[this.getIndex]
+            const response = await postServices.destroy(item.id)
+            if(response.success==true){
+                this.items.splice(this.getIndex,1)
+                return this.state = 0
+            }
         },
-        createNew(){
-            let _this = this
-            //create state
-            _this.state = 2
-            _this.title = ""
-            _this.content = ""
-            _this.image = ""
-            _this.titlePost = "Create Post"
-            _this.submit = "Create"
-            
-        },
-        initModel(){
-            let _this = this
-            _this.model = {
-                "title":_this.title,
-                "content":_this.content,
-                "image":_this.image
+        async createOrUpdate(){
+            var body = this.submitModel(this.itemEdit)
+            //Create
+            if(this.state==2){
+                console.log(body)
+                const response = await postServices.store(body)
+                if(response.success==true){
+                    this.items.push(response.data)
+                    return this.state = 0
+                }
+                
+            }
+            //Update
+            if(this.state==1){
+                console.log(body)
+                var item = this.items[this.getIndex]
+                const response = await postServices.update(body,item.id)
+                if(response.success==true){
+                    this.items[this.getIndex] = response.data
+                    return this.state = 0
+                }
+                
             }
         },
         async upload(){
@@ -120,6 +115,11 @@ let app = new Vue({
             const response = await postServices.upload(formData)
             _this.image = response.data
             _this.basicURL = config.basicURL;
+        },
+        openModal(action,index){
+            this.state = action
+            this.itemEdit = this.items[index]
+            this.getIndex = index
         },
         // async recomment(){
         //     var _this = this

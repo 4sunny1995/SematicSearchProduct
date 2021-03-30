@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\SpiderRepository;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
-class SpiderController extends Controller
+class ProductController extends Controller
 {
+    public function __construct()
+    {   
+        $this->repo = new ProductRepository();
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,10 @@ class SpiderController extends Controller
      */
     public function index()
     {
-        return view('admin.spider');
+        $result  = $this->repo ->getAll();
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -36,19 +44,10 @@ class SpiderController extends Controller
      */
     public function store(Request $request)
     {
-        $data  = $request->validate([
-            'domain' => 'required|max:255|min:6',
-            'url' => 'required|max:255|min:6',
-            'priceProduct' => 'required|max:255',
-            'nameProduct'=>'required|max:255',
-            'imageProduct'=>'required|max:255',
-            'hastag'=>'max:255',
-            'listProduct'=>'required|max:255'
-        ]);
-        $repo = new SpiderRepository();
-        $result = $repo -> crawlerByGoutte($request->all());
-        // dd($result);
-        return view('admin/resultCrawler',compact('result'));
+        $result  = $this->repo ->store($request->all());
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -59,7 +58,10 @@ class SpiderController extends Controller
      */
     public function show($id)
     {
-        //
+        $result  = $this->repo ->show($id);
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -82,7 +84,11 @@ class SpiderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result  = $this->repo ->update($request->all(),$id);
+        // dd($result);
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -93,21 +99,7 @@ class SpiderController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function reSpiderAll()
-    {
-        dd(12);
-        $repo = new SpiderRepository();
-        $result = $repo -> reSpiderAll();
-        if($result){
-            return $result;
-        }
-    }
-    public function reSpiderItem(Request $request)
-    {
-        $repo = new SpiderRepository();
-        $result = $repo -> reSpiderItem($request->all());
+        $result  = $this->repo ->destroy($id);
         if($result){
             return $result;
         }

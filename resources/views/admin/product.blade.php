@@ -19,22 +19,35 @@
                     <!-- /.card-header --> 
                       <div class="card-body">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">{{trans('post.titlePost')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('post.titlePost')}}" name="title" v-model="title">
+                          <label for="exampleInputEmail1">Name</label>
+                          <input type="text" class="form-control"  placeholder="" name="name" v-model="name">
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="exampleInputEmail1">Price</label>
+                            <input type="text" class="form-control"  placeholder="" name="price" v-model="price">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">hasTag</label>
+                              <input type="text" class="form-control"  placeholder="" name="hasTag" v-model="hasTag">
+                            </div>
+                          </div>
+                          
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">{{trans('post.content')}}</label>
-                          {{--  <input type="text" class="form-control"  placeholder="{{trans('post.content')}}" name="content" v-model="content">  --}}
-                          <textarea class="form-control"  name="content" id="content" cols="30" rows="5" v-model="content"></textarea>
+                          <textarea class="form-control"  name="content" id="content" cols="30" rows="2" v-model="content"></textarea>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">{{trans('post.image')}}</label>
-                          <input type="file" class="form-control-file border" ref="file" placeholder="{{trans('post.image')}}" name="image" @change="upload()">
+                          <div class="row">
+                            <label for="exampleInputEmail1">{{trans('post.image')}}</label>
+                            <input type="file" class="form-control-file border" ref="file" placeholder="{{trans('post.image')}}" name="image" @change="upload()">
+                          </div>
                         </div>
-                        {{--  <div class="form-group">
-                          <label for="exampleInputPassword1">{{trans('post.url')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('post.url')}}" name="url" v-model="url" @change = "recomment()">
-                        </div>  --}}
+                       
                         <div class="form-group text-center">
                           <img v-bind:src="basicURL+image" alt="" width="100%" class="post-img" v-show="image">
                         </div>

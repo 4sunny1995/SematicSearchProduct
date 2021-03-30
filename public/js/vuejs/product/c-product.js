@@ -2902,15 +2902,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _s_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./s-product */ "./resources/js/vuejs/product/s-product.js");
 
 
+var _data;
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 var app = new Vue({
   el: "#product",
-  data: {
+  data: (_data = {
     items: [],
     state: 0,
     getIndex: null,
@@ -2922,15 +2926,8 @@ var app = new Vue({
     id: null,
     image: null,
     file: "",
-    url: "",
-    basicURL: _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL,
-    model: {
-      "title": "",
-      "content": "",
-      "image": ""
-    },
-    recommentList: []
-  },
+    url: null
+  }, _defineProperty(_data, "content", null), _defineProperty(_data, "name", null), _defineProperty(_data, "price", null), _defineProperty(_data, "hasTag", null), _defineProperty(_data, "basicURL", _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL), _defineProperty(_data, "recommentList", []), _data),
   mounted: function mounted() {
     this.onloadFunction();
   },
@@ -2938,6 +2935,25 @@ var app = new Vue({
   methods: {
     onloadFunction: function onloadFunction() {
       return [this.getAll()];
+    },
+    createNew: function createNew() {
+      this.state = 2;
+      this.itemEdit = null;
+      this.title = "Create new";
+      this.submit = "Create";
+    },
+    initModel: function initModel() {
+      this.name = this.itemEdit.name;
+      this.price = this.itemEdit.price, this.content = this.itemEdit.content, this.image = this.itemEdit.image, this.hasTag = this.itemEdit.hasTag;
+    },
+    submitModel: function submitModel() {
+      return {
+        "name": this.name,
+        "price": this.price,
+        "content": this.content,
+        "image": this.image,
+        "hasTag": this.hasTag
+      };
     },
     getAll: function getAll() {
       var _this2 = this;
@@ -2968,62 +2984,33 @@ var app = new Vue({
         }, _callee);
       }))();
     },
-    createOrUpdate: function createOrUpdate() {
+    edit: function edit(index) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this, response, item, _response;
-
+        var item, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this = _this3;
-                console.log(_this.model);
+                _this3.getIndex = index;
+                item = _this3.items[index];
+                _context2.next = 4;
+                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].show(item.id);
 
-                _this.initModel();
-
-                if (!(_this.state === 2)) {
-                  _context2.next = 10;
-                  break;
-                }
-
-                _context2.next = 6;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].create(_this.model);
-
-              case 6:
+              case 4:
                 response = _context2.sent;
 
                 if (response.success == true) {
-                  console.log(_this.items);
+                  _this3.title = "Update";
+                  _this3.submit = "Update";
+                  _this3.itemEdit = response.data;
+                  _this3.state = 1;
 
-                  _this.items.push(response.data);
-
-                  _this.state = 0;
-                  console.log(_this.items);
+                  _this3.initModel();
                 }
 
-                _context2.next = 16;
-                break;
-
-              case 10:
-                //update
-                item = _this.items[_this.getIndex];
-                _context2.next = 13;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].update(_this.model, item.id);
-
-              case 13:
-                _response = _context2.sent;
-                console.log(_response);
-
-                if (_response.success == true) {
-                  _this.items[_this.getIndex] = _response.data;
-                  _this.state = 0;
-                  console.log(_response.data);
-                  console.log(_this.items);
-                }
-
-              case 16:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -3031,31 +3018,30 @@ var app = new Vue({
         }, _callee2);
       }))();
     },
-    deleteItem: function deleteItem() {
+    destroy: function destroy() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this, id, response;
-
+        var item, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this = _this4;
-                id = _this.items[_this.getIndex].id;
-                _context3.next = 4;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].destroy(id);
+                item = _this4.items[_this4.getIndex];
+                _context3.next = 3;
+                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].destroy(item.id);
 
-              case 4:
+              case 3:
                 response = _context3.sent;
-                console.log(response);
 
-                if (response.success == true) {
-                  _this.items.splice(_this.getIndex, 1);
-
-                  console.log(_this.items);
-                  _this.state = 0;
+                if (!(response.success == true)) {
+                  _context3.next = 7;
+                  break;
                 }
+
+                _this4.items.splice(_this4.getIndex, 1);
+
+                return _context3.abrupt("return", _this4.state = 0);
 
               case 7:
               case "end":
@@ -3065,66 +3051,103 @@ var app = new Vue({
         }, _callee3);
       }))();
     },
-    openModal: function openModal(state, index) {
-      var _this = this;
-
-      _this.state = state;
-      _this.getIndex = index;
-      var item = _this.items[index];
-      _this.title = item.title;
-      _this.content = item.content, _this.image = item.image;
-      _this.titlePost = "Update Post";
-      _this.submit = "Update";
-    },
-    createNew: function createNew() {
-      var _this = this; //create state
-
-
-      _this.state = 2;
-      _this.title = "";
-      _this.content = "";
-      _this.image = "";
-      _this.titlePost = "Create Post";
-      _this.submit = "Create";
-    },
-    initModel: function initModel() {
-      var _this = this;
-
-      _this.model = {
-        "title": _this.title,
-        "content": _this.content,
-        "image": _this.image
-      };
-    },
-    upload: function upload() {
+    createOrUpdate: function createOrUpdate() {
       var _this5 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _this, formData, response;
+        var body, response, item, _response;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _this = _this5;
-                _this.file = _this.$refs.file.files[0];
-                formData = new FormData();
-                formData.append('file', _this.file);
-                _context4.next = 6;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].upload(formData);
+                body = _this5.submitModel(_this5.itemEdit); //Create
 
-              case 6:
+                if (!(_this5.state == 2)) {
+                  _context4.next = 9;
+                  break;
+                }
+
+                console.log(body);
+                _context4.next = 5;
+                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].store(body);
+
+              case 5:
                 response = _context4.sent;
-                _this.image = response.data;
-                _this.basicURL = _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL;
+
+                if (!(response.success == true)) {
+                  _context4.next = 9;
+                  break;
+                }
+
+                _this5.items.push(response.data);
+
+                return _context4.abrupt("return", _this5.state = 0);
 
               case 9:
+                if (!(_this5.state == 1)) {
+                  _context4.next = 18;
+                  break;
+                }
+
+                console.log(body);
+                item = _this5.items[_this5.getIndex];
+                _context4.next = 14;
+                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].update(body, item.id);
+
+              case 14:
+                _response = _context4.sent;
+
+                if (!(_response.success == true)) {
+                  _context4.next = 18;
+                  break;
+                }
+
+                _this5.items[_this5.getIndex] = _response.data;
+                return _context4.abrupt("return", _this5.state = 0);
+
+              case 18:
               case "end":
                 return _context4.stop();
             }
           }
         }, _callee4);
       }))();
+    },
+    upload: function upload() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var _this, formData, response;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _this = _this6;
+                _this.file = _this.$refs.file.files[0];
+                formData = new FormData();
+                formData.append('file', _this.file);
+                _context5.next = 6;
+                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].upload(formData);
+
+              case 6:
+                response = _context5.sent;
+                _this.image = response.data;
+                _this.basicURL = _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL;
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    openModal: function openModal(action, index) {
+      this.state = action;
+      this.itemEdit = this.items[index];
+      this.getIndex = index;
     } // async recomment(){
     //     var _this = this
     //     const response = await postServices.recomment(_this.url)
@@ -3159,7 +3182,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "posts";
+var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "products";
 
 var getAll = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -3269,26 +3292,21 @@ var destroy = /*#__PURE__*/function () {
   };
 }();
 
-var upload = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(formData) {
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/uploadFile', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            });
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(uri + "/" + id);
 
           case 2:
             response = _context5.sent;
-            console.log(response.data);
             return _context5.abrupt("return", response.data);
 
-          case 5:
+          case 4:
           case "end":
             return _context5.stop();
         }
@@ -3296,8 +3314,40 @@ var upload = /*#__PURE__*/function () {
     }, _callee5);
   }));
 
-  return function upload(_x5) {
+  return function show(_x5) {
     return _ref5.apply(this, arguments);
+  };
+}();
+
+var upload = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(formData) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/uploadFile', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+
+          case 2:
+            response = _context6.sent;
+            console.log(response.data);
+            return _context6.abrupt("return", response.data);
+
+          case 5:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function upload(_x6) {
+    return _ref6.apply(this, arguments);
   };
 }();
 
@@ -3306,6 +3356,7 @@ var upload = /*#__PURE__*/function () {
   create: create,
   update: update,
   destroy: destroy,
+  show: show,
   upload: upload
 });
 

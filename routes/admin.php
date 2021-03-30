@@ -82,9 +82,14 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('histories', 'Admin\HistoryController');
     Route::resource('posts', 'Admin\PostController');
     Route::resource('crawler-histories', 'Admin\CrawlerHistoryController');
+    Route::resource('products', 'Admin\ProductController');
     Route::get('getBroader','Admin\DashboardController@getBroader');
     Route::get('getNarrower','Admin\DashboardController@getNarrower');
     Route::get('getHistory','Admin\DashboardController@getHistory');
     Route::post('sendEmail',"Admin\EmailController@sendEmail");
+    // Route::get('crawler-histories/reSpider',function(){
+    //     return 1;
+    // });
+    Route::post('crawler-histories/reSpider',"Admin\SpiderController@reSpiderItem");
 });
 Route::get("logout","Auth\LoginController@logout")->name('admin.logout');

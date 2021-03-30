@@ -23,10 +23,21 @@ let show = async (id) => {
     const response = await Axios.get(url+"/"+id)
     return response.data
 }
+let crawlAll = async () => {
+    const response = await Axios.get(url + "/reSpider")
+    return response.data
+}
+let crawl = async (item) => {
+    const response = await Axios.post(url + "/reSpider",item)
+    return response.data
+}
 export default {
     store:store,
     getAll:getAll,
     update:update,
     destroy:destroy,
-    show:show
+    show:show,
+    crawlAll:crawlAll,
+    crawl:crawl
+
 }

@@ -3,16 +3,18 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Lịch sử crawler</h3>
-
+          
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
               <div class="input-group-append">
+                <button type="button" class="btn btn-secondary mr-2" @click="openModal(-2,null)" title="Crawler all">CA</button>
                 <button type="button" class="btn btn-primary" @click="createNew()">
                   <i class="fa fa-plus-square" aria-hidden="true"></i>
                   {{trans('broader.createText')}}
                 </button>
+               
               </div>
-
+              
             </div>
           </div>
         </div>
@@ -46,6 +48,8 @@
                 <td>
                   <button class="btn btn-success" @click="edit(index)"><i class="fas fa-edit"></i></button>
                   <button class="btn btn-danger" @click="openModal(-1,index)"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                  <button class="btn btn-secondary" v-show="hiddenIndex != index" ref="crawlButton" @click="crawl(index)">C</button>
+
                 </td>
               </tr>
             </tbody>

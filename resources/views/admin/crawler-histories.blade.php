@@ -81,6 +81,24 @@
                     </div>
               </div>
           </div>
+
+          <div class="a-modal" v-show="state==-2">
+            <div class="card card-primary w-100 m-auto">
+                <div class="card-header">
+                  <h3 class="card-title">Are you want to crawler all again?</h3>
+                </div>
+                <h4 class="card-danger text-center">Are you want to crawler all again?</h4>
+                <!-- /.card-header --> 
+                  {{--  <div class="card-body">
+                    Are you want to crawler all again?
+                  </div>  --}}
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    <button type="button" class="btn btn-danger" @click="crawlAll()">{{trans('broader.confirm')}}</button>
+                    <button type="button" class="btn btn-primary" @click="openModal(0,null)">Cancel</button>
+                  </div>
+            </div>
+        </div>
         </div>
           
     </div>

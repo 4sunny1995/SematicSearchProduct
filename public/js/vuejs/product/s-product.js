@@ -2909,7 +2909,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "posts";
+var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "products";
 
 var getAll = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -3019,26 +3019,21 @@ var destroy = /*#__PURE__*/function () {
   };
 }();
 
-var upload = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(formData) {
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/uploadFile', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            });
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(uri + "/" + id);
 
           case 2:
             response = _context5.sent;
-            console.log(response.data);
             return _context5.abrupt("return", response.data);
 
-          case 5:
+          case 4:
           case "end":
             return _context5.stop();
         }
@@ -3046,8 +3041,40 @@ var upload = /*#__PURE__*/function () {
     }, _callee5);
   }));
 
-  return function upload(_x5) {
+  return function show(_x5) {
     return _ref5.apply(this, arguments);
+  };
+}();
+
+var upload = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(formData) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/uploadFile', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+
+          case 2:
+            response = _context6.sent;
+            console.log(response.data);
+            return _context6.abrupt("return", response.data);
+
+          case 5:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function upload(_x6) {
+    return _ref6.apply(this, arguments);
   };
 }();
 
@@ -3056,6 +3083,7 @@ var upload = /*#__PURE__*/function () {
   create: create,
   update: update,
   destroy: destroy,
+  show: show,
   upload: upload
 });
 
