@@ -57,3 +57,7 @@ mix.js('resources/js/vuejs/user/s-user.js', 'public/js/vuejs/user');
 mix.js('resources/js/vuejs/product/c-product.js', 'public/js/vuejs/product');
 mix.js('resources/js/vuejs/product/s-product.js', 'public/js/vuejs/product');
 
+//crawler history
+mix.js('resources/js/vuejs/crawler-histories/c-crawler-histories.js', 'public/js/vuejs/crawler-histories');
+mix.js('resources/js/vuejs/crawler-histories/s-crawler-histories.js', 'public/js/vuejs/crawler-histories');
+

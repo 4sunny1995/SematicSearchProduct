@@ -45,8 +45,6 @@
                                     @endif
                                 </div>
                             @endif
-                            
-                        
                     </div>
                 </div>
                 <div class="product-detail-container">

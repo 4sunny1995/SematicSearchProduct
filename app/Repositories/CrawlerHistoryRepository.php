@@ -11,7 +11,7 @@ class CrawlerHistoryRepository
     {
         try
         {
-            $data = CrawlerHistory::with('user')->withTrashed()->get();
+            $data = CrawlerHistory::all();
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -29,13 +29,22 @@ class CrawlerHistoryRepository
         try
         {
             $data = CrawlerHistory::updateOrCreate(
-                ['user_id' => $data['user_id']],
-                [$data]
+                [
+                    'url' => $data['url'],
+                    'listProduct' => $data['listProduct']
+                ],
+                [
+                    'nameProduct' => $data['nameProduct'],
+                    'priceProduct' => $data['priceProduct'],
+                    'imageProduct' => $data['imageProduct'],
+                    'hasTag' => $data['hasTag'],
+                    'category' => $data['category']
+                ]
             );
             return [
                 "message"=>"success",
                 "success"=>true,
-                "data"=>CrawlerHistory::with('user')->findOrFail($data->id)
+                "data"=>CrawlerHistory::findOrFail($data->id)
             ];
         }
         catch(Exception $e)
@@ -53,7 +62,7 @@ class CrawlerHistoryRepository
             return [
                 "message"=>"success",
                 "success"=>true,
-                "data"=>CrawlerHistory::with('user')->findOrFail($id)
+                "data"=>CrawlerHistory::findOrFail($id)
             ];
         }
         catch(Exception $e)

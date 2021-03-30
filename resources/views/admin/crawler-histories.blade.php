@@ -11,15 +11,52 @@
                     </div>
                     <!-- /.card-header --> 
                       <div class="card-body">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">{{trans('broader.root')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('broader.root')}}" name="root" v-model="root">
+                          <div class="row">
+                           <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">{{trans('spider.domain')}}</label>
+                              <input type="text" class="form-control" id="" placeholder="{{trans('spider.domain')}}" v-model="domain" name="domain" required>
+                            </div>
+                           </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">{{trans('spider.url')}}</label>
+                                <input type="text" class="form-control" id="" placeholder="{{trans('spider.url')}}" v-model="url" name="url" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">{{trans('spider.list')}}</label>
+                            <input type="text" class="form-control" id="" placeholder="{{trans('spider.list')}}" v-model="listProduct" name="listProduct" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">{{trans('spider.name')}}</label>
+                            <input type="text" class="form-control" id="" placeholder="{{trans('spider.name')}}" v-model="nameProduct" name="nameProduct" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">{{trans('spider.price')}}</label>
+                              <input type="text" class="form-control" id="" placeholder="{{trans('spider.price')}}" v-model="priceProduct" name="priceProduct" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">{{trans('spider.image')}}</label>
+                              <input type="text" class="form-control" id="" placeholder="{{trans('spider.image')}}" v-model="imageProduct" name="imageProduct" required>
+                            </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                              <label for="exampleInputPassword1">{{trans('spider.hastag')}}</label>
+                              <input type="text" class="form-control" id="" placeholder="{{trans('spider.hastag')}}" v-model="hasTag" name="hasTag" required>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                              <label for="exampleInputPassword1">Category</label>
+                              <input type="text" class="form-control" id="" placeholder="Category" name="category" v-model="category">
+                            </div>
+                            </div>
+                            
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">{{trans('broader.refer')}}</label>
-                          <input type="text" class="form-control"  placeholder="{{trans('broader.refer')}}" name="refer" v-model="refer">
-                        </div>
-                      </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <button type="button" class="btn btn-primary" @click="createOrUpdate()">@{{submit}}</button>
@@ -35,14 +72,7 @@
                   <h4 class="card-danger text-center">{{trans('broader.delete')}}</h4>
                   <!-- /.card-header --> 
                     <div class="card-body">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">{{trans('broader.root')}}</label>
-                        <span  class="form-control"  placeholder="{{trans('broader.root')}}" name="root" >@{{root}}</span>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">{{trans('broader.refer')}}</label>
-                        <span type="text" class="form-control"  placeholder="{{trans('broader.refer')}}" name="refer">@{{refer}}</span>
-                      </div>
+                      Are you want to delete this?
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">

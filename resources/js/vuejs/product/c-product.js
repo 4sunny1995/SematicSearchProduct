@@ -1,5 +1,5 @@
 import config from "../../config"
-import postServices from "./s-post"
+import postServices from "./s-product"
 let app = new Vue({
     el:"#product",
     data:{

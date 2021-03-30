@@ -15241,7 +15241,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     submitModel: function submitModel() {
       return {
         "user_id": this.user_id,
-        "point": this.point,
         "used": this.used,
         "total": this.total
       };

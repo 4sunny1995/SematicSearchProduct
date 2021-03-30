@@ -10,9 +10,14 @@ let app = new Vue({
         state:0,
         getIndex:null,
         itemEdit:null,
-        total:0,
-        used:0,
-        point:0,
+        domain:null,
+        url:null,
+        listProduct:null,
+        nameProduct:null,
+        priceProduct:null,
+        imageProduct:null,
+        hasTag:null,
+        category:null,
         title:"Create",
         submit:"Create",
         user_id:null
@@ -37,15 +42,25 @@ let app = new Vue({
             this.submit = "Create"
         },
         initModel(){
-            this.user_id = this.itemEdit.user_id
-            this.used = this.itemEdit.used,
-            this.total = this.itemEdit.total
+            this.domain = this.itemEdit.domain
+            this.url = this.itemEdit.url
+            this.listProduct = this.itemEdit.listProduct
+            this.nameProduct = this.itemEdit.nameProduct
+            this.priceProduct = this.itemEdit.priceProduct
+            this.imageProduct = this.itemEdit.imageProduct
+            this.hasTag = this.itemEdit.hasTag
+            this.category = this.itemEdit.category
         },
         submitModel(){
             return {
-                "user_id":this.user_id,
-                "used":this.used,
-                "total":this.total,
+                "domain" : this.domain,
+                "url" : this.url,
+                "listProduct" : this.listProduct,
+                "nameProduct" : this.nameProduct,
+                "priceProduct" : this.priceProduct,
+                "imageProduct" : this.imageProduct,
+                "hasTag" : this.hasTag,
+                "category" : this.category
             }
         },
         async getAll(){

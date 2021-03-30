@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 36);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -15177,10 +15177,10 @@ console.log(host);
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/credit/c-credit.js":
-/*!***********************************************!*\
-  !*** ./resources/js/vuejs/credit/c-credit.js ***!
-  \***********************************************/
+/***/ "./resources/js/vuejs/crawler-histories/c-crawler-histories.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/vuejs/crawler-histories/c-crawler-histories.js ***!
+  \*********************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15191,7 +15191,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
-/* harmony import */ var _s_credit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-credit */ "./resources/js/vuejs/credit/s-credit.js");
+/* harmony import */ var _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-crawler-histories */ "./resources/js/vuejs/crawler-histories/s-crawler-histories.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -15202,16 +15202,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
-  el: "#credit",
+  el: "#crawler-histories",
   data: {
     items: [],
     isLoading: false,
     state: 0,
     getIndex: null,
     itemEdit: null,
-    total: 0,
-    used: 0,
-    point: 0,
+    domain: null,
+    url: null,
+    listProduct: null,
+    nameProduct: null,
+    priceProduct: null,
+    imageProduct: null,
+    hasTag: null,
+    category: null,
     title: "Create",
     submit: "Create",
     user_id: null
@@ -15235,14 +15240,25 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       this.submit = "Create";
     },
     initModel: function initModel() {
-      this.user_id = this.itemEdit.user_id;
-      this.used = this.itemEdit.used, this.total = this.itemEdit.total;
+      this.domain = this.itemEdit.domain;
+      this.url = this.itemEdit.url;
+      this.listProduct = this.itemEdit.listProduct;
+      this.nameProduct = this.itemEdit.nameProduct;
+      this.priceProduct = this.itemEdit.priceProduct;
+      this.imageProduct = this.itemEdit.imageProduct;
+      this.hasTag = this.itemEdit.hasTag;
+      this.category = this.itemEdit.category;
     },
     submitModel: function submitModel() {
       return {
-        "user_id": this.user_id,
-        "used": this.used,
-        "total": this.total
+        "domain": this.domain,
+        "url": this.url,
+        "listProduct": this.listProduct,
+        "nameProduct": this.nameProduct,
+        "priceProduct": this.priceProduct,
+        "imageProduct": this.imageProduct,
+        "hasTag": this.hasTag,
+        "category": this.category
       };
     },
     getAll: function getAll() {
@@ -15255,7 +15271,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].getAll();
+                return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].getAll();
 
               case 2:
                 response = _context.sent;
@@ -15281,7 +15297,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
                 _this2.getIndex = index;
                 item = _this2.items[index];
                 _context2.next = 4;
-                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].show(item.id);
+                return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].show(item.id);
 
               case 4:
                 response = _context2.sent;
@@ -15314,7 +15330,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
               case 0:
                 item = _this3.items[_this3.getIndex];
                 _context3.next = 3;
-                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].destroy(item.id);
+                return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].destroy(item.id);
 
               case 3:
                 response = _context3.sent;
@@ -15355,7 +15371,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 
                 console.log(body);
                 _context4.next = 5;
-                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].store(body);
+                return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].store(body);
 
               case 5:
                 response = _context4.sent;
@@ -15378,7 +15394,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
                 console.log(body);
                 item = _this4.items[_this4.getIndex];
                 _context4.next = 14;
-                return _s_credit__WEBPACK_IMPORTED_MODULE_3__["default"].update(body, item.id);
+                return _s_crawler_histories__WEBPACK_IMPORTED_MODULE_3__["default"].update(body, item.id);
 
               case 14:
                 _response = _context4.sent;
@@ -15404,10 +15420,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/credit/s-credit.js":
-/*!***********************************************!*\
-  !*** ./resources/js/vuejs/credit/s-credit.js ***!
-  \***********************************************/
+/***/ "./resources/js/vuejs/crawler-histories/s-crawler-histories.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/vuejs/crawler-histories/s-crawler-histories.js ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15426,7 +15442,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "credits";
+var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "crawler-histories";
 
 var store = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
@@ -15573,14 +15589,14 @@ var show = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 18:
-/*!*****************************************************!*\
-  !*** multi ./resources/js/vuejs/credit/c-credit.js ***!
-  \*****************************************************/
+/***/ 36:
+/*!***************************************************************************!*\
+  !*** multi ./resources/js/vuejs/crawler-histories/c-crawler-histories.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\credit\c-credit.js */"./resources/js/vuejs/credit/c-credit.js");
+module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\crawler-histories\c-crawler-histories.js */"./resources/js/vuejs/crawler-histories/c-crawler-histories.js");
 
 
 /***/ })

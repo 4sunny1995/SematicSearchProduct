@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CrawlerHistoryRepository;
 use Illuminate\Http\Request;
 
 class CrawlerHistoryController extends Controller
 {
+    public function __construct()
+    {   
+        $this->repo = new CrawlerHistoryRepository();
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,10 @@ class CrawlerHistoryController extends Controller
      */
     public function index()
     {
-        //
+        $result  = $this->repo ->getAll();
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -35,7 +44,10 @@ class CrawlerHistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result  = $this->repo ->store($request->all());
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -46,7 +58,10 @@ class CrawlerHistoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $result  = $this->repo ->show($id);
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -69,7 +84,11 @@ class CrawlerHistoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result  = $this->repo ->update($request->all(),$id);
+        // dd($result);
+        if($result){
+            return $result;
+        }
     }
 
     /**
@@ -80,6 +99,9 @@ class CrawlerHistoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result  = $this->repo ->destroy($id);
+        if($result){
+            return $result;
+        }
     }
 }
