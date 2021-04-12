@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\resources;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->repo = new ProductRepository();
+        $this->repo = new CategoryRepository();
     }
     /**
      * Display a listing of the resource.

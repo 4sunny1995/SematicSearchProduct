@@ -21,7 +21,7 @@
        <div class="w-100">
            <div class="text-center">Category LV1</div>
             <ul id="categoryParent">
-                <li class="categoryParent-item" v-for="item in categoryParents"><a v-bind:href="'/category/'+item.id">@{{item.name}}</a></li>
+                <li class="categoryParent-item" v-for="item in categoryParents"><a v-bind:href="'/shop/category/'+item.id">@{{item.name}}</a></li>
             </ul>
        </div>
        <div class="w-100">

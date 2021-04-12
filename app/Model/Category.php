@@ -11,6 +11,6 @@ class Category extends Model
     use Notifiable,SoftDeletes;
     
     protected $fillable = [
-        "id","name","code"
+        "id","name","code",'category_parent_id'
     ];
 }

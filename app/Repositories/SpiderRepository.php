@@ -39,10 +39,7 @@ class SpiderRepository
                 );
                 if($check){
                     $element = $credential['listProduct'];
-                    // $result = [];
                     $url = $credential['url'];
-                    // $pages = Page::where('url',$url)->first();
-                    // if(!$pages)Page::create();
                     $category = $credential['category'];
                     $category_id = $this->getCategoryId($category);
                     Page::updateOrCreate(
@@ -54,9 +51,7 @@ class SpiderRepository
                     $crawler->filter($element)->each(function(Crawler $node) use ($credential,$category_id){
                        
                         $domain = $credential['domain'];
-                        // $url = $credential['url'];
                         $name = $node ->filter($credential['nameProduct'])->text();
-                        // var_dump($name);
                         $price = $node ->filter($credential['priceProduct'])->text();
                         $image = $node ->filter($credential['imageProduct'])->attr("src");
                         
@@ -95,7 +90,6 @@ class SpiderRepository
             $cate = Category::firstOrCreate(
                 ['name' => $category], ['code' => strtoupper(Str::random(8))]
             );
-            // dd($cate);
             return $cate->id;
         }
         public function reSpiderAll()

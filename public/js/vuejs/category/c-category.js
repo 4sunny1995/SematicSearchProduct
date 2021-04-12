@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 32);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -15177,10 +15177,10 @@ console.log(host);
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/user/c-user.js":
-/*!*******************************************!*\
-  !*** ./resources/js/vuejs/user/c-user.js ***!
-  \*******************************************/
+/***/ "./resources/js/vuejs/category/c-category.js":
+/*!***************************************************!*\
+  !*** ./resources/js/vuejs/category/c-category.js ***!
+  \***************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15191,7 +15191,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
-/* harmony import */ var _s_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-user */ "./resources/js/vuejs/user/s-user.js");
+/* harmony import */ var _s_category__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./s-category */ "./resources/js/vuejs/category/s-category.js");
+/* harmony import */ var _s_product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./s-product */ "./resources/js/vuejs/category/s-product.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -15201,46 +15202,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
-  el: "#profile",
+  el: "#category",
   data: {
-    user: null,
-    id: null,
-    email: '',
-    name: '',
-    state: 0,
-    description: "",
-    address: "",
-    avatar: null,
-    dateOfBirth: '',
-    gender: 0,
-    phone: '',
-    isAction: 0,
+    categories: [],
     isLoading: false,
-    imgURL: _config__WEBPACK_IMPORTED_MODULE_2__["default"].basicURL,
-    "break": 0
+    products: [],
+    mediaURL: _config__WEBPACK_IMPORTED_MODULE_2__["default"].mediaURL,
+    page: 1,
+    currency: null,
+    locale: null
   },
   mounted: function mounted() {
-    this.onLoadFuntion();
+    this.onLoadFunction();
   },
   methods: {
-    onLoadFuntion: function onLoadFuntion() {
+    onLoadFunction: function onLoadFunction() {
+      this.show();
+      this.getAll();
+      this.getLocale();
+    },
+    getAll: function getAll() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var id, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this2["break"] == 0) {
-                  _this2.id = window.localStorage.getItem('user_id');
+                id = window.location.pathname;
+                id = id.split('/');
+                id = id[id.length - 1];
+                console.log(id);
+                _context.next = 6;
+                return _s_product__WEBPACK_IMPORTED_MODULE_4__["default"].getByCategoryParent(id, _this2.page);
 
-                  _this2.getProfile();
+              case 6:
+                response = _context.sent;
 
-                  _this2["break"] = 1;
+                if (response.success == true) {
+                  _this2.products = response.data;
                 }
 
-              case 1:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -15248,36 +15254,31 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         }, _callee);
       }))();
     },
-    editProfile: function editProfile() {
-      this.isAction = 1;
-      this.initModel();
-    },
-    getProfile: function getProfile() {
+    show: function show() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this, response;
-
+        var path, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this = _this3;
-                console.log(_this.id);
-                _this.isLoading = true;
+                path = window.location.pathname.split('/');
+                console.log(path);
+                path = path[path.length - 1];
                 _context2.next = 5;
-                return _s_user__WEBPACK_IMPORTED_MODULE_3__["default"].getUserById(_this.id);
+                return _s_category__WEBPACK_IMPORTED_MODULE_3__["default"].show(path);
 
               case 5:
                 response = _context2.sent;
-                _this.user = response.data;
 
-                _this.initModel();
+                if (response.success == true) {
+                  _this3.categories = response.data;
+                }
 
-                _this.isLoading = false;
-                if (response.data.avatar) _this.avatar = response.data.avatar.avatar;
+                console.log(path);
 
-              case 10:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -15285,39 +15286,26 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         }, _callee2);
       }))();
     },
-    updateInformation: function updateInformation() {
+    getLocale: function getLocale() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this, body, response;
-
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this = _this4;
-                _this.isLoading = true;
-                body = {
-                  "address": _this.address,
-                  "phone": _this.phone,
-                  "gender": _this.gender,
-                  "dateOfBirth": _this.dateOfBirth,
-                  "description": _this.description
-                };
-                _context3.next = 5;
-                return _s_user__WEBPACK_IMPORTED_MODULE_3__["default"].update(body, _this.id);
+                _context3.next = 2;
+                return _s_category__WEBPACK_IMPORTED_MODULE_3__["default"].getLocale();
 
-              case 5:
+              case 2:
                 response = _context3.sent;
-                _this.user = response.data;
 
-                _this.initModel();
+                if (response.success == true) {
+                  _this4.locale = response.data;
+                }
 
-                console.log(_this.user);
-                _this.isAction = 0;
-                _this.isLoading = false;
-
-              case 11:
+              case 4:
               case "end":
                 return _context3.stop();
             }
@@ -15325,27 +15313,25 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         }, _callee3);
       }))();
     },
-    initModel: function initModel() {
-      var _this = this;
+    format: function format(price) {
+      var _this = this; // Create our number formatter.
 
-      _this.phone = _this.user.information.phone;
-      _this.address = _this.user.information.address;
-      _this.gender = _this.user.information.gender;
-      _this.dateOfBirth = _this.user.information.dateOfBirth;
-      _this.description = _this.user.information.description;
-    },
-    backHistory: function backHistory() {
-      window.history.back();
+
+      var formatter = new Intl.NumberFormat(_this.locale.code, {
+        style: 'currency',
+        currency: _this.locale.currency
+      });
+      return formatter.format(price);
     }
   }
 });
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/user/s-user.js":
-/*!*******************************************!*\
-  !*** ./resources/js/vuejs/user/s-user.js ***!
-  \*******************************************/
+/***/ "./resources/js/vuejs/category/s-category.js":
+/*!***************************************************!*\
+  !*** ./resources/js/vuejs/category/s-category.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15364,17 +15350,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "users";
+var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "categories";
 
-var getCurrentUser = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+var store = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getCurrentUser");
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url, data);
 
           case 2:
             response = _context.sent;
@@ -15388,20 +15374,20 @@ var getCurrentUser = /*#__PURE__*/function () {
     }, _callee);
   }));
 
-  return function getCurrentUser() {
+  return function store(_x) {
     return _ref.apply(this, arguments);
   };
 }();
 
-var getUserById = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
+var getAll = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getUserById/" + id);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
 
           case 2:
             response = _context2.sent;
@@ -15415,20 +15401,20 @@ var getUserById = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function getUserById(_x) {
+  return function getAll() {
     return _ref2.apply(this, arguments);
   };
 }();
 
 var update = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(body, id) {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data, id) {
     var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, body);
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, data);
 
           case 2:
             response = _context3.sent;
@@ -15447,22 +15433,303 @@ var update = /*#__PURE__*/function () {
   };
 }();
 
+var destroy = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](url + "/" + id);
+
+          case 2:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function destroy(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/" + id);
+
+          case 2:
+            response = _context5.sent;
+            return _context5.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function show(_x5) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+var getLocale = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+    var reponse;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "getLocale");
+
+          case 2:
+            reponse = _context6.sent;
+            return _context6.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function getLocale() {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getCurrentUser: getCurrentUser,
-  getUserById: getUserById,
-  update: update
+  store: store,
+  getAll: getAll,
+  update: update,
+  destroy: destroy,
+  show: show,
+  getLocale: getLocale
 });
 
 /***/ }),
 
-/***/ 32:
-/*!*************************************************!*\
-  !*** multi ./resources/js/vuejs/user/c-user.js ***!
-  \*************************************************/
+/***/ "./resources/js/vuejs/category/s-product.js":
+/*!**************************************************!*\
+  !*** ./resources/js/vuejs/category/s-product.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var url = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "products";
+
+var store = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(url, data);
+
+          case 2:
+            response = _context.sent;
+            return _context.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function store(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var getAll = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url);
+
+          case 2:
+            response = _context2.sent;
+            return _context2.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function getAll() {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var update = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(data, id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put(url + "/" + id, data);
+
+          case 2:
+            response = _context3.sent;
+            return _context3.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function update(_x2, _x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+var destroy = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](url + "/" + id);
+
+          case 2:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function destroy(_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var show = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(url + "/" + id);
+
+          case 2:
+            response = _context5.sent;
+            return _context5.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function show(_x5) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+var getByCategoryParent = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(id, page) {
+    var response;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + 'getByCategoryParent/' + id + '?page=' + page);
+
+          case 2:
+            response = _context6.sent;
+            return _context6.abrupt("return", response.data);
+
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function getByCategoryParent(_x6, _x7) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  store: store,
+  getAll: getAll,
+  update: update,
+  destroy: destroy,
+  show: show,
+  getByCategoryParent: getByCategoryParent
+});
+
+/***/ }),
+
+/***/ 30:
+/*!*********************************************************!*\
+  !*** multi ./resources/js/vuejs/category/c-category.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\user\c-user.js */"./resources/js/vuejs/user/c-user.js");
+module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\category\c-category.js */"./resources/js/vuejs/category/c-category.js");
 
 
 /***/ })

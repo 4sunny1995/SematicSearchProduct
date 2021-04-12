@@ -44,7 +44,8 @@ mix.js('resources/js/vuejs/reward-history/c-reward-history.js', 'public/js/vuejs
 mix.js('resources/js/vuejs/reward-history/s-reward-history.js', 'public/js/vuejs/reward-history');
 mix.js('resources/js/vuejs/credit-history/c-credit-history.js', 'public/js/vuejs/credit-history');
 mix.js('resources/js/vuejs/credit-history/s-credit-history.js', 'public/js/vuejs/credit-history');
-
+ mix.js('resources/js/vuejs/category/c-category.js', 'public/js/vuejs/category');
+ mix.js('resources/js/vuejs/category/s-category.js', 'public/js/vuejs/category');
 
 //User
 mix.js('resources/js/vuejs/user/c-user.js', 'public/js/vuejs/user');
@@ -56,8 +57,11 @@ mix.js('resources/js/vuejs/user/s-user.js', 'public/js/vuejs/user');
  //Product
 mix.js('resources/js/vuejs/product/c-product.js', 'public/js/vuejs/product');
 mix.js('resources/js/vuejs/product/s-product.js', 'public/js/vuejs/product');
+mix.js('resources/js/vuejs/productdetail/c-productdetail.js', 'public/js/vuejs/productdetail');
+mix.js('resources/js/vuejs/productdetail/s-productdetail.js', 'public/js/vuejs/productdetail');
 
 //crawler history
 mix.js('resources/js/vuejs/crawler-histories/c-crawler-histories.js', 'public/js/vuejs/crawler-histories');
 mix.js('resources/js/vuejs/crawler-histories/s-crawler-histories.js', 'public/js/vuejs/crawler-histories');
+
 

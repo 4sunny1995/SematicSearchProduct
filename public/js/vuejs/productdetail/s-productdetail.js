@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 36);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2887,283 +2887,10 @@ console.log(host);
 
 /***/ }),
 
-/***/ "./resources/js/vuejs/product/c-product.js":
-/*!*************************************************!*\
-  !*** ./resources/js/vuejs/product/c-product.js ***!
-  \*************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
-/* harmony import */ var _s_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./s-product */ "./resources/js/vuejs/product/s-product.js");
-
-
-var _data;
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-var app = new Vue({
-  el: "#product",
-  data: (_data = {
-    items: [],
-    state: 0,
-    getIndex: null,
-    titlePost: "Create Modal",
-    error: null,
-    submit: "Create New",
-    title: null,
-    content: null,
-    id: null,
-    image: null,
-    file: "",
-    url: null
-  }, _defineProperty(_data, "content", null), _defineProperty(_data, "name", null), _defineProperty(_data, "price", null), _defineProperty(_data, "hasTag", null), _defineProperty(_data, "basicURL", _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL), _defineProperty(_data, "recommentList", []), _data),
-  mounted: function mounted() {
-    this.onloadFunction();
-  },
-  created: function created() {},
-  methods: {
-    onloadFunction: function onloadFunction() {
-      return [this.getAll()];
-    },
-    createNew: function createNew() {
-      this.state = 2;
-      this.itemEdit = null;
-      this.title = "Create new";
-      this.submit = "Create";
-    },
-    initModel: function initModel() {
-      this.name = this.itemEdit.name;
-      this.price = this.itemEdit.price, this.content = this.itemEdit.content, this.image = this.itemEdit.image, this.hasTag = this.itemEdit.hasTag;
-    },
-    submitModel: function submitModel() {
-      return {
-        "name": this.name,
-        "price": this.price,
-        "content": this.content,
-        "image": this.image,
-        "hasTag": this.hasTag
-      };
-    },
-    getAll: function getAll() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this, response;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this = _this2;
-                _context.next = 3;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].getAll();
-
-              case 3:
-                response = _context.sent;
-
-                if (response.success == true) {
-                  _this.items = response.data;
-                }
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    edit: function edit(index) {
-      var _this3 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var item, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _this3.getIndex = index;
-                item = _this3.items[index];
-                _context2.next = 4;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].show(item.id);
-
-              case 4:
-                response = _context2.sent;
-
-                if (response.success == true) {
-                  _this3.title = "Update";
-                  _this3.submit = "Update";
-                  _this3.itemEdit = response.data;
-                  _this3.state = 1;
-
-                  _this3.initModel();
-                }
-
-              case 6:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    },
-    destroy: function destroy() {
-      var _this4 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var item, response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                item = _this4.items[_this4.getIndex];
-                _context3.next = 3;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].destroy(item.id);
-
-              case 3:
-                response = _context3.sent;
-
-                if (!(response.success == true)) {
-                  _context3.next = 7;
-                  break;
-                }
-
-                _this4.items.splice(_this4.getIndex, 1);
-
-                return _context3.abrupt("return", _this4.state = 0);
-
-              case 7:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    },
-    createOrUpdate: function createOrUpdate() {
-      var _this5 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var body, response, item, _response;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                body = _this5.submitModel(_this5.itemEdit); //Create
-
-                if (!(_this5.state == 2)) {
-                  _context4.next = 9;
-                  break;
-                }
-
-                console.log(body);
-                _context4.next = 5;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].store(body);
-
-              case 5:
-                response = _context4.sent;
-
-                if (!(response.success == true)) {
-                  _context4.next = 9;
-                  break;
-                }
-
-                _this5.items.push(response.data);
-
-                return _context4.abrupt("return", _this5.state = 0);
-
-              case 9:
-                if (!(_this5.state == 1)) {
-                  _context4.next = 18;
-                  break;
-                }
-
-                console.log(body);
-                item = _this5.items[_this5.getIndex];
-                _context4.next = 14;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].update(body, item.id);
-
-              case 14:
-                _response = _context4.sent;
-
-                if (!(_response.success == true)) {
-                  _context4.next = 18;
-                  break;
-                }
-
-                _this5.items[_this5.getIndex] = _response.data;
-                return _context4.abrupt("return", _this5.state = 0);
-
-              case 18:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }))();
-    },
-    upload: function upload() {
-      var _this6 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this, formData, response;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _this = _this6;
-                _this.file = _this.$refs.file.files[0];
-                formData = new FormData();
-                formData.append('file', _this.file);
-                _context5.next = 6;
-                return _s_product__WEBPACK_IMPORTED_MODULE_2__["default"].upload(formData);
-
-              case 6:
-                response = _context5.sent;
-                _this.image = response.data;
-                _this.basicURL = _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL;
-
-              case 9:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
-    },
-    openModal: function openModal(action, index) {
-      this.state = action;
-      this.itemEdit = this.items[index];
-      this.getIndex = index;
-    } // async recomment(){
-    //     var _this = this
-    //     const response = await postServices.recomment(_this.url)
-    //     _this.recommentList = response.data
-    // }
-
-  },
-  computed: {}
-});
-
-/***/ }),
-
-/***/ "./resources/js/vuejs/product/s-product.js":
-/*!*************************************************!*\
-  !*** ./resources/js/vuejs/product/s-product.js ***!
-  \*************************************************/
+/***/ "./resources/js/vuejs/productdetail/s-productdetail.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/vuejs/productdetail/s-productdetail.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3362,14 +3089,14 @@ var upload = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 36:
-/*!*******************************************************!*\
-  !*** multi ./resources/js/vuejs/product/c-product.js ***!
-  \*******************************************************/
+/***/ 39:
+/*!*******************************************************************!*\
+  !*** multi ./resources/js/vuejs/productdetail/s-productdetail.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\product\c-product.js */"./resources/js/vuejs/product/c-product.js");
+module.exports = __webpack_require__(/*! D:\WORK\laravel\year4\Semantic Search\SemanticSearch\resources\js\vuejs\productdetail\s-productdetail.js */"./resources/js/vuejs/productdetail/s-productdetail.js");
 
 
 /***/ })

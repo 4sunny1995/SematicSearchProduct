@@ -49,7 +49,7 @@
                 </div>
                 <div class="product-detail-container">
                     <div class="product-name">
-                        <span>{{$item['name']}}</span>
+                        <a href="/shop/product/{{$item['id']}}"><span>{{$item['name']}}</span></a>
                     </div>
                     <div class="product-price">
                         <strong>{{$item['price']}}</strong>

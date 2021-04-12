@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,17 @@ Route::get('/', function(){
 Route::get('/profile',function(){
     return view('user.profile');
 });
+Route::get('category/{id}',function(){
+    // for($i =45;$i<=99;$i++){
+    //     $p=Product::findOrfail($i);
+    //     $p->category_parent_id = 1;
+    //     $p->save();
+    // }
+    return view('shop.products');
+});
+Route::get('product/{id}', function () {
+    return view('shop.productdetail');
+});
 Route::prefix('api')->group(function () {
     Route::resource('categoryParents', 'resources\CategoryParentController');
     Route::resource('posts', 'resources\PostController');
@@ -32,9 +44,12 @@ Route::prefix('api')->group(function () {
     Route::resource('reward-histories', 'resources\RewardHistoryController');
     Route::resource('credits', 'resources\CreditController');
     Route::resource('credit-histories', 'resources\CreditHistoryController');
-
+    Route::resource('categories', 'resources\CategoryController');
+    Route::resource('products', 'resources\ProductController');
     Route::get('getCurrentUser','HomeController@getCurrentUser');
     Route::get('getUserById/{id}','HomeController@getUserById');
+    Route::get('getByCategoryParent/{id}','HomeController@getByCategoryParent');
+    Route::get('getLocale', 'HomeController@getLocale');
 });
 
 Route::get('/reward/{id}',"AccountController@reward");

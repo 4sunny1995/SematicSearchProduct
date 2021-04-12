@@ -59,6 +59,10 @@ body,html{
     font-size: 15px;
     padding: 5px;
     text-align: center;
+    
+}
+.product-name a{
+    color: black;
 }
 .product-price{
     font-size: 18px;
