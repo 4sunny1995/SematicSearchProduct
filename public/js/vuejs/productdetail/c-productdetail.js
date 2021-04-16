@@ -2921,7 +2921,7 @@ var app = new Vue({
     image: null,
     file: "",
     url: null
-  }, _defineProperty(_data, "content", null), _defineProperty(_data, "name", null), _defineProperty(_data, "price", null), _defineProperty(_data, "hasTag", null), _defineProperty(_data, "basicURL", _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL), _defineProperty(_data, "recommentList", []), _data),
+  }, _defineProperty(_data, "content", null), _defineProperty(_data, "name", null), _defineProperty(_data, "price", null), _defineProperty(_data, "hasTag", null), _defineProperty(_data, "basicURL", _config__WEBPACK_IMPORTED_MODULE_1__["default"].basicURL), _defineProperty(_data, "recommentList", []), _defineProperty(_data, "isLoading", false), _data),
   mounted: function mounted() {
     this.onloadFunction();
   },

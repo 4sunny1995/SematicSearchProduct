@@ -1,7 +1,7 @@
 import Axios from "axios"
 import config from "../../config"
 
-let url = config.shopURL + "products"
+let url = config.shopURL + "carts"
 
 let store = async (data) =>{
     const response  = await Axios.post(url,data)
@@ -23,12 +23,8 @@ let show = async (id) => {
     const response = await Axios.get(url+"/"+id)
     return response.data
 }
-let getByCategory = async (id,page) => {
-    const response = await Axios.get(config.shopURL+'getByCategory/'+id+'?page='+page)
-    return response.data
-}
-let getByCategoryId = async (id,page) => {
-    const response = await Axios.get(config.shopURL+'getByCategoryId/'+id+'?page='+page)
+let getByCategoryParent = async (id,page) => {
+    const response = await Axios.get(config.shopURL+'getByCategoryParent/'+id+'?page='+page)
     return response.data
 }
 export default {
@@ -37,6 +33,5 @@ export default {
     update:update,
     destroy:destroy,
     show:show,
-    getByCategory:getByCategory,
-    getByCategoryId:getByCategoryId
+    getByCategoryParent:getByCategoryParent
 }

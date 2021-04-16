@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Model\Category;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class CategoryRepository
@@ -11,7 +12,18 @@ class CategoryRepository
     {
         try
         {
-            $data = Category::all();
+            $data = Category::all()->toArray();
+            $carts = \Cart::getContent()->toArray();
+            // for($index = 0;$index<count($data);$index++)
+            // {
+            //     $data[$index] = false;
+            //     for($jndex = 0;$jndex<count($carts);$jndex++)
+            //     {
+            //         if($carts[$jndex]['id']==$data[$index]['id']){
+            //             $data[$index]['isCart'] = true;
+            //         }
+            //     }
+            // }
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -80,7 +92,7 @@ class CategoryRepository
     {
         try
         {
-            $data = Category::where('category_parent_id',$id)->get();
+            $data = Category::where('category_parent_id',$id)->get()->toArray();
             return [
                 "message"=>"success",
                 "success"=>true,

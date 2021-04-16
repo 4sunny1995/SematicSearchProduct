@@ -48,7 +48,7 @@
                                 <div v-else="item.promo==0">
                                     <div class="promo">Giá bán : <strong>@{{item.price}}</strong></div>
                                 </div>
-                                <div>@{{item.content}}</div>
+                                {{--  <div>@{{item.content}}</div>  --}}
                                 {{--  <div>Lượt xem : <span style="font-weight: bold;font-size: 16px">@{{item.view}}</span><i class="fa fa-eye" aria-hidden="true"></i></div>  --}}
                             </div>
                         </div>

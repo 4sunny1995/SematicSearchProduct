@@ -24,9 +24,13 @@ Route::get('/profile',function(){
 Route::get('category/{id}',function(){
     // for($i =45;$i<=99;$i++){
     //     $p=Product::findOrfail($i);
-    //     $p->category_parent_id = 1;
+    //     $p->category_id = 3;
     //     $p->save();
     // }
+    // Product::all()->each(function($p){
+    //     $p->category_id=1;
+    //     $p->save();
+    // });
     return view('shop.products');
 });
 Route::get('product/{id}', function () {
@@ -46,9 +50,11 @@ Route::prefix('api')->group(function () {
     Route::resource('credit-histories', 'resources\CreditHistoryController');
     Route::resource('categories', 'resources\CategoryController');
     Route::resource('products', 'resources\ProductController');
+    Route::resource('carts', 'resources\CartController');
     Route::get('getCurrentUser','HomeController@getCurrentUser');
     Route::get('getUserById/{id}','HomeController@getUserById');
-    Route::get('getByCategoryParent/{id}','HomeController@getByCategoryParent');
+    Route::get('getByCategory/{id}','HomeController@getByCategory');
+    Route::get('getByCategoryId','HomeController@getByCategoryId');
     Route::get('getLocale', 'HomeController@getLocale');
 });
 

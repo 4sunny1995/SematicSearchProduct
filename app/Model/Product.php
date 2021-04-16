@@ -10,6 +10,6 @@ class Product extends Model
 {
     use Notifiable,SoftDeletes;
     protected $fillable = [
-        "name",'price','url','image','hasTag','content'
+        "name",'price','url','image','hasTag','content','category','category_parent_id'
     ];
 }

@@ -18,6 +18,12 @@
         color: #1ba8f0;
         font-size: 20px;
     }
+    .name-category:hover{
+        color: white;
+        background-color: orange;
+        transition-duration: 100ms;
+        cursor: pointer;
+    }
 </style>
 @endsection
 @section('content')
@@ -29,14 +35,17 @@
     <div class="w-100" v-else v-cloak>
         <div class="w-100">
             <div class="row">
-                <div class="w-20 text-center border p-1 center" v-for="(category,index) in categories" @click = "showProduct(index)">
+                <div class="w-20 text-center border p-1 center name-category" v-for="(category,index) in categories" @click = "showProduct(index)">
                     @{{category.name}}
                </div>
             </div>
          </div>
          <div class="w-100">
              <div class="row" v-cloak>
-                 <div v-for="(item,index) in products" class="w-50 text-center border-bottom border-right">
+                 <div class="w-100" v-if="products.length==0">
+                    <h3 class="text-center">Not Found Product</h3>
+                 </div>
+                 <div v-for="(item,index) in products" class="w-50 text-center border-bottom border-right" v-else>
                     <div class="w-100">
                         <div class="item-container">
                             <div class="center" @click = "gotoProductDetail(item.id)">
@@ -64,7 +73,6 @@
                             <i class="fa fa-heart" aria-hidden="true"  @click="removeToWishList(index)" v-else></i>
                             <img src="{{asset('img/ic-cart.png')}}" alt="icon" class="icon" @click="addToCart(index)" v-if="!item.isCart">
                             <img src="{{asset('img/ic-cart-added.png')}}" alt="icon" class="icon" @click="removeToCart(index)" v-else>
-                            
                         </div>
                     </div>
                  </div>

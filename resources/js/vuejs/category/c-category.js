@@ -2,6 +2,7 @@ import Vue from "vue"
 import config from "../../config"
 import categoryServices from "./s-category"
 import productServices from "./s-product"
+import cartServices from "./s-cart"
 
 let app = new Vue({
     el:"#category",
@@ -19,24 +20,26 @@ let app = new Vue({
         
     },
     methods:{
-        onLoadFunction(){
-            this.show()
-            this.getAll()
+        async onLoadFunction(){
+            await this.show()
+            this.getProducts()
             this.getLocale()
         },
-        async getAll(){
-            var id = window.location.pathname
-            id = id.split('/')
-            id = id[id.length-1]
-            console.log(id)
-            const response = await productServices.getByCategoryParent(id,this.page)
+        async getProducts(){
+            this.isLoading = true
+            var path = window.location.pathname.split('/')
+            path = path[path.length-1]
+            // var id = this.categories[0].id
+            console.log(path)
+            const response = await productServices.getByCategory(path,this.page)
             if(response.success == true){
                 this.products = response.data
+                this.isLoading = false
             }
         },
+        
         async show(){
             var path = window.location.pathname.split('/')
-            console.log(path)
             path = path[path.length-1]
             const response = await categoryServices.show(path)
             if(response.success==true){
@@ -58,6 +61,33 @@ let app = new Vue({
                 currency: _this.locale.currency,
             });
             return formatter.format(price);
+        },
+        async addToCart(index){
+            var item = this.products[index]
+            var data = {
+                "pid":item.id,
+                "quantity":1
+            }
+            const response = await cartServices.store(data)
+            if(response.success==true){
+                item.isCart = true
+            }
+        },
+        async removeToCart(index){
+            var item = this.products[index]
+            console.log(item)
+            const response = await cartServices.destroy(item.id)
+            if(response.success==true){
+                item.isCart = false
+            }
+        },
+        async showProduct(index){
+            this.isLoading = true
+            const response = await productServices.getByCategoryId(this.categories[index].id,this.page)
+            if(response.success == true){
+                this.products = response.data
+                this.isLoading = false
+            }
         }
     }
 })
