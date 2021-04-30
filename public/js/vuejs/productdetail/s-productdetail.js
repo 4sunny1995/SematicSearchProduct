@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 51);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2909,7 +2909,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].adminURL + "products";
+var uri = _config__WEBPACK_IMPORTED_MODULE_2__["default"].shopURL + "products";
 
 var getAll = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -3089,7 +3089,7 @@ var upload = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 39:
+/***/ 51:
 /*!*******************************************************************!*\
   !*** multi ./resources/js/vuejs/productdetail/s-productdetail.js ***!
   \*******************************************************************/

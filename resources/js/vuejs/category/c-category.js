@@ -3,6 +3,7 @@ import config from "../../config"
 import categoryServices from "./s-category"
 import productServices from "./s-product"
 import cartServices from "./s-cart"
+import wishlistServices from "./s-wish-list"
 
 let app = new Vue({
     el:"#category",
@@ -88,6 +89,20 @@ let app = new Vue({
                 this.products = response.data
                 this.isLoading = false
             }
-        }
+        },
+        async addToWishList(index){
+            var item = this.products[index]
+            const response = await wishlistServices.store(item)
+            if(response.success==true){
+                item.isWishList = true
+            }
+        },
+        async removeToWishList(index){
+            var item = this.products[index]
+            const response = await wishlistServices.destroy(item.id)
+            if(response.success==true){
+                item.isWishList = false
+            }
+        },
     }
 })

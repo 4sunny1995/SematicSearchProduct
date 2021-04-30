@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Product;
 use App\User;
+use App\Wishlist;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +64,17 @@ class HomeController extends Controller
         try
         {
             $page = $request->page;
-            $products = Product::where('category_parent_id',$id)->take(10*$page)->get()->toArray();
+            $id = Auth::id();
+            $products = Product::where('name','like','%đầm%')->take(10*$page)->get()->toArray();
+            // dd($products);
+            for($index=0;$index<count($products);$index++){
+                $products[$index]['isWishList']=false;
+                $isWishList = Wishlist::where('user_id',$id)->where('product_id',$products[$index]['id'])->first();
+                if($isWishList){
+                    $products[$index]['isWishList'] = true;
+                }
+            }
+            // dd($products);
             // dd($products);
             $data = array_chunk($products,10);
             if($data){
@@ -116,11 +127,12 @@ class HomeController extends Controller
     {
         try
         {
+            dd($request->all());
             $page = $request->page;
             $products = Product::where('category_id',$id)->take(10*$page)->get()->toArray();
-            dd($products);
+            // dd($data);
             
-            if($data){
+            if($products){
                 $data = array_chunk($products,10);
                 $data = $data[count($data)-1];
                 $carts = \Cart::session(Auth::id())->getContent()->toArray();

@@ -53,10 +53,10 @@
                             </div>
                         </div>
                         <div class="item-action center">
-                            <i class="fa fa-heart-o" aria-hidden="true" @click="addToWishList(index)" v-if="!item.isWishList"></i>
-                            <i class="fa fa-heart" aria-hidden="true"  @click="removeToWishList(index)" v-else></i>
-                            <img src="{{asset('img/ic-cart.png')}}" alt="icon" class="icon" @click="addToCart(index)" v-if="!item.isCart">
-                            <img src="{{asset('img/ic-cart-added.png')}}" alt="icon" class="icon" @click="removeToCart(index)" v-else>
+                            <i class="fa fa-heart-o" aria-hidden="true" @click="addToWishList(item)" v-if="!item.isWishList"></i>
+                            <i class="fa fa-heart" aria-hidden="true"  @click="removeToWishList(item)" v-else></i>
+                            <img src="{{asset('img/ic-cart.png')}}" alt="icon" class="icon" @click="addToCart(item)" v-if="!item.isCart">
+                            <img src="{{asset('img/ic-cart-added.png')}}" alt="icon" class="icon" @click="removeToCart(item)" v-else>
                         </div>
                     </div>
                  </div>

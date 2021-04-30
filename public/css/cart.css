@@ -120,3 +120,7 @@
     width: 20%;
     float: left;
 }
+.w-image{
+    border-radius: 8px;
+    margin: auto;
+}

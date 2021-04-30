@@ -44,9 +44,20 @@ mix.js('resources/js/vuejs/reward-history/c-reward-history.js', 'public/js/vuejs
 mix.js('resources/js/vuejs/reward-history/s-reward-history.js', 'public/js/vuejs/reward-history');
 mix.js('resources/js/vuejs/credit-history/c-credit-history.js', 'public/js/vuejs/credit-history');
 mix.js('resources/js/vuejs/credit-history/s-credit-history.js', 'public/js/vuejs/credit-history');
- mix.js('resources/js/vuejs/category/c-category.js', 'public/js/vuejs/category');
- mix.js('resources/js/vuejs/category/s-category.js', 'public/js/vuejs/category');
-
+mix.js('resources/js/vuejs/category/c-category.js', 'public/js/vuejs/category');
+mix.js('resources/js/vuejs/category/s-category.js', 'public/js/vuejs/category');
+mix.js('resources/js/vuejs/category/s-product.js', 'public/js/vuejs/category');
+mix.js('resources/js/vuejs/category/s-wish-list.js', 'public/js/vuejs/category');
+mix.js('resources/js/vuejs/cart/c-cart.js', 'public/js/vuejs/cart');
+mix.js('resources/js/vuejs/cart/s-cart.js', 'public/js/vuejs/cart');
+mix.js('resources/js/vuejs/wishlist/c-wishlist.js', 'public/js/vuejs/wishlist');
+mix.js('resources/js/vuejs/wishlist/s-wishlist.js', 'public/js/vuejs/wishlist');
+mix.js('resources/js/vuejs/checkout/c-checkout.js', 'public/js/vuejs/checkout');
+mix.js('resources/js/vuejs/checkout/s-checkout.js', 'public/js/vuejs/checkout');
+mix.js('resources/js/vuejs/myorder/c-myorder.js', 'public/js/vuejs/myorder');
+mix.js('resources/js/vuejs/myorder/s-myorder.js', 'public/js/vuejs/myorder');
+mix.js('resources/js/vuejs/myorderdetail/c-myorderdetail.js', 'public/js/vuejs/myorderdetail');
+mix.js('resources/js/vuejs/myorderdetail/s-myorderdetail.js', 'public/js/vuejs/myorderdetail');
 //User
 mix.js('resources/js/vuejs/user/c-user.js', 'public/js/vuejs/user');
 mix.js('resources/js/vuejs/user/s-user.js', 'public/js/vuejs/user');

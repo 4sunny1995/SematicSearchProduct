@@ -36,6 +36,11 @@ Route::get('category/{id}',function(){
 Route::get('product/{id}', function () {
     return view('shop.productdetail');
 });
+Route::get('/myCart',"MyCartController@index");
+Route::get('/myWishlist',"MyWishListController@index");
+Route::get('checkout',function(){
+    return view('shop.checkout');
+});
 Route::prefix('api')->group(function () {
     Route::resource('categoryParents', 'resources\CategoryParentController');
     Route::resource('posts', 'resources\PostController');
@@ -51,11 +56,21 @@ Route::prefix('api')->group(function () {
     Route::resource('categories', 'resources\CategoryController');
     Route::resource('products', 'resources\ProductController');
     Route::resource('carts', 'resources\CartController');
+    Route::resource('wishlists', 'resources\WishListController');
     Route::get('getCurrentUser','HomeController@getCurrentUser');
     Route::get('getUserById/{id}','HomeController@getUserById');
     Route::get('getByCategory/{id}','HomeController@getByCategory');
     Route::get('getByCategoryId','HomeController@getByCategoryId');
     Route::get('getLocale', 'HomeController@getLocale');
+    Route::get('mycart','MyCartController@getMyCart');
+    Route::post('mycart','MyCartController@changeAmountOfItem');
+    Route::get('mywishlist','MyWishListController@getMyWishList');
+    Route::post('mywishlist','MyCartController@changeAmountOfItem');
+    Route::get('customer/orderCheckout','Client\CheckoutController@index');
+    Route::post('payment/{type}','PaymentController@Payment');
+    Route::get('myorder',"MyOrderController@getMyOrder");
+    Route::get('myorderdetail/{id}',"MyOrderController@getMyOrderDetail");
+
 });
 
 Route::get('/reward/{id}',"AccountController@reward");
@@ -64,3 +79,12 @@ Route::get('/coupon',function(){
     return view('user.coupon');
 });
 Route::get('/credit/{id}',"AccountController@credit");
+Route::get('checkout-result',function(){
+    return view('shop.checkout-result');
+});
+Route::get('myOrder',function(){
+    return view('shop.myorder');
+});
+Route::get('orderdetail/{id}',function(){
+    return view('shop.orderdetail');
+});

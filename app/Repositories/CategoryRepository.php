@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Model\Category;
+use App\Wishlist;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -12,18 +13,10 @@ class CategoryRepository
     {
         try
         {
+            // dd(1);
             $data = Category::all()->toArray();
             $carts = \Cart::getContent()->toArray();
-            // for($index = 0;$index<count($data);$index++)
-            // {
-            //     $data[$index] = false;
-            //     for($jndex = 0;$jndex<count($carts);$jndex++)
-            //     {
-            //         if($carts[$jndex]['id']==$data[$index]['id']){
-            //             $data[$index]['isCart'] = true;
-            //         }
-            //     }
-            // }
+            
             return [
                 "message"=>"success",
                 "success"=>true,
@@ -92,7 +85,16 @@ class CategoryRepository
     {
         try
         {
+            // dd($id);
             $data = Category::where('category_parent_id',$id)->get()->toArray();
+            for($index=0;$index<count($data);$index++){
+                $data[$index]['isWishList']=false;
+                $isWishList = Wishlist::where('user_id',$id)->where('product_id',$data[$index]['id'])->first();
+                if($isWishList){
+                    $data[$index]['isWishList'] = true;
+                }
+            }
+            // dd($data);
             return [
                 "message"=>"success",
                 "success"=>true,
