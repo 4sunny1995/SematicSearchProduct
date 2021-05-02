@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
-use App\Services\Validation;
+use App\Model\Order;
+use App\Model\OrderDetail;
 use Illuminate\Http\Request;
 
-class UserController extends UserRepository
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class UserController extends UserRepository
      */
     public function index()
     {
-        //
+        $orders = Order::with('user')->get();
+        return view('admin.orders',compact('orders'));
     }
 
     /**
@@ -37,12 +38,7 @@ class UserController extends UserRepository
      */
     public function store(Request $request)
     {
-        $credentinal = $request->all();
-        $user = $this-> insert($credentinal);
-        if($user){
-            return redirect('/admin/login');
-        }
-        return back();
+        //
     }
 
     /**
@@ -53,7 +49,8 @@ class UserController extends UserRepository
      */
     public function show($id)
     {
-        //
+        $order = OrderDetail::where('order_id',$id)->first();
+        return view('admin.order-detail',compact('order'));
     }
 
     /**
@@ -74,10 +71,10 @@ class UserController extends UserRepository
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -87,6 +84,7 @@ class UserController extends UserRepository
      */
     public function destroy($id)
     {
-        //
+        $order = Order::findOrfail($id)->delete();
+        return back()->with('success',"Thành công");
     }
 }

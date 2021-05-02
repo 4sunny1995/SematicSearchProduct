@@ -395,6 +395,9 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="/admin/orders" class="nav-link">Orders</a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

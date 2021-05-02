@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
     <div id="app">
         <div class="c-mask closeleftmenu">
             
@@ -40,7 +41,10 @@
      <script src="{{asset('js/notice.js')}}"></script> 
     <script src="{{mix('/js/vuejs/leftmenu/c-leftmenu.js')}}"></script>
     <script src="{{mix('/js/vuejs/leftmenu/s-leftmenu.js')}}"></script>
-
+    <script src="{{asset('js/share.js')}}"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=408585933495374&autoLogAppEvents=1" nonce="YW1BHzxM"></script>
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
     {{-- <script src="{{ asset('js/share.js') }}"></script> --}}
     @yield('vuejs')
 </body>

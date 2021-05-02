@@ -93,3 +93,5 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('crawler-histories/reSpider',"Admin\SpiderController@reSpiderItem");
 });
 Route::get("logout","Auth\LoginController@logout")->name('admin.logout');
+Route::resource('orders',"Admin\OrderController");
+Route::get('/orders/delete/{id}','Admin\OrderController@destroy');

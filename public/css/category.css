@@ -20,6 +20,7 @@
     height: 100%;
     /* opacity: 0%;  */
     transition-duration: 1s;
+    padding-bottom: 15px;
 
 }
 .item-container{    

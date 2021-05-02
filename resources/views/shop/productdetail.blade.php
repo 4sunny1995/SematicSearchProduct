@@ -18,6 +18,9 @@
         color: #1ba8f0;
         font-size: 20px;
     }
+    body,html{
+        height:auto !important
+    }
 </style>
 @endsection
 @section('content')
@@ -39,7 +42,7 @@
                                 <img src="{{asset('img/loading.gif')}}" alt="">
                             </div>
                             <div>
-                                <div class="name"><p>@{{item.name}}</p></div>
+                                <div class="name" ><p id="name">@{{item.name}}</p></div>
                                 <div class="brand"><p></p></div>
                                 <div v-if="item.promo>0">
                                     <div class="price">Giá bán : <strike>@{{item.price}}</strike></div>
@@ -57,6 +60,33 @@
                             <i class="fa fa-heart" aria-hidden="true"  @click="removeToWishList(item)" v-else></i>
                             <img src="{{asset('img/ic-cart.png')}}" alt="icon" class="icon" @click="addToCart(item)" v-if="!item.isCart">
                             <img src="{{asset('img/ic-cart-added.png')}}" alt="icon" class="icon" @click="removeToCart(item)" v-else>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-2">
+                               
+                                <div class="fb-share-button" data-href="window.location.href" data-layout="button" data-size="large">
+                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">SHARE</a>
+                                </div>
+                           </div>
+                           <div class="col-md-2">
+                                <a class="twitter-share-button social-button" href="https://twitter.com/intent/tweet?text=" data-size="large"><img src="{{asset('images/twitter-share.png')}}" alt=""  height="28px"></a
+                           </div></div>
+                           <div class="col-md-2">
+                                <a href="whatsapp://send?text=" data-action="share/whatsapp/share" class="social-button">
+                                    <img src="{{asset('images/whatsapp-share.png')}}" alt="" height="28px">
+                                </a>
+                           </div>
+                           <div class="col-md-2">
+                               <a href="//www.pinterest.com/pin/create/button" data-media="" id="pinterest"><img src="{{asset('images/pinterest-share.png')}}" alt="" height="28px"></a>
+                           </div>
+                           <div class="col-md-2">
+                                <img id="linkedin-share" src="{{asset('images/linkedin-share.png')}}" alt="" height="28px">
+                           </div>
+                           <div class="col-md-2">
+                                <a href="https://social-plugins.line.me/lineit/share?url=" class="social-button">
+                                    <img id="linkedin-share" src="{{asset('images/wide-default.png')}}" alt="" height="28px">
+                                </a>
+                           </div>   
                         </div>
                     </div>
                  </div>
