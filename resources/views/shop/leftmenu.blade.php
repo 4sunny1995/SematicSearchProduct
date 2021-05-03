@@ -44,6 +44,7 @@
             <li class="menu-left-item w-100"><a href="#" class="w-100">About us</a></li>
             <li class="menu-left-item w-100"><a href="{{url('shop/notice')}}">Notice</a></li>
             <li class="menu-left-item w-100"><a href="{{url('shop/faq')}}">FAQ</a></li>
+            <li class="menu-left-item w-100"><a href="{{url('shop/logout')}}">Logout</a></li>
         </ul>
     </div>
 </div>

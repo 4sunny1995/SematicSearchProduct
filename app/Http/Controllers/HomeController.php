@@ -46,7 +46,8 @@ class HomeController extends Controller
         try
         {
             if(Auth::id()==$id){
-                $user = User::with('avatar','information')->findOrFail($id);        
+                $user = User::with('avatar','information')->findOrFail($id);
+                        
                 return [
                     "message"=>"success",
                     "success"=>true,

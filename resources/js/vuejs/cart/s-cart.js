@@ -11,8 +11,13 @@ let change = async (body) =>{
     const response = await Axios.post(url,body)
     return response.data
 }
+let removeItems = async (arrayList) => {
+    const response = await Axios.post(`${url}/removeItems`,arrayList)
+    return response.data
+}
 
 export default {
     getMyCart:getMyCart,
-    change:change
+    change:change,
+    removeItems:removeItems
 }

@@ -57,4 +57,34 @@ class MyCartController extends Controller
             Log::info($e->getMessage());
         }
     }
+    public function removeItems(Request $request)
+    {
+        $items = $request->all();
+        $id = Auth::id();
+        $sum =0;
+        // dd($items);
+        try
+        {
+            $carts = \Cart::session($id)->getContent();
+            // dd($carts->toArray());
+            foreach($items as $key => $item)
+            {
+                // dd($item);
+                $sum+=$carts[$item]['price'];
+                // dd($sum);
+                \Cart::session($id)->remove($item);
+            }
+            
+            return [
+                "message"=>"success",
+                "success"=>true,
+                "data"=>\Cart::session($id)->getContent(),
+                "sum"=>$sum
+            ];
+        }
+        catch(Exception $e)
+        {
+            Log::info($e->getMessage());
+        }
+    }
 }

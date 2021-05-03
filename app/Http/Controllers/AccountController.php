@@ -9,6 +9,7 @@ use App\Model\CreditDetail;
 use App\Model\Reward;
 use App\Model\RewardDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -29,5 +30,11 @@ class AccountController extends Controller
         // $reward = Coupon::where('user_id',$id)->first();
         $items = CouponDetail::where('user_id',$id)->get();
         return view('user.coupon',compact('items'));
+    }
+    public function logout()
+    {
+        Auth::logout();
+        session()->flush();
+        return redirect('login');
     }
 }

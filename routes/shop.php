@@ -63,6 +63,7 @@ Route::prefix('api')->group(function () {
     Route::get('getByCategoryId','HomeController@getByCategoryId');
     Route::get('getLocale', 'HomeController@getLocale');
     Route::get('mycart','MyCartController@getMyCart');
+    Route::post('mycart/removeItems','MyCartController@removeItems');
     Route::post('mycart','MyCartController@changeAmountOfItem');
     Route::get('mywishlist','MyWishListController@getMyWishList');
     Route::post('mywishlist','MyCartController@changeAmountOfItem');
@@ -88,3 +89,4 @@ Route::get('myOrder',function(){
 Route::get('orderdetail/{id}',function(){
     return view('shop.orderdetail');
 });
+Route::get('logout','AccountController@logout');

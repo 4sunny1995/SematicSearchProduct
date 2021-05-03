@@ -1,4 +1,5 @@
 
+import { isBuffer } from "lodash"
 import Vue from "vue"
 import config from "../../config"
 import cartServices from "./s-cart"
@@ -9,8 +10,9 @@ let app = new Vue({
         items : [],
         isLoading:false,
         state:0,
-        total:0,
-        count:0
+        total:0.0,
+        count:0,
+        destroyList:[],
     },
     mounted(){
         this.onLoadFunction()
@@ -51,6 +53,32 @@ let app = new Vue({
         },
         gotoCheckout(){
             window.location.href = "/shop/checkout"
+        },
+        pushOrpop(index){
+            var item = this.items[index]
+            var id  = item.id
+            var check = this.destroyList.indexOf(id)
+            // console.log(check)
+            if(check==-1){
+                this.destroyList.push(id)
+            }
+            else {
+                this.destroyList.splice(check,1)
+            }
+            console.log(this.destroyList)
+        },
+        setState(value){
+            this.state = value
+        },
+        async removeItems(){
+            const response = await cartServices.removeItems(this.destroyList)
+            if(response.success==true){
+                this.state = 0;
+               
+                this.items = response.data
+                window.location.reload()
+                // this.total-= parseFloat(response.sum)
+            }
         }
     }
 })
