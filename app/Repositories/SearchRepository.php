@@ -3,7 +3,9 @@
 
 use App\Model\Broader;
 use App\Model\History;
+use App\Model\Jargon;
 use App\Model\Narrower;
+use App\Model\Synonymous;
 use App\Tag;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -50,11 +52,10 @@ class SearchRepository
                             // var_dump($temp[$in],$word,"---2---");
                         }
                     }
-                    // if($temp)array_merge($this->result,$temp);
-                    // if($temp)dd($word);
                 }
             }
-            
+            $this->getSemantic($this->result);
+            dd($this->result);
             $result = $this->result;
             return $result;
             
@@ -199,5 +200,28 @@ class SearchRepository
             {
                 Log::info($e->getMessage());
             }
+        }
+        public function getSynonymous(array $items)
+        {
+            foreach($items as $item)
+            {
+                $words = Synonymous::where('root',$item)->get()->each(function($word){
+                    array_push($this->result,$word['refer']);
+                });
+            }
+        }
+        public function getJargon(array $items)
+        {
+            foreach($items as $item)
+            {
+                $words = Jargon::where('root',$item)->get()->each(function($word){
+                    array_push($this->result,$word['refer']);
+                });
+            }
+        }
+        public function getSemantic(array $items)
+        {
+            $this->getSynonymous($items);
+            $this->getJargon($items);
         }
     }

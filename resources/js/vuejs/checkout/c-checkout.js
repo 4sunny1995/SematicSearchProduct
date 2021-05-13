@@ -73,21 +73,33 @@ var app= new Vue({
             // numberal(value){
             //     return numeral(value).format("0,0")
             // },
-            payment(){
-                var type ='delivery'
-                if(this.picked===1)type="delivery"
-                if(this.picked===2)type="cash"
-                if(this.picked===3)type="momo"
+            async payment(){
+                // var type ='delivery'
+                var url = config.shopURL
+                console.log(typeof this.picked)
+                switch(this.picked) {
+                    case "2":
+                      url = url + "payment/cash"
+                      break;
+                    case "3":
+                        url = url + "payment/momo"
+                      break;
+                    default:
+                        url = url + "payment/delivery"
+                  }
+                console.log(this.picked)
                 var body = {
                     "items":this.items,
                     "total":this.total,
                 }
-                Axios.post(config.shopURL+"payment/"+type,body)
-                .then(response => {
-                    this.state = 0
-                    if(response.data.success==true)
-                    window.location.href = "/shop/checkout-result"
-                })
+                // console.log(type)
+                const response = await Axios.post(url,body)
+
+                // .then(response => {
+                //     this.state = 0
+                //     // if(response.data.success==true)
+                //     // window.location.href = "/shop/checkout-result"
+                // })
             }
         }
     })

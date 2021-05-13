@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use GuzzleHttp\Client;
 
 class PaymentController extends Controller
 {
@@ -37,7 +38,7 @@ class PaymentController extends Controller
                         $action = $this->momo($credential,$check->id);
                         break;
                     default:
-                    $action = $this->delivery($credential,$check->id);
+                        $action = $this->delivery($credential,$check->id);
                         break;
                 }
                 return $action;
@@ -76,6 +77,43 @@ class PaymentController extends Controller
                 "data"=>$items
             ];
             
+        }
+        catch(Exception $e)
+        {
+            Log::info($e->getMessage());
+        }
+    }
+    private function momo(array $credential,$orderid)
+    {
+        try
+        {
+            $order = Order::findOrfail($orderid);
+            $items = $credential['items'];
+            foreach($items as $key=>$item)
+            {
+                $order_detail = [
+                    "order_id"=>$orderid,
+                    "product_id"=>$item['id'],
+                    "quantity"=>$item['quantity'],
+                    "price"=>$item['price'],
+                    "name"=>$item['name']
+                ];
+                $ok = OrderDetail::create($order_detail);
+            }
+            // dd($credential);
+            $body = [
+                "key"=>"0ee801a1-8885-4f60-a5ea-b663053f0b6d",
+                "from"=> "0917003003",
+                "to"=> "0918002000",
+                "amount"=>str_replace(',','',$credential['total']),
+                "comment"=> "Chuyển tiền ".$credential['total']
+            ];
+            // $body = json_decode(json_encode($body,false));
+            // dd($body);
+            $client = new Client();
+            $response = $client->post('https://momo.w4vn.net/api/v1/transfer',['json'=>$body]);
+            dd(json_decode($response->getBody()->getContents()));
+            // dd($body);
         }
         catch(Exception $e)
         {

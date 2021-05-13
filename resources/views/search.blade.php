@@ -8,7 +8,7 @@
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
-      <nav class="row" style="display: flex;justify-content: space-between;align-items: center">
+      {{-- <nav class="row" style="display: flex;justify-content: space-between;align-items: center">
         <div class="col-md-4"></div>
         <div class="col-md-4">
           <div class="logo" style="border-radius: 50%;width: 100px">
@@ -20,7 +20,7 @@
             <Strong><a href="/shop">Shopping</a></Strong>
           </div>
         </div>
-      </nav>
+      </nav> --}}
     <div class="s004" style="position: relative;">
       <form method="GET" action="/search">
         <fieldset>
